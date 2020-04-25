@@ -26,8 +26,7 @@ class StudentSignUpView(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        username = form.cleaned_data.get('username')
-        messages.success(request, f'Félicitation  {username} , vous pouvez vous Connecter.')
+        
         return redirect('login-student')
 
 
@@ -38,4 +37,17 @@ class StudentsEcuesView(ListView):
     context_object_name = 'ecues'
     ordering = ['-created']
     paginate_by = 4
+
+
+@method_decorator([login_required, student_required], name='dispatch')
+class StudentsCoursListView(ListView):
+    model = Cours
+    template_name = 'enseignement/course_list.html'
+    context_object_name = 'cours'
+    ordering = ['-created']
+    paginate_by = 4
+
+    def get_queryset(self):
+        ecues = get_object_or_404(Ecue, pk=self.kwargs.get('pk'))
+        return Cours.objects.filter(ecue=ecues).order_by('-created')
 

@@ -383,8 +383,7 @@ class Ecue(models.Model):
     
     def get_absolute_url(self):
         """Return absolute url for Ecue."""
-        return ('')
-
+        return reverse("course-list", kwargs={"pk": self.pk}) # rediriger apres creation de produuits
     # TODO: Define custom methods here
 ###########################################################################
 ###########################################################################
