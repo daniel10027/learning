@@ -1,0 +1,122 @@
+{% extends "enseignement/base.html" %}
+{% load static  %}
+{%block content %}
+    
+      
+    
+    <!-- ##### Top Popular Courses Area Start ##### -->
+    <div class="top-popular-courses-area mt-50 section-padding-100-70">
+        <div class="container">
+            <div class="text-center" style="background-color: lightgray;">
+                <h1 style="color: rgb(8, 8, 8);">{{ object.intitule }}</h1>
+              </div>
+        <div class="row">
+          
+        </div>
+    </div>
+</div>
+<!-- bradcam_area_end -->
+
+<div class="courses_details_info">
+   <div class="container">
+       <div class="row">
+           <div class="col-xl-7 col-lg-7">
+               <div class="single_courses">
+                   <h3>Pré-requis</h3>
+                   <p>{{ object.prerequis |safe }}</p>
+                   <h3>Compétences visées</h3>
+                   <p>{{ object.competence |safe }}</p>
+              
+               
+               </div>
+               <div class="outline_courses_info">
+                       <div id="accordion">
+                               <div class="card">
+                                   <div class="card-header" id="headingTwo">
+                                       <h5 class="mb-0">
+                                           <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseT1" aria-expanded="false" aria-controls="collapseTwo">
+                                              <h3 class="second_title">Ressources Pdf </h3>
+                                           </button>
+                                       </h5>
+                                   </div>
+                                   <div id="collapseT1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                
+                                {% for pdf  in pdfs %}
+                                    
+                                    {% if pdf.cours.pk == object.pk %}
+                                     <div class="card-body">
+                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i>  <a href="{{ pdf.fichier.url }}" download="{{ pdf.nom }}">Accéder à {{ pdf.nom }} version  PDF</a>
+                                    </div>
+                                    <hr class="style-eight" />
+                                    {% endif %}
+                                   
+                                {% endfor %}
+                                   </div>
+                               </div>
+
+                           </div>
+               </div>
+           
+               <div class="outline_courses_info">
+                <div id="accordion">
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <i class="flaticon-question"></i>     <h3 class="second_title">Ressources Video</h3>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                {% for video  in videos %}
+                                    
+                                {% if video.cours.pk == object.pk %}
+                                 <div class="card-body">
+                                    <i class="fa fa-play-circle-o" aria-hidden="true"></i>  <a href="{{ video.url }}">Consulter  {{ video.nom }} version vidéo</a>
+                                </div>
+                                <hr class="style-eight" />
+                                {% endif %}
+                               
+                            {% endfor %}
+                             
+                            </div>
+                        </div>
+
+                    </div>
+                    <br>
+
+<br>                </div>
+           </div>
+           <div class="col-xl-5 col-lg-5">
+               <div class="courses_sidebar">
+                   <div class="video_thumb">
+                    <h3>Consignes</h3>
+                    <p>{{ object.consigne |safe }}</p>
+                   </div>
+                  
+                   
+                   <div class="feedback_info">
+                       <h5>Enseignant </h5>
+                       <center>
+                       <div class="calling-info">
+                        <div class="call-center">
+                            <a href="#"><img class="rounded-circle"  src="{{ object.ecue.enseignant.photo.url }}" alt="" height="100" width="100" ></a>
+                        </div>
+                    </div>
+                
+                       <h3 style="color: green;">{{ object.ecue.enseignant.user.first_name }} {{ object.ecue.enseignant.user.last_name }}</h3>
+                    </center>
+                       <i class="flaticon-mark-as-favorite-star"></i>
+                       <i class="flaticon-mark-as-favorite-star"></i>
+                       <i class="flaticon-mark-as-favorite-star"></i>
+                       <i class="flaticon-mark-as-favorite-star"></i>
+                       <i class="flaticon-mark-as-favorite-star"></i>
+                       
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+
+{% endblock content %}

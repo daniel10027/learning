@@ -6,12 +6,12 @@ from django.db.models import Count
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
-from django.views.generic import CreateView, ListView, UpdateView
+from django.views.generic import CreateView, ListView, UpdateView, View, DetailView
 
 from ..decorators import student_required
 from ..forms import StudentSignUpForm
 from ..models import Student, User
-from enseignement.models import Cours, UniteEnseignement, Ecue
+from enseignement.models import Cours, UniteEnseignement, Ecue, RessourcePdf, RessourceVideo
 
 
 class StudentSignUpView(CreateView):
@@ -50,4 +50,14 @@ class StudentsCoursListView(ListView):
     def get_queryset(self):
         ecues = get_object_or_404(Ecue, pk=self.kwargs.get('pk'))
         return Cours.objects.filter(ecue=ecues).order_by('-created')
+
+@method_decorator([login_required, student_required], name='dispatch')
+class StudentsCoursDetailView(DetailView):
+    model = Cours
+    template_name = 'enseignement/course_detail.html'
+    def get_context_data(self, **kwargs):
+        context = super(StudentsCoursDetailView, self).get_context_data(**kwargs)
+        context['pdfs'] = RessourcePdf.objects.all()
+        context['videos'] = RessourceVideo.objects.all()
+        return context
 

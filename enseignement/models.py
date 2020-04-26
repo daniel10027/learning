@@ -383,7 +383,7 @@ class Ecue(models.Model):
     
     def get_absolute_url(self):
         """Return absolute url for Ecue."""
-        return reverse("course-list", kwargs={"pk": self.pk}) # rediriger apres creation de produuits
+        return reverse("course-list", kwargs={"pk": self.pk}) # 
     # TODO: Define custom methods here
 ###########################################################################
 ###########################################################################
@@ -415,7 +415,7 @@ class Cours(models.Model):
 
     def get_absolute_url(self):
         """Return absolute url for Cours."""
-        return ('')
+        return reverse("course-detail", kwargs={"pk": self.pk}) # rediriger apres creation de produuits
 
     # TODO: Define custom methods here
 ##################################################################
@@ -424,6 +424,7 @@ class RessourcePdf(models.Model):
 
     # TODO: Define fields here
     cours        = models.ForeignKey(Cours, on_delete=models.CASCADE, related_name="ressourcepdf")
+    nom = models.CharField( max_length=50)
     fichier = models.FileField(upload_to ='cours/pdf/% Y/% m/% d/',default='none.png') 
     status      = models.BooleanField(default=True)
     created     = models.DateTimeField(auto_now_add=True)
@@ -451,7 +452,8 @@ class RessourceVideo(models.Model):
     """Model definition for RessourceVideo."""
 
     # TODO: Define fields here
-    cours        = models.ForeignKey(Cours, on_delete=models.CASCADE, related_name="ressourcevideo")
+    nom = models.CharField( max_length=50)
+    cours = models.ForeignKey(Cours, on_delete=models.CASCADE, related_name="ressourcevideo")
     url = models.URLField(max_length = 200) 
     status      = models.BooleanField(default=True)
     created     = models.DateTimeField(auto_now_add=True)

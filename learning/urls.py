@@ -14,6 +14,7 @@ urlpatterns = [
     path('accounts/signup/teacher/', teachers.TeacherSignUpView .as_view(), name='teacher_signup'),
     path('accounts/signup/tutor/',     tutors.TutorSignUpView.as_view(), name='tutor_signup'),
     path('accounts/login/student/', auth_views.LoginView.as_view(template_name = 'registration/login.html'), name="login-student"),
+    path('logout/', auth_views.LogoutView.as_view(template_name = 'enseignement/index.html'), name="logout"),
 ]
 
 

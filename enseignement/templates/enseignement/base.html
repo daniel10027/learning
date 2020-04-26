@@ -7,100 +7,137 @@
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-    <!-- Title -->
     <title>EduVRoom</title>
-
-    <!-- Favicon -->
     <link rel="icon" href=" {% static 'enseignement/img/core-img/favicon.ico' %} ">
-
-    <!-- Core Stylesheet -->
     <link rel="stylesheet" href="{% static 'enseignement/style.css' %}">
     {{ form.media }}
 
 </head>
+<style>
+hr.style-eight {
+height: 10px;
+border: 1;
+box-shadow: inset 0 9px 9px -3px rgba(11, 99, 184, 0.8);
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+-ms-border-radius: 5px;
+-o-border-radius: 5px;
+border-radius: 5px;
+}
+</style>
 
 <body>
-    <!-- ##### Preloader ##### -->
+   
     <div id="preloader">
         <i class="circle-preloader"></i>
     </div>
 
-    <!-- ##### Header Area Start ##### -->
+   
     <header class="header-area">
 
-        <!-- Top Header Area -->
+       
         <div class="top-header">
             <div class="container h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100">
                         <div class="header-content h-100 d-flex align-items-center justify-content-between">
                             <div class="academy-logo">
-                                <a href="index.html"><img src=" {% static 'enseignement/img/core-img/logo.png' %}" alt=""></a>
+                                <a href="{% url 'site-home' %}"><img src=" {% static 'enseignement/img/core-img/logox.png' %}" alt="" height="200" width="200"></a>
                             </div>
+                     {% if user.is_authenticated %}
                             <div class="login-content">
-                                <a href="{% url 'login-student' %}">Connexion</a>
+                                <a href="{% url 'logout' %}">Deconnexion</a>
                             </div>
+                     {% else %}
+                            <div class="login-content">
+                                <a href="{% url 'login-student' %}">Conexion</a>
+                            </div>
+                        
+                     {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Navbar Area -->
+ {% if user.is_authenticated %}
+      
         <div class="academy-main-menu">
             <div class="classy-nav-container breakpoint-off">
                 <div class="container">
-                    <!-- Menu -->
+                  
                     <nav class="classy-navbar justify-content-between" id="academyNav">
 
-                        <!-- Navbar Toggler -->
+                      
                         <div class="classy-navbar-toggler">
                             <span class="navbarToggler"><span></span><span></span><span></span></span>
                         </div>
-
-                        <!-- Menu -->
+ 
                         <div class="classy-menu">
 
-                            <!-- close btn -->
+                            
                             <div class="classycloseIcon">
                                 <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                             </div>
-
-                            <!-- Nav Start -->
+                  
+                           
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="#">Pages</a>
-                                        <ul class="dropdown">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="about-us.html">About Us</a></li>
-                                            <li><a href="course.html">Course</a></li>
-                                            <li><a href="blog.html">Blog</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="elements.html">Elements</a></li>
-                                        </ul>
-                                    </li>
-                                   
-                                    <li><a href="about-us.html">About Us</a></li>
-                                    <li><a href="course.html">Course</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                   
+                                    <li><a href="{% url 'site-home' %}">Home</a></li>
+                                    <li><a href="{% url 'site-home' %}">Mon Profile</a></li>
+                                    <li><a href="{% url 'site-home' %}">Mon Cursus</a></li>
+                                    <li><a href="">Contacter L'administration</a></li>
                                 </ul>
                             </div>
-                            <!-- Nav End -->
-                        </div>
-
-                        <!-- Calling Info -->
+                           </div>
                         <div class="calling-info">
                             <div class="call-center">
-                                <a href="tel:+654563325568889"><i class="icon-telephone-2"></i> <span>(+65) 456 332 5568 889</span></a>
+                                <a href="#"> <span>{{ user.first_name}} {{user.last_name}} </span><img class="rounded-circle"  src="{{ user.student.photo.url }}" alt="" height="80" width="80" ></a>
                             </div>
                         </div>
                     </nav>
                 </div>
             </div>
         </div>
+{% else %}
+<div class="academy-main-menu">
+    <div class="classy-nav-container breakpoint-off">
+        <div class="container">
+          
+            <nav class="classy-navbar justify-content-between" id="academyNav">
+
+              
+                <div class="classy-navbar-toggler">
+                    <span class="navbarToggler"><span></span><span></span><span></span></span>
+                </div>
+
+                <div class="classy-menu">
+
+                    
+                    <div class="classycloseIcon">
+                        <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                    </div>
+          
+                   
+                    <div class="classynav">
+                        <ul>
+           
+                            <li><a href="{% url 'site-home' %}">Accueil</a></li>
+                            <li><a href="">Nos Cours</a></li>
+                            <li><a href="">Nous Contacter</a></li>
+                        </ul>
+                    </div>
+                   </div>
+                        <div class="calling-info">
+                            <div class="call-center">
+                                <a href="tel:+22548733365"><i class="icon-telephone-2"></i> <span>(+225) 48 73 33 65</span></a>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+ {% endif %}
     </header>
 
 
@@ -114,7 +151,7 @@
                 <div class="row">
                     <div class="col-12">
                         <p>
-Copyright &copy;<script>document.write(new Date().getFullYear());</script>  <a href="#" target="_blank">Daniel Guedegbe</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script>  <a href="http://analyst123.herokuapp.com/" target="_blank">Pheonix 497</a>
 </p>
                     </div>
                 </div>
@@ -122,15 +159,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script>  <a h
         </div>
     </footer>
    
-    <!-- jQuery-2.2.4 js -->
+
     <script src="{% static 'enseignement/js/jquery/jquery-2.2.4.min.js' %}"></script>
-    <!-- Popper js -->
+
     <script src="{% static 'enseignement/js/bootstrap/popper.min.js' %}"></script>
-    <!-- Bootstrap js -->
+
     <script src="{% static 'enseignement/js/bootstrap/bootstrap.min.js' %}"></script>
-    <!-- All Plugins js -->
+
     <script src="{% static 'enseignement/js/plugins/plugins.js' %}"></script>
-    <!-- Active js -->
+
     <script src="{% static 'enseignement/js/active.js' %}"></script>
 </body>
 
