@@ -12,3 +12,6 @@ def home(request): # pour afficher les produits a vendre sur l_index
         else:
             pass
     return render(request, 'enseignement/index.html')
+
+def contact(request):
+    return render(request, 'enseignement/contact.html')
