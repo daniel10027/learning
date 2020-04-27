@@ -5,9 +5,12 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from gestion.views import students, teachers, tutors
 
+
 urlpatterns = [
+
     path('admin/', admin.site.urls),
     path('', include('enseignement.urls')),
+    path('recrutement/', include('recrutement.urls')),
     path('tinymce/', include('tinymce.urls')),
     path('accounts/', include('django.contrib.auth.urls'), name='account'),
     path('accounts/signup/student/', students.StudentSignUpView.as_view(), name='student_signup'),

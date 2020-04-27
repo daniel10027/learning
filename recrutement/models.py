@@ -40,7 +40,7 @@ class Recrutement(models.Model):
 
     def get_absolute_url(self):
         """Return absolute url for Recrutement."""
-        return reverse("site-home", kwargs={"pk": self.pk}) # 
+        return (reverse("site-home", kwargs={"pk": self.pk})) # 
 
     # TODO: Define custom methods here
 ######################################################################################################################################################
@@ -94,8 +94,8 @@ class Diplome(models.Model):
     """Model definition for Diplome."""
 
     # TODO: Define fields here
-    nom         = models.CharField( max_length=50)
-    dossier =     models.ForeignKey(DossierRecrutement, on_delete=models.CASCADE, related_name="diplome")
+    nom_diplome         = models.CharField( max_length=50)
+    fichier =     models.ForeignKey(DossierRecrutement, on_delete=models.CASCADE, related_name="diplome")
     document            = models.FileField(upload_to ='recrutement/diplomes/% Y/% m/% d/',default='none.png') 
     status      = models.BooleanField(default=True)
     created     = models.DateTimeField(auto_now_add=True)
@@ -123,7 +123,7 @@ class Certificat(models.Model):
     """Model definition for Certificat."""
 
     # TODO: Define fields here
-    nom         = models.CharField( max_length=50)
+    nom_certificat        = models.CharField( max_length=50)
     documents =      models.ForeignKey(DossierRecrutement, on_delete=models.CASCADE, related_name="certificat")
     fichier            = models.FileField(upload_to ='recrutement/certificats/% Y/% m/% d/',default='none.png') 
     status      = models.BooleanField(default=True)

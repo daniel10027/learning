@@ -125,6 +125,7 @@ border-radius: 5px;
                             <li><a href="{% url 'site-home' %}">Accueil</a></li>
                             <li><a href="">Nos Cours</a></li>
                             <li><a href="">Actualite</a></li>
+                            <li><a href="{% url 'recrutement-home' %}">Recrutements</a></li>
                             <li><a href="{% url 'site-contact' %}">Nous Contacter</a></li>
                         </ul>
                     </div>
@@ -170,6 +171,17 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script>  <a h
     <script src="{% static 'enseignement/js/plugins/plugins.js' %}"></script>
 
     <script src="{% static 'enseignement/js/active.js' %}"></script>
+    <script>
+        $('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('New message to ' + recipient)
+  modal.find('.modal-body input').val(recipient)
+})
+    </script>
 </body>
 
 </html>

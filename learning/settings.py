@@ -40,13 +40,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+   
+]
+
+INSTALLED_APPS += (
+    
+    'jquery',
+    'djangoformsetjs',
     'gestion',
     'enseignement',
     'recrutement',
     'configuration',
     'tinymce',
     'crispy_forms',
-]
+)
+
 X_FRAME_OPTIONS='SAMEORIGIN' 
 
 MIDDLEWARE = [

@@ -103,7 +103,7 @@
                                        
                                     </div>
                                     <p>{{ recrutement.objet | safe  }}</p>
-                                    <a href="#" class="btn academy-btn btn-sm">Consulter</a>
+                                    <a href="{% url 'recrutement-detail' recrutement.id %}" class="btn academy-btn btn-sm">Consulter</a>
                                 </div>
                                 <div class="popular-course-thumb bg-img" style="background-image: url({% static 'enseignement/img/recrutement.svg' %});"></div>
                             </div>

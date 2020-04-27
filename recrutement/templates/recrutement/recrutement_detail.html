@@ -1,0 +1,100 @@
+{% extends "enseignement/base.html" %}
+{% load static  %}
+{%block content %}
+    
+     
+    <div class="top-popular-courses-area mt-50 section-padding-100-70">
+        <div class="container">
+            <div class="text-center" style="background-color: lightgray;">
+                <h1 style="color: rgb(8, 8, 8);">{{ object.intitule }}</h1>
+              </div>
+        <div class="row">
+          
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Recipient:</label>
+              <input type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Message:</label>
+              <textarea class="form-control" id="message-text"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Send message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="courses_details_info">
+   <div class="container">
+       <div class="row">
+           <div class="col-xl-7 col-lg-7">
+               <div class="single_courses">
+                   <h3>Objet du Recrutement</h3>
+                   <p>{{ object.objet |safe }}</p>
+                   <h3>Public Cible</h3>
+                   <p>{{ object.cible |safe }}</p>
+                   <h3>Méthodes D'evaluation</h3>
+                   <p>{{  object.methode_evaluation |safe }}</p>
+              
+               
+               </div>
+               <div class="outline_courses_info">
+                       <div id="accordion">
+                              
+
+                           </div>
+                           <br>
+               </div>
+           
+       
+           </div>
+           <div class="col-xl-5 col-lg-5">
+               <div class="courses_sidebar">
+                   <div class="video_thumb">
+                    <h3>Les Grandes Dates </h3>
+                    <p>{{ object.consigne |safe }}</p>
+                   </div>
+                  
+                   
+                   <div class="feedback_info">
+                       <h5 style="background-color:  lightgray;color: black;">Début des inscription     : {{ object.ouverture |date:" d F Y"}}</h5>
+                       <h5 style="background-color:  lightgray;color: black;">Fin des inscription       : {{ object.fermeture |date:" d F Y" }} </h5>
+                       <h5 style="background-color:  lightgray;color: black;">Début passage devant Jury : {{ object.date_debut_passage |date:" d F Y" }} </h5>
+                       <h5 style="background-color:  lightgray;color: black;">Fin passage devant Jury   : {{ object.date_fin_passage |date:" d F Y"}}</h5>
+                       <h5 style="background-color:  lightgray;color: black;">Publication des resultats : {{ object.resultat |date:" d F Y"}}</h5>
+
+                       <br>
+                       <br>
+                <!--     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Postuler</button>
+                 -->     <center> <a href="{% url 'postuler' object.pk %}" class="btn academy-btn btn-sm">Postuler</a></center>
+                       
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+
+
+
+{% endblock  %}
+    

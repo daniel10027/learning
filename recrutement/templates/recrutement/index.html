@@ -1,0 +1,66 @@
+{% extends "enseignement/base.html" %}
+{% load static  %}
+{% block content %}
+        
+<div class="breadcumb-area bg-img" style="background-image: url({% static 'enseignement/img/bg-img/breadcumb.jpg' %});">
+    <div class="bradcumbContent">
+        <h2>RECRUTEMENTS </h2>
+    </div>
+</div>
+
+            <div class="top-popular-courses-area section-padding-100-70">
+                <div class="container">
+                  
+                    <div class="row">
+                
+                {% for recrutement in recrutements %}
+
+                        <div class="col-12 col-lg-6">
+                            <div class="single-top-popular-course d-flex align-items-center flex-wrap mb-30 wow fadeInUp" data-wow-delay="400ms">
+                                <div class="popular-course-content">
+                                    <h5>{{ recrutement.intitule }}</h5>
+                                    <span>Du {{ recrutement.ouverture |date:" d F Y" }}   | Au {{ recrutement.fermeture |date:'d F Y' }}</span>
+                                    <div class="course-ratings">
+                                       
+                                    </div>
+                                    <p>{{ recrutement.objet | safe  }}</p>
+                                    <a href="{% url 'recrutement-detail' recrutement.id %}" class="btn academy-btn btn-sm">Consulter</a>
+                                </div>
+                                <div class="popular-course-thumb bg-img" style="background-image: url({% static 'enseignement/img/recrutement.svg' %});"></div>
+                            </div>
+                        </div>
+                        
+              {% endfor %}
+                    </div>
+                </div>
+            </div>
+             <div class="partner-area section-padding-0-100">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="partners-logo d-flex align-items-center justify-content-between flex-wrap">
+                                <a href="#"><img src=" {% static 'enseignement/img/clients-img/partner-1.png' %}" alt=""></a>
+                                <a href="#"><img src=" {% static 'enseignement/img/clients-img/partner-2.png' %}" alt=""></a>
+                                <a href="#"><img src=" {% static 'enseignement/img/clients-img/partner-3.png' %}" alt=""></a>
+                                <a href="#"><img src=" {% static 'enseignement/img/clients-img/partner-4.png' %}" alt=""></a>
+                                <a href="#"><img src=" {% static 'enseignement/img/clients-img/partner-5.png' %}" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="call-to-action-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="cta-content d-flex align-items-center justify-content-between flex-wrap">
+                                <h3>Vous voulez faire partir de nos futurs étudiants  !</h3>
+                                <a href="#" class="btn academy-btn">Incrivez vous maintenant</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+{% endblock content %}

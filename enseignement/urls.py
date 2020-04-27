@@ -9,9 +9,7 @@ urlpatterns = [
     path('students/', include(([
     path('my/', students.StudentsEcuesView.as_view(), name='accueil-student'),
     path('ecues/<int:pk>/', students.StudentsCoursListView.as_view(), name='course-list'),
-    path('courses/<int:pk>/', students.StudentsCoursDetailView.as_view(), name='course-detail')
-
-    
-    ], 'classroom'), namespace='students')),
+    path('courses/<int:pk>/', students.StudentsCoursDetailView.as_view(), name='course-detail')    
+], 'classroom'), namespace='students')),
 
 ]
