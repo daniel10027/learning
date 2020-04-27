@@ -3,6 +3,7 @@ from django.conf import settings
 from django.contrib.auth  import views as auth_views
 from django.urls import path, include
 from django.conf.urls.static import static
+from schema_graph.views import Schema
 from gestion.views import students, teachers, tutors
 
 
@@ -19,7 +20,6 @@ urlpatterns = [
     path('accounts/login/student/', auth_views.LoginView.as_view(template_name = 'registration/login.html'), name="login-student"),
     path('logout/', auth_views.LogoutView.as_view(template_name = 'enseignement/index.html'), name="logout"),
 ]
-
 
 
 if settings.DEBUG:

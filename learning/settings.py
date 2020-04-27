@@ -43,9 +43,15 @@ INSTALLED_APPS = [
    
 ]
 
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
+
 INSTALLED_APPS += (
     
     'jquery',
+    'django_extensions',
     'djangoformsetjs',
     'gestion',
     'enseignement',
@@ -53,6 +59,7 @@ INSTALLED_APPS += (
     'configuration',
     'tinymce',
     'crispy_forms',
+    'schema_graph',
 )
 
 X_FRAME_OPTIONS='SAMEORIGIN' 
