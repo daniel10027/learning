@@ -40,7 +40,7 @@ class Recrutement(models.Model):
 
     def get_absolute_url(self):
         """Return absolute url for Recrutement."""
-        return (reverse("site-home", kwargs={"pk": self.pk})) # 
+        return (reverse("site-home", kwargs={"pk": self.pk}),reverse("recrutement-home", kwargs={"pk": self.pk}),) # 
 
     # TODO: Define custom methods here
 ######################################################################################################################################################

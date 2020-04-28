@@ -26,6 +26,7 @@ class RecrutementDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(RecrutementDetailView, self).get_context_data(**kwargs)
         return context
+    
 ################################################################################
 
 class DossierRecrutementCreateView(CreateView):
@@ -38,6 +39,7 @@ class DossierRecrutementCreateView(CreateView):
     success_url = reverse_lazy('recrutement-home')
     def get_context_data(self, **kwargs):
         data = super(DossierRecrutementCreateView, self).get_context_data(**kwargs)
+
         if self.request.POST:
             data['diplomes'] = DiplomeFormSet(self.request.POST)
             data['certificats'] = CertificatFormSet(self.request.POST)
