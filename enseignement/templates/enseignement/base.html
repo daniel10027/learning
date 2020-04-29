@@ -50,9 +50,9 @@ border-radius: 5px;
                             </div>
                      {% else %}
                             <div class="login-content">
-                                <a href="{% url 'login-student' %}">Conexion</a>
+                                <a href="{% url 'login' %}">Conexion</a>
                             </div>
-                        
+                          
                      {% endif %}
                         </div>
                     </div>
@@ -86,7 +86,7 @@ border-radius: 5px;
                                     <li><a href="{% url 'site-home' %}">Home</a></li>
                                     <li><a href="{% url 'site-home' %}">Mon Profile</a></li>
                                     <li><a href="{% url 'students:accueil-student' %}">Mon Cursus</a></li>
-                                    <li><a href="{% url 'site-contact' %}">Contacter L'administration</a></li>
+                                    <li><a href="{% url 'site-contact' %}">Nous Contacter</a></li>
                                 </ul>
                             </div>
                            </div>

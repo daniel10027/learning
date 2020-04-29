@@ -28,3 +28,8 @@ class TutorSignUpView(CreateView):
         return redirect('login')
 
 
+
+@login_required
+@tutor_required
+def home(request): # pour afficher les produits a vendre sur l_index
+    return render(request, 'gestion/index.html')

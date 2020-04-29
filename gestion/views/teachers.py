@@ -7,10 +7,12 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, ListView, UpdateView
+from ..decorators import teacher_required
 
 from ..decorators import teacher_required
 from ..forms import TeacherSignUpForm
 from ..models import Enseignant, User
+from recrutement.models import DossierRecrutement
 
 
 class TeacherSignUpView(CreateView):
@@ -28,3 +30,7 @@ class TeacherSignUpView(CreateView):
         return redirect('login')
 
 
+@login_required
+@teacher_required
+def home(request): # pour afficher les produits a vendre sur l_index
+    return render(request, 'gestion/index.html')
