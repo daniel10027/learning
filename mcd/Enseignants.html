@@ -1,0 +1,345 @@
+<html>
+<head>
+<meta charset='utf-8'>
+<style>
+  #mld .relation { font-variant: small-caps; font-weight: bold }
+  #mld .primary { text-decoration: underline }
+  #mld .foreign { font-style: oblique }
+  #mld .normal { }
+</style>
+</head>
+<body>
+<div id='mld'>
+<div>
+  <span class='relation'>DominanceUfr</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>
+  )
+</div>
+<div>
+  <span class='relation'>TypeEtablissement</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>
+  )
+</div>
+<div>
+  <span class='relation'>StatutEtablissemnt</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>
+  )
+</div>
+<div>
+  <span class='relation'>Localite</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>
+  )
+</div>
+<div>
+  <span class='relation'>Student</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>date_naiss</span>,
+    <span class='normal'>sexe</span>,
+    <span class='normal'>contact</span>,
+    <span class='normal'>piece_identire</span>,
+    <span class='normal'>photo</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>,
+    <span class='foreign'>id.1</span>,
+    <span class='foreign'>id.2</span>,
+    <span class='foreign'>id.3</span>
+  )
+</div>
+<div>
+  <span class='relation'>Ufr</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>situation</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>,
+    <span class='foreign'>id.1</span>,
+    <span class='foreign'>id.2</span>
+  )
+</div>
+<div>
+  <span class='relation'>Etablissement</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>adresse</span>,
+    <span class='normal'>directeur</span>,
+    <span class='normal'>email</span>,
+    <span class='normal'>contact</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>,
+    <span class='foreign'>id.1</span>,
+    <span class='foreign'>id.2</span>,
+    <span class='foreign'>id.3</span>
+  )
+</div>
+<div>
+  <span class='relation'>Filiere</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>,
+    <span class='foreign'>id.1</span>
+  )
+</div>
+<div>
+  <span class='relation'>Niveau</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>
+  )
+</div>
+<div>
+  <span class='relation'>Specialite</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>,
+    <span class='foreign'>id.1</span>
+  )
+</div>
+<div>
+  <span class='relation'>Semestre</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>
+  )
+</div>
+<div>
+  <span class='relation'>UniteEnseignement</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>objectif_general</span>,
+    <span class='normal'>objectif_specifique</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>,
+    <span class='foreign'>id.1</span>,
+    <span class='foreign'>id.2</span>,
+    <span class='foreign'>id.3</span>
+  )
+</div>
+<div>
+  <span class='relation'>RessourceVideo</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>fichier</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>
+  )
+</div>
+<div>
+  <span class='relation'>TypeUe</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>
+  )
+</div>
+<div>
+  <span class='relation'>User</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>username</span>,
+    <span class='normal'>first_name</span>,
+    <span class='normal'>last_name</span>,
+    <span class='normal'>email</span>,
+    <span class='normal'>password</span>,
+    <span class='normal'>is_teacher</span>,
+    <span class='normal'>is_tutor</span>,
+    <span class='normal'>is_student</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>,
+    <span class='foreign'>id.1</span>,
+    <span class='foreign'>id.2</span>
+  )
+</div>
+<div>
+  <span class='relation'>RessourcePdf</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>fichier</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>,
+    <span class='foreign'>id.1</span>,
+    <span class='foreign'>id.2</span>
+  )
+</div>
+<div>
+  <span class='relation'>Ecue</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>objectif_general</span>,
+    <span class='normal'>objectif_specifique</span>,
+    <span class='normal'>materiel</span>,
+    <span class='normal'>temps_cm</span>,
+    <span class='normal'>temps_td</span>,
+    <span class='normal'>temps_td.1</span>,
+    <span class='normal'>creditstatus</span>,
+    <span class='normal'>created</span>,
+    <span class='foreign'>id.1</span>
+  )
+</div>
+<div>
+  <span class='relation'>Cours</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>intitule</span>,
+    <span class='normal'></span>,
+    <span class='normal'>prerequis</span>,
+    <span class='normal'>competence</span>,
+    <span class='normal'>consigne</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>,
+    <span class='foreign'>id.1</span>,
+    <span class='foreign'>id.2</span>
+  )
+</div>
+<div>
+  <span class='relation'>Enseignant</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>matricule</span>,
+    <span class='normal'>structure</span>,
+    <span class='normal'>sexe</span>,
+    <span class='normal'>contact</span>,
+    <span class='normal'>piece identite</span>,
+    <span class='normal'>photo</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>,
+    <span class='foreign'>id.1</span>,
+    <span class='foreign'>id.2</span>,
+    <span class='foreign'>id.3</span>
+  )
+</div>
+<div>
+  <span class='relation'>Tuteur</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>sexe</span>,
+    <span class='normal'>structure</span>,
+    <span class='normal'>contact</span>,
+    <span class='normal'>piece_identite</span>,
+    <span class='normal'>photon</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>,
+    <span class='foreign'>id.1</span>,
+    <span class='foreign'>id.2</span>,
+    <span class='foreign'>id.3</span>
+  )
+</div>
+<div>
+  <span class='relation'>Jury</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>
+  )
+</div>
+<div>
+  <span class='relation'>appartient a</span> (
+    <span class='foreign primary'>id</span>,
+    <span class='foreign primary'>id.1</span>
+  )
+</div>
+<div>
+  <span class='relation'>Grade</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>
+  )
+</div>
+<div>
+  <span class='relation'>TypeEnseignant</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>
+  )
+</div>
+<div>
+  <span class='relation'>Domaine</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>
+  )
+</div>
+<div>
+  <span class='relation'>Resultat</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>critere1</span>,
+    <span class='normal'>critere2</span>,
+    <span class='normal'>critere3</span>,
+    <span class='normal'>critere4</span>,
+    <span class='normal'>critere5</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>,
+    <span class='foreign'>id.1</span>,
+    <span class='foreign'>id.2</span>
+  )
+</div>
+<div>
+  <span class='relation'>DossierRecrutement</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>prenom</span>,
+    <span class='normal'>sexe</span>,
+    <span class='normal'>date_naiss</span>,
+    <span class='normal'>localite</span>,
+    <span class='normal'>email</span>,
+    <span class='normal'>contact</span>,
+    <span class='normal'>photo</span>,
+    <span class='normal'>piece_identite</span>,
+    <span class='normal'>lettre</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>,
+    <span class='foreign'>id.1</span>
+  )
+</div>
+<div>
+  <span class='relation'>Recrutement</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>intitule</span>,
+    <span class='normal'>objet</span>,
+    <span class='normal'>ouverture</span>,
+    <span class='normal'>fermeture</span>,
+    <span class='normal'>cible</span>,
+    <span class='normal'>methode_evaluation</span>,
+    <span class='normal'>debut_pj fin_pj</span>,
+    <span class='normal'>resultat</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>
+  )
+</div>
+<div>
+  <span class='relation'>Certificat</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>fichier</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>,
+    <span class='foreign'>id.1</span>,
+    <span class='foreign'>id.2</span>
+  )
+</div>
+<div>
+  <span class='relation'>Diplome</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>fichier</span>,
+    <span class='normal'>status</span>,
+    <span class='normal'>created</span>
+  )
+</div>
+</div>
+</body>
+</html>
