@@ -1,1 +1,0 @@
-$source /home/daniel/Desktop/pct/env/bin/activate
