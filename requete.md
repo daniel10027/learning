@@ -12,6 +12,7 @@ GROUP BY dossier_id;
 ##########################################
  moyenne = Resultat.objects.values('dossier').order_by('dossier').annotate(moy=Avg('critere1'))
 ######################################################"
+
  moyenne = Resultat.objects.values('dossier').order_by('dossier').annotate(moy=((Avg('critere1'))+ (Avg('critere2'))+ (Avg('critere3'))+ (Avg('critere4'))+ (Avg('critere5')))/5)
 
 ################################################################"
