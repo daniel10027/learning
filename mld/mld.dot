@@ -1,0 +1,374 @@
+Table StatutEtablissement{
+   id int [pk, increment]
+   nom varchar
+   status boolean
+   created datetime
+}
+
+Table TypetEtablissement{
+   id int [pk, increment]
+   nom varchar
+   status boolean
+   created datetime
+}
+
+Table Localite{
+   id int [pk, increment]
+   nom varchar
+   status boolean
+   created datetime
+}
+
+Table Etablissement{
+   id int [pk, increment]
+   type_etablissement int
+   statut_etablissement int
+   localite int
+   nom varchar
+   adresse varchar
+   contact integer
+   email varchar
+   directeur varchar
+   status boolean
+   created datetime
+}
+Ref:Etablissement.type_etablissement > TypetEtablissement.id
+Ref:Etablissement.statut_etablissement > StatutEtablissement.id
+Ref:Etablissement.localite > Localite.id
+Table DominaceUfr{
+   id int [pk, increment]
+   nom varchar
+   status boolean
+   created datetime
+}
+
+Table Ufr{
+   id int [pk, increment]
+   etablissemnt int 
+   domianceufr int
+   nom varchar
+   status boolean
+   created datetime
+}
+
+Ref:Ufr.etablissemnt > Etablissement.id
+Ref:Ufr.domianceufr > DominaceUfr.id
+
+Table Filiere{
+   id int [pk, increment]
+   ufr int
+   nom varchar
+   status boolean
+   created datetime
+}
+Ref:Filiere.ufr > Ufr.id
+
+Table Specialite{
+   id int [pk, increment]
+   filiere int
+   nom varchar
+   status boolean
+   created datetime
+}
+Ref:Specialite.filiere > Filiere.id
+
+Table Niveau{
+   id int [pk, increment]
+   nom varchar
+   status boolean
+   created datetime
+}
+
+Table Semestre{
+   id int [pk, increment]
+   nom varchar
+   status boolean
+   created datetime
+}
+
+Table TypeUe{
+   id int [pk, increment]
+   nom varchar
+   status boolean
+   created datetime
+}
+
+Table UniteEnseignement{
+   id int [pk, increment]
+   specialite int
+   type_ue int 
+   niveau int
+   semestre int 
+   nom varchar
+   status boolean
+   created datetime
+}
+
+Ref: UniteEnseignement.specialite > Specialite.id
+Ref: UniteEnseignement.semestre > Semestre.id
+Ref: UniteEnseignement.niveau > Niveau.id
+Ref: UniteEnseignement.type_ue > TypeUe.id
+
+Table Ecue{
+   id int [pk, increment]
+   unite_enseignement int 
+   enseignant int 
+   intitule varchar
+   objectif_gn varchar
+   objectif_sp varchar
+   competence varchar
+   materiel varchar
+   temps_cm int
+   temps_td int 
+   temps_tp int
+   credit int 
+   status boolean
+   created datetime
+}
+
+Ref: Ecue.unite_enseignement > UniteEnseignement.id
+Ref: Ecue.enseignant > Enseignant.id
+
+Table Cours{
+   id int [pk, increment]
+   ecue int 
+   intitule varchar
+   prerequis varchar
+   competence varchar
+   consigne varchar
+   status boolean
+   created datetime
+}
+Ref: Cours.ecue > Ecue.id
+
+Table RessourcePdf{
+   id int [pk, increment]
+   nom varchar
+   cours int
+   fichier blob
+   status boolean
+   created datetime
+}
+Ref: RessourcePdf.cours > Cours.id
+
+Table RessourceVideo{
+   id int [pk, increment]
+   nom varchar
+   cours int 
+   fichier blob
+   status boolean
+   created datetime
+}
+Ref: RessourceVideo.cours > Cours.id
+
+Table Enseignant{
+   id int [pk, increment]
+   user int 
+   type_enseignant int
+   grade int 
+   localite int 
+   matricule varchar
+   structure varchar
+   sexe enum
+   date_de_naissance datetime
+   contact int 
+   piece blob
+   photo blob
+   status boolean
+   created datetime
+}
+Ref: Enseignant.type_enseignant > TypeEnseignant.id
+Ref: Enseignant.grade > Grade.id
+Ref: Enseignant.localite > Localite.id
+Ref: Enseignant.user - User.id
+
+Table TypeEnseignant{
+   id int [pk, increment]
+   nom varchar
+   status boolean
+   created datetime
+}
+
+Table Domaine{
+   id int [pk, increment]
+   nom varchar
+   status boolean
+   created datetime
+}
+
+Table EnseignantDomaine{
+  id int [pk, increment]
+  enseignant int
+  domaine int 
+}
+
+Ref: EnseignantDomaine.enseignant > Enseignant.id
+REf: EnseignantDomaine.domaine > Domaine.id
+
+Table Grade{
+   id int [pk, increment]
+   nom varchar
+   status boolean
+   created datetime
+}
+
+Table User{
+   id int [pk, increment]
+   nom varchar
+   prenom varchar
+   email varchar
+   password varchar
+   is_teacher boolean
+   is_tutor boolean
+   is_student boolean
+   status boolean
+   created datetime
+}
+
+Table Tuteur{
+   id int [pk, increment]
+   user int 
+   grade int 
+   Localite int
+    sexe enum
+    date_de_naissance datetime
+    contact int
+    piece blob
+    photo blob
+   status boolean
+   created datetime
+}
+Ref: Tuteur.user - User.id
+Ref: Tuteur.Localite  > Localite.id
+Ref: Tuteur.grade  > Grade.id
+
+Table TuteurDomaine{
+   id int [pk, increment]
+  tuteur int
+  domaine int
+   status boolean
+   created datetime
+}
+Ref: TuteurDomaine.tuteur > Tuteur.id
+Ref: TuteurDomaine.domaine > Domaine.id
+
+Table Recrutement{
+   id int [pk, increment]
+   intitule varchar
+   objet varchar
+   ouverture datetime
+   fermeture datetime
+   cible varchar
+   methode_eval varchar
+   debut_pj datetime
+   fin_pj datetime
+   resultat datetime
+   status boolean
+   created datetime
+}
+
+Table DossierRecrutement{
+   id int [pk, increment]
+   recrutement intitule
+   nom varchar
+   prenom varchar
+   sexe enum
+   date_de_naissance date
+   localite int
+   grade int
+   email varchar
+   contact int
+   piece blob
+   photo blob
+   lettre_motivation blob
+   status boolean
+   created datetime
+}
+Ref: DossierRecrutement.grade > Grade.id
+Ref: DossierRecrutement.recrutement > Recrutement.id
+
+
+
+Table DossierDomaine{
+   id int [pk, increment]
+   dossier int 
+   domaine int 
+   status boolean
+   created datetime
+}
+Ref: DossierDomaine.dossier > DossierRecrutement.id
+Ref: DossierDomaine.domaine > Domaine.id
+
+
+Table Certificat{
+   id int [pk, increment]
+   nom varchar
+   dossier int 
+   fichier blob
+   status boolean
+   created datetime
+}
+Ref : Certificat.dossier > DossierRecrutement.id
+
+Table Diplome{
+   id int [pk, increment]
+   nom varchar
+   dossier int 
+   fichier blob
+   status boolean
+   created datetime
+}
+
+Ref : Diplome.dossier > DossierRecrutement.id
+
+Table MembreJury{
+   id int [pk, increment]
+   enseignat int 
+   jury int 
+   status boolean
+   created datetime
+}
+Ref : MembreJury.enseignat > Enseignant.id
+Ref : MembreJury.jury > Jury.id
+Table Jury{
+   id int [pk, increment]
+   nom varchar
+   dossier int 
+   status boolean
+   created datetime
+}
+Table DossierJury{
+   id int [pk, increment]
+   
+   dossier int
+    jury int 
+   status boolean
+   created datetime
+}
+
+Ref: DossierJury.jury > Jury.id
+Ref: DossierJury.dossier > DossierRecrutement.id
+
+Table Resultat{
+   id int [pk, increment]
+   dossier int 
+   juge int 
+   critere1 int
+   critere2 int 
+   critere3 int 
+   critere4 int 
+   critere5 int 
+   status boolean
+   created datetime
+}
+
+Ref: Resultat.dossier > DossierRecrutement.id
+Ref: Resultat.juge > Enseignant.id
+
+// Creating references
+// You can also define relaionship separately
+// > many-to-one; < one-to-many; - one-to-one
+
+
+
+
