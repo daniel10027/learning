@@ -525,7 +525,16 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-                
+                <div class="row">
+                  {% if messages %}
+				{% for message in messages %}
+						<div class="alert alert-success" role="alert">
+							<button type="button" class="close" data-dismiss="alert" ><span aria-hidden="true">&times;</span></button>
+							<strong>{{message}}</strong> 
+						</div>
+			    {% endfor %}
+			{% endif 	%}	
+                </div>
                 {% block content %}
                     
                 {% endblock %}
@@ -571,6 +580,14 @@
       </div>
     </div>
   </div>
+
+  <script>
+		window.setTimeout(function() {
+			$(".alert").fadeTo(300, 0).slideUp(300, function(){
+				$(this).remove(); 
+			});
+		}, 2000);
+	</script>
 
   <!-- Bootstrap core JavaScript-->
   <script src="{% static 'gestion/dash/vendor/jquery/jquery.min.js' %}"></script>

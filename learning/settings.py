@@ -64,6 +64,7 @@ INSTALLED_APPS += (
     'schema_graph',
     'dynamic_formsets',
     'explorer',
+    'mathfilters',
 )
 EXPLORER_CONNECTIONS = {'Default':'default'}
 EXPLORER_DEFAULT_CONNECTION = 'default'

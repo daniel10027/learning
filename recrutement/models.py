@@ -3,6 +3,8 @@ from enseignement.models import Localite
 from gestion.models import Grade, Domaine, Enseignant
 from tinymce import HTMLField
 from PIL import Image
+from django.db.models.query import QuerySet
+from django_group_by import GroupByMixin
 from django.urls import reverse
 # Create your models here.
 
@@ -179,15 +181,16 @@ class Jury(models.Model):
 
 
 #######################################################################################################################################################
+class ResultatSet(QuerySet, GroupByMixin):
+    pass
 #######################################################################################################################################################
 
 class Resultat(models.Model):
     """Model definition for Resultat."""
-
+    objects = ResultatSet.as_manager()
     # TODO: Define fields here
     dossier = models.ForeignKey(DossierRecrutement, on_delete=models.CASCADE,)
     juge = models.ForeignKey(Enseignant, on_delete=models.CASCADE)
-    #recrutement = models.ForeignKey(Recrutement, on_delete=models.CASCADE, related_name="momo")
     critere1 = models.IntegerField()
     critere2 = models.IntegerField()
     critere3 = models.IntegerField()
@@ -210,6 +213,21 @@ class Resultat(models.Model):
     def get_absolute_url(self):
         """Return absolute url for Resultat."""
         return ('')
+
+    @property
+    def Moyenne(self):
+        total = self.critere1 + self.critere2 +self.critere3 +self.critere4 +self.critere5 
+        moy = total /5
+        return moy
+    @property
+    def All(self):
+       all_resultat = Resultat.objects.filter(dossier=self.dossier)
+       som  = 0 
+       for i in all_resultat:
+           som = som + i.Moyenne
+       Moyenne_final = som/all_resultat.count()
+       return  Moyenne_final
+
 
     # TODO: Define custom methods here
 ########################################################################################################################################################

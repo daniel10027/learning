@@ -1,5 +1,6 @@
 {% extends 'gestion/base.html' %}
 {% load static %}
+{% load mathfilters %}
     
         
 {% block content %}
@@ -16,24 +17,18 @@
                   <thead>
                     <tr>
                       
-                      <th>Nom</th>
-                      <th>Note1</th>
-                      <th>Note2</th>
-                      <th>Note3</th>
-                      <th>Note4</th>
-                      <th>Note5</th>
+                      <th>Nom & Prenom</th>
+                      <th>Email</th>
+                      <th>Contact</th>
                       <th>MOYENNE</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
                      
-                      <th>Nom</th>
-                      <th>Note1</th>
-                      <th>Note2</th>
-                      <th>Note3</th>
-                      <th>Note4</th>
-                      <th>Note5</th>
+                      <th>Nom & Prenom</th>
+                      <th>Email</th>
+                      <th>Contact</th>
                       <th>MOYENNE</th>
                     </tr>
                   </tfoot>
@@ -52,13 +47,11 @@
                    
                  
                    
+                    <td>{{result.dossier.email }}</td>
+                    <td>{{ result.dossier.contact }} </td>
+                  
+                    <td> {{ result.All }}</td>
                    
-                    <td>{{result.critere1}}</td>
-                    <td>{{result.critere2}}</td>
-                    <td>{{result.critere3}}</td>
-                    <td>{{result.critere4}}</td>
-                    <td>{{result.critere5}}</td>
-                    <td>13</td>
                     </tr>
 
                   

@@ -45,7 +45,7 @@ class JuryAdmin(admin.ModelAdmin):
 class JuryAdmin(admin.ModelAdmin):
     '''Admin View for Jury'''
    
-    list_display = ('dossier','juge','critere1','critere2','critere3','critere4','critere5')
+    list_display = ('dossier','juge','critere1','critere2','critere3','critere4','critere5','Moyenne')
     search_fields = ['dossier']
 #######################################################################################################################################################
 #######################################################################################################################################################
