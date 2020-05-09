@@ -1,7 +1,0 @@
-// Online Graphviz: http://webgraphviz.com/
-// https://i.imgur.com/NHmoDnj.png
-
-digraph g{
-  node [shape="none",style=underline];
-  id_statut_etablissemnt[shape="underline"]
-}

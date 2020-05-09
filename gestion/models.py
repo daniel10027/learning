@@ -12,6 +12,9 @@ class User(AbstractUser):
     is_teacher = models.BooleanField(default=False)
     is_tutor = models.BooleanField(default=False)
 
+    def __str__(self):
+        return "{} {}".format(self.first_name, self.last_name)
+
 #########################################################
 class Grade(models.Model):
     """Model definition for Grade."""
@@ -148,8 +151,7 @@ class Enseignant(models.Model):
 
     def __str__(self):
         """Unicode representation of Enseignant."""
-        return self.user.username
-
+        return "{} {}".format(self.user.first_name,self.user.last_name)
     
 
     def get_absolute_url(self):

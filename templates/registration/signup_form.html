@@ -10,10 +10,8 @@
                 {% csrf_token %}
                 <span class="contact100-form-title">
                    INSCRIPTION  {{ user_type }}
-                   <input type="hidden" name="next" value="{{ next }}">
-                {{ form|crispy}}
                 </span>
-
+                {{ form|crispy}}
                 
                 <div class="container-contact100-form-btn">
                     <div class="wrap-contact100-form-btn">

@@ -84,7 +84,8 @@ class DossierRecrutement(models.Model):
 
     def get_absolute_url(self):
         """Return absolute url for DossierRecrutement."""
-        return ('')
+        return (reverse("jury-dossier", kwargs={"pk": self.pk})) # 
+
 
     # TODO: Define custom methods here
 #####################################################################################################################################################
@@ -96,7 +97,7 @@ class Diplome(models.Model):
     # TODO: Define fields here
     nom_diplome         = models.CharField( max_length=50)
     fichier =     models.ForeignKey(DossierRecrutement, on_delete=models.CASCADE, related_name="diplome")
-    document            = models.FileField(upload_to ='recrutement/diplomes/% Y/% m/% d/',default='none.png') 
+    document            = models.FileField(upload_to ='recrutement/diplomes/',default='none.png') 
     status      = models.BooleanField(default=True)
     created     = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
@@ -108,7 +109,7 @@ class Diplome(models.Model):
 
     def __str__(self):
         """Unicode representation of Diplome."""
-        return self.nom
+        return self.nom_diplome
 
     def get_absolute_url(self):
         """Return absolute url for Diplome."""
@@ -125,7 +126,7 @@ class Certificat(models.Model):
     # TODO: Define fields here
     nom_certificat        = models.CharField( max_length=50)
     documents =      models.ForeignKey(DossierRecrutement, on_delete=models.CASCADE, related_name="certificat")
-    fichier            = models.FileField(upload_to ='recrutement/certificats/% Y/% m/% d/',default='none.png') 
+    fichier            = models.FileField(upload_to ='recrutement/certificats/',default='none.png') 
     status      = models.BooleanField(default=True)
     created     = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
@@ -137,7 +138,7 @@ class Certificat(models.Model):
 
     def __str__(self):
         """Unicode representation of Certificat."""
-        return self.nom
+        return self.nom_certificat
 
 
     def get_absolute_url(self):
@@ -184,8 +185,9 @@ class Resultat(models.Model):
     """Model definition for Resultat."""
 
     # TODO: Define fields here
-    dossier = models.ForeignKey(DossierRecrutement, on_delete=models.CASCADE)
+    dossier = models.ForeignKey(DossierRecrutement, on_delete=models.CASCADE,)
     juge = models.ForeignKey(Enseignant, on_delete=models.CASCADE)
+    #recrutement = models.ForeignKey(Recrutement, on_delete=models.CASCADE, related_name="momo")
     critere1 = models.IntegerField()
     critere2 = models.IntegerField()
     critere3 = models.IntegerField()

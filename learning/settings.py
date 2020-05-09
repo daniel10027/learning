@@ -40,8 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+ 
    
 ]
+
+if DEBUG:
+    INSTALLED_APPS += ['django_extensions']
 
 GRAPH_MODELS = {
   'all_applications': True,
@@ -51,8 +55,6 @@ GRAPH_MODELS = {
 INSTALLED_APPS += (
     
     'jquery',
-    'django_extensions',
-    'djangoformsetjs',
     'gestion',
     'enseignement',
     'recrutement',
@@ -60,8 +62,11 @@ INSTALLED_APPS += (
     'tinymce',
     'crispy_forms',
     'schema_graph',
+    'dynamic_formsets',
+    'explorer',
 )
-
+EXPLORER_CONNECTIONS = {'Default':'default'}
+EXPLORER_DEFAULT_CONNECTION = 'default'
 X_FRAME_OPTIONS='SAMEORIGIN' 
 
 MIDDLEWARE = [

@@ -1,0 +1,191 @@
+{% extends 'gestion/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+        
+{% block content %}
+<div class="container-fluid">
+
+          <div class="row">
+     <!-- Pie Chart -->
+     <div class="col-xl-4 col-lg-5">
+        <div class="card shadow mb-4">
+          <!-- Card Header - Dropdown -->
+          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">PHOTO</h6>
+         
+          </div>
+       
+          <div class="card-body">
+           
+            <div class="chart-pie pt-4 pb-2" style="background-image: url({{ object.photo.url  }}); background-position: center;
+            background-size: cover;">
+            
+            </div>
+          
+          </div>
+        </div>
+      </div>
+       
+            <div class="col-xl-8 col-lg-7">
+              <div class="card shadow mb-4">
+           
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">INFORMATIONS</h6>
+                 
+                </div>
+             
+
+                      <div class="card-body">
+                        <div class="col-lg-12 col-md-6">  
+                          <h6 class="m-0 font-weight-bold text-primary">Nom    :   {{ object.nom }}</h6> <h6></h6>
+                          <hr>
+                          <h6 class="m-0 font-weight-bold text-primary">Prénom :   {{ object.prenom }}</h6>
+                          <hr>
+                          <h6 class="m-0 font-weight-bold text-primary" >Sexe  :   {{ object.sexe }}</h6>
+                          <hr>
+                          <h6 class="m-0 font-weight-bold text-primary">Date de naissance  :   {{ object.date_de_naissance }}</h6>
+                          <hr>
+                          <h6 class="m-0 font-weight-bold text-primary">Grade  :   {{ object.grade }}</h6>
+                          <hr>
+                          <h6 class="m-0 font-weight-bold text-primary">Domaine de compétence</h6>
+                          {% for comp in object.domaine.all  %}
+                           <li class="m-0 font-weight-bold text-primary"> {{ comp }} </li>
+                          {% endfor %}
+                          <hr>
+                          <h6 class="m-0 font-weight-bold text-primary">Localite :   {{ object.localite}}</h6>
+                          <hr>
+                          <h6 class="m-0 font-weight-bold text-primary">Email :   {{ object.email }}</h6>
+                          <hr>
+                          <h6 class="m-0 font-weight-bold text-primary">Contact  :   (+225) {{ object.contact }}</h6>
+                        </div>
+                  
+                    
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- Pie Chart -->
+              <div class="col-lg-12">
+                 <div class="card shadow mb-4">
+                   <!-- Card Header - Dropdown -->
+                   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                     <h6 class="m-0 font-weight-bold text-primary">Documents Administratifs </h6>
+                  
+                   </div>
+                
+                   <div class="card-body">
+                    <div class="row">
+                      <div class="col-md">
+                            <h6>Pièce d'identité</h6>
+                      </div>
+                      <div class="col-md"> <a href="{{ object.piece_indentite.url }}" target="_blank">Consulter</a></div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md">
+                            <h6>Lettre de Motivation</h6>
+                      </div>
+                      <div class="col-md"> <a href="{{ object.lettre_motivation.url }}" target="_blank">Consulter</a></div>
+                    </div>
+                  
+                     </div>
+                   
+                   </div>
+                 </div>
+               </div>
+               <div class="row">
+                <!-- Pie Chart -->
+                <div class="col-lg-12">
+                   <div class="card shadow mb-4">
+                     <!-- Card Header - Dropdown -->
+                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                       <h6 class="m-0 font-weight-bold text-primary">Diplomes </h6>
+                 
+                      
+                       </div>
+                  
+                     <div class="card-body">
+                      
+                       
+                      {% for diplome in diplomes %}
+                      
+                      {% if diplome.fichier.id == object.id %}
+                        <div class="row">
+                          <div class="col-md"> {{ diplome.nom_diplome }}</div>
+                          <div id="diplome" class="col-md"> <a href="{{ diplome.document.url }}" target="_blank">Consulter</a></div>
+                        </div>
+                      {% endif %}
+                     
+                    {% endfor %}
+                       </div>
+                     
+                     </div>
+                   </div>
+                 </div>
+                 <div class="row">
+                  <!-- Pie Chart -->
+                  <div class="col-lg-12">
+                     <div class="card shadow mb-4">
+                       <!-- Card Header - Dropdown -->
+                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                         <h6 class="m-0 font-weight-bold text-primary">Certificats </h6>
+                      
+                       </div>
+                    
+                       <div class="card-body">
+                        {% for certificat in certificats %}
+                      
+                        {% if certificat.documents.id == object.id %}
+                          <div class="row">
+                            <div class="col-md"> {{ certificat.nom_certificat }}</div>
+                            <div id="diplome" class="col-md"> <a href="{{ certificat.fichier.url }}" target="_blank">Consulter</a></div>
+                          </div>
+                        {% endif %}
+                       
+                      {% endfor %}
+                      
+                         </div>
+                       
+                       </div>
+                     </div>
+                   </div>
+                   <div class="row">
+           
+                    <div class="col-lg-12">
+                       <div class="card shadow mb-4">
+                        
+                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                           <h6 class="m-0 font-weight-bold text-primary">Évaluations </h6>
+                        
+                         </div>
+                         <div class="card-body">
+                          <div class="row">
+                            <div class="col-md-6 col-sm-8 col-12">
+                              <form method="post" action="{% url 'teachers:resultat' pk=object.pk %}">
+                                {% csrf_token %}
+                                {{ forms | crispy }}
+                                <input type="hidden" name="recru" value="{{ object.recrutement.id }}" >
+                                <button type="submit" class="btn btn-success">Valider</button>
+                                
+                              </form>
+                            </div>
+                          </div>
+                           </div>
+                         
+                         </div>
+                       </div>
+                     </div>
+                
+                    
+                         </div>
+                       </div>
+                     </div>
+
+       
+          </div>   
+{% endblock %}
+      
+</div>
+

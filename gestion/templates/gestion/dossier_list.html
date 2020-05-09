@@ -1,0 +1,78 @@
+{% extends 'gestion/base.html' %}
+{% load static %}
+    
+        
+{% block content %}
+          
+        <div class="container-fluid">
+
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Dossier Recrutement</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>N <sup>o</sup></th>
+                      <th>Nom</th>
+                      <th>Prénom</th>
+                      <th>Contact</th>
+                      <th>Sexe</th>
+                      <th>Localité</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>N <sup>o</sup></th>
+                      <th>Nom</th>
+                      <th>Prénom</th>
+                      <th>Contact</th>
+                      <th>Sexe</th>
+                      <th>Localité</th>
+                      <th>Action</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+      
+      {% for jury in jurys %}
+        
+        {% if user.enseignant in jury.membre.all %}
+          
+          {% for dossier  in dossiers  %}
+            
+            {% if dossier in jury.dossier.all %}
+                         
+                    <tr>
+                      <td>{{dossier.id}}</td>
+                      <td>{{dossier.nom}}</td>
+                      <td>{{dossier.prenom}}</td>
+                      <td>{{dossier.contact}}</td>
+                      <td>{{dossier.sexe}}</td>
+                      <td>{{dossier.localite}}</td>
+                     <td><button class="btn btn-primary"><a href="{% url 'teachers:dossier-detail' pk=dossier.pk %}" style="color: gainsboro;"> Consulter</a> </button></td>
+                    </tr>
+                    
+                
+            {% endif %}
+              
+          {% endfor %}
+            
+        {% endif %}
+          
+      {% endfor %}
+                
+                
+                     
+                  
+                  
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+{% endblock %}   

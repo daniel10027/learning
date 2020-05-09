@@ -3,29 +3,20 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-{% if form.non_field_errors %}
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      {% for error in form.non_field_errors %}
-        <p{% if forloop.last %} class="mb-0"{% endif %}>{{ error }}</p>
-      {% endfor %}
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-  {% endif %}
 
-    <div class="container-contact100" style="background-image: url({% static 'gestion/images/bg-01.jpg' %});">
-        <div class="wrap-contact100">
-            <form class="contact100-form validate-form" method="post">
-                {% csrf_token %}
-                <span class="contact100-form-title">
-                   CONNEXION
-                   <input type="hidden" name="next" value="{{ next }}">
-                   {{ form.username|as_crispy_field }}
-                   {{ form.password|as_crispy_field }}
-                </span>
-
-                
+  <div class="container-contact100" style="background-image: url({% static 'gestion/images/bg-01.jpg' %});">
+    <div class="wrap-contact100">
+        <form class="form-control" method="post">
+            {% csrf_token %}
+            <span class="contact100-form-title">
+             <center> Connexion</center>
+            </span>
+            <div class="row">
+                <div class="form-control">
+                            {{ form.username | as_crispy_field}}
+                            {{ form.password | as_crispy_field}}
+                </div>
+                <br>
                 <div class="container-contact100-form-btn">
                     <div class="wrap-contact100-form-btn">
                         <div class="contact100-form-bgbtn"></div>
@@ -34,16 +25,16 @@
                         </button>
                     </div>
                 </div>
-            </form>
-        </div>
-
-        <span class="contact100-more">
-                Call us on +001 345 6178
-        </span>
+            </div>
+           
+            
+          
+        </form>
     </div>
 
-
-
-    <div id="dropDownSelect1"></div>
+    <span class="contact100-more">
+         <a href="{% url 'site-home' %}"><h4 style="color: aliceblue;">EduvRoom</h4></a>  
+    </span>
+</div>
 
 {% endblock %}

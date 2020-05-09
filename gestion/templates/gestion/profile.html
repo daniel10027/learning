@@ -1,0 +1,142 @@
+{% extends 'gestion/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+        
+{% block content %}
+          
+      
+<div class="row m-y-2">
+    <div class="col-lg-8 push-lg-4">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
+            </li>
+          
+            <li class="nav-item">
+                <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Mettre à jour </a>
+            </li>
+        </ul>
+        <div class="tab-content p-b-3">
+            <br>
+            <div class="tab-pane active" id="profile">
+                <h4 class="m-t-2"><span class="fa fa-clock-o ion-clock pull-xs-right">Profile Enseignant</span></h4>
+                <br><br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Nom d'Utilisateur : <strong>{{ user.username}}</strong></h6>
+                        <p>
+                            Matricule Enseignant  <strong> {{ user.enseignant.matricule    }}</strong>
+                        </p>
+                        <p>
+                            Nom : <strong> {{ user.first_name}}</strong>
+                        </p>
+                        <h6>Prénom :  <strong>{{ user.last_name}}</strong></h6>
+                        <p>
+                            Email : <strong> {{ user.email}}</strong>
+                        </p>
+                        <p>
+                            Contact : <strong> {{ user.enseignant.contact }}</strong>
+                        </p>
+                        <p>
+                            Localité : <strong> {{ user.enseignant.localite }}</strong>
+                        </p>
+                        <p>
+                            Grade : <strong> {{ user.enseignant.grade  }}</strong>
+                        </p>
+                        <p>
+                            Structure d'enseignement  <strong> {{ user.enseignant.structure  }}</strong>
+                        </p>
+                       
+                            
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Domaines de compétence</h6>
+                       {% for g  in user.enseignant.domaine.all  %}
+                        <li>{{ g }}</li>
+                            
+                        {% endfor %}
+                        <hr>
+                            </div>
+                    <div class="col-md-12">
+                          <table class="table table-hover table-striped">
+                        
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--/row-->
+            </div>
+          
+            <div class="tab-pane" id="edit">
+                <h4 class="m-t-2"><span class="fa fa-clock-o ion-clock pull-xs-right">Activités recentes</span></h4>
+                <form class="text-center border border-light p-5" action="#!" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                 
+                        <div class="u_from">
+                            <div class="row">
+                                <div class="col-md">
+                                    <div class="form-group">  {{ u_form.first_name |as_crispy_field }}</div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-group">  {{ u_form.last_name |as_crispy_field }}</div>
+                                </div>
+                             
+                            </div>
+                            <div class="row">
+                                <div class="col-md">
+                                    <div class="form-group">  {{ u_form.email |as_crispy_field }}</div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-group">  {{ p_form.matricule |as_crispy_field }}</div>
+                                </div>
+                             
+                            </div>
+                            <div class="row">
+                                <div class="col-md">
+                                    <div class="form-group">  {{ p_form.structure |as_crispy_field }}</div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-group">  {{ p_form.localite |as_crispy_field }}</div>
+                                </div>
+                             
+                            </div>
+                            <div class="row">
+                                <div class="col-md">
+                                    <div class="form-group">  {{ p_form.contact |as_crispy_field }}</div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-group">  {{ p_form.grade |as_crispy_field }}</div>
+                                </div>
+                             
+                            </div>
+                           
+                               
+                                    <div class="form-group">  {{ p_form.domaine |as_crispy_field }}</div>
+                            
+                                    <div class="row">
+                                        <div class="col-md">
+                                            <div class="form-group">  {{ p_form.photo |as_crispy_field }}</div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="form-group">  {{ p_form.piece_indentite |as_crispy_field }}</div>
+                                        </div>
+                                     
+                                    </div>
+                        </div>
+                  
+               
+                            <button class="btn btn-info my-4 btn-block" type="submit">Valider</button>
+                       
+                        </form>
+                  
+                    
+               
+            </div>
+        </div>
+    </div>
+   
+</div>
+
+<hr>
+{% endblock %}
+          

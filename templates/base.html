@@ -5,50 +5,39 @@
 	<title>{% block title %}EduvRoom{% endblock %}</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
+
 	<link rel="icon" type="image/png" href="{% static 'gestion/images/icons/favicon.ico' %}"/>
-<!--===============================================================================================-->
+
 	<link rel="stylesheet" type="text/css" href="{% static 'gestion/vendor/bootstrap/css/bootstrap.min.css' %}">
-<!--===============================================================================================-->
+
 	<link rel="stylesheet" type="text/css" href="{% static 'gestion/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
-<!--===============================================================================================-->
+
 	<link rel="stylesheet" type="text/css" href="{% static 'gestion/fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'gestion/vendor/animate/animate.css">
-<!--===============================================================================================-->
+
+	<link rel="stylesheet" type="text/css" href="{% static 'gestion/vendor/animate/animate.css' %}">
+
 	<link rel="stylesheet" type="text/css" href="{% static 'gestion/vendor/css-hamburgers/hamburgers.min.css' %}">
-<!--===============================================================================================-->
+
 	<link rel="stylesheet" type="text/css" href="{% static 'gestion/vendor/select2/select2.min.css' %}">
-<!--===============================================================================================-->
+
 	<link rel="stylesheet" type="text/css" href="{% static 'gestion/css/util.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'gestion/css/main.css' %}">
-<!--===============================================================================================-->
+
 </head>
 <body>
-
 
     {% block content %}
     {% endblock %}
 
 </body>
-<!--===============================================================================================-->
+
 <script src="{% static 'gestion/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
-<!--===============================================================================================-->
+
 	<script src="{% static 'gestion/vendor/bootstrap/js/popper.js' %}"></script>
 	<script src="{% static 'gestion/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
-<!--===============================================================================================-->
+
 	<script src="{% static 'gestion/vendor/select2/select2.min.js' %}"></script>
-<!--===============================================================================================-->
+
 	<script src="{% static 'gestion/js/main.js' %}"></script>
-
-<!-- Global site tag (gtag.js) - Google Analytics
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-23581568-13');
--->
 </script>
 </html>

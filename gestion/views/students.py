@@ -27,7 +27,7 @@ class StudentSignUpView(CreateView):
         user = form.save()
         login(self.request, user)
         
-        return redirect('login-student')
+        return redirect('login')
 
 
 @method_decorator([login_required, student_required], name='dispatch')

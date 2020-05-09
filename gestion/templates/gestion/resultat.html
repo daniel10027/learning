@@ -1,0 +1,74 @@
+{% extends 'gestion/base.html' %}
+{% load static %}
+    
+        
+{% block content %}
+          
+        <div class="container-fluid">
+
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Resultat {{ object.intitule }}</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      
+                      <th>Nom</th>
+                      <th>Note1</th>
+                      <th>Note2</th>
+                      <th>Note3</th>
+                      <th>Note4</th>
+                      <th>Note5</th>
+                      <th>MOYENNE</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                     
+                      <th>Nom</th>
+                      <th>Note1</th>
+                      <th>Note2</th>
+                      <th>Note3</th>
+                      <th>Note4</th>
+                      <th>Note5</th>
+                      <th>MOYENNE</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+     
+                   
+                
+                     
+
+
+                {% for result in resultat %}
+       
+                    <tr>
+                   
+                    <td>{{result.dossier.nom }} {{result.dossier.prenom}}</td>
+                   
+                 
+                   
+                   
+                    <td>{{result.critere1}}</td>
+                    <td>{{result.critere2}}</td>
+                    <td>{{result.critere3}}</td>
+                    <td>{{result.critere4}}</td>
+                    <td>{{result.critere5}}</td>
+                    <td>13</td>
+                    </tr>
+
+                  
+                {% endfor %}
+    
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+{% endblock %}   
