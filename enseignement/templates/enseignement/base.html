@@ -66,6 +66,12 @@ border-radius: 5px;
             </div>
         </div>
  {% if user.is_authenticated %}
+
+ 
+ {% if user.is_student  %}
+     
+
+     
       
         <div class="academy-main-menu">
             <div class="classy-nav-container breakpoint-off">
@@ -96,6 +102,35 @@ border-radius: 5px;
                                 </ul>
                             </div>
                            </div>
+        {% else %}
+        <div class="academy-main-menu">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                  
+                    <nav class="classy-navbar justify-content-between" id="academyNav">
+
+                      
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+ 
+                        <div class="classy-menu">
+
+                            
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+                  
+                           
+                            <div class="classynav">
+                                <ul>
+                   
+                                    <li><a href="{% url 'site-home' %}">ESPACE ADMINISTRATION</a></li>
+                                    
+                                </ul>
+                            </div>
+                           </div>
+     {% endif %}
                         <div class="calling-info">
                             <div class="call-center">
                                 <a href="#"> <span>{{ user.first_name}} {{user.last_name}} </span><img class="rounded-circle"  src="{{ user.student.photo.url }}" alt="" height="80" width="80" ></a>

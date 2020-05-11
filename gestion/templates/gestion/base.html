@@ -40,6 +40,90 @@
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
+{% if user.is_staff %}
+
+  <!-- Nav Item - Dashboard -->
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'site-home' %}">
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span> Accueil</span></a>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider">
+
+  <!-- Heading -->
+
+  <!-- Divider -->
+  
+
+  <!-- Heading -->
+                  <div class="sidebar-heading">
+                    ENSEIGNEMENTS
+                  </div>
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-pen"></i>
+                <span>Inscription</span>
+              </a>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                  <h6 class="collapse-header">Nouvelle Inscription:</h6>
+                  <a class="collapse-item" href="{% url 'teacher_signup' %}">Enseignant</a>
+                  <a class="collapse-item" href="{% url 'tutor_signup' %}">Tuteur</a>
+                  <a class="collapse-item" href="{% url 'student_signup' %}">Etudiant</a>
+                </div>
+              </div>
+            </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+              <a class="nav-link" href="charts.html">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Statistiques</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+            RECRUTEMENTS
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+
+                  <!-- Nav Item - Charts -->
+                  <li class="nav-item">
+                    <a class="nav-link" href="charts.html">
+                      <i class="fas fa-fw fa-chart-area"></i>
+                      <span>Statistiques</span></a>
+                  </li>
+
+                  <!-- Nav Item - Tables -->
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'teachers:recru-list' %}">
+                      <i class="fas fa-fw fa-table"></i>
+                      <span>Resultats</span></a>
+                  </li>
+
+                  <!-- Divider -->
+                  <hr class="sidebar-divider d-none d-md-block">
+
+                  <!-- Sidebar Toggler (Sidebar) -->
+                  <div class="text-center d-none d-md-inline">
+                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                  </div>
+
+                </ul>
+                <!-- End of Sidebar -->
+   
+   
+  
+{% endif %}
+  
+
 {% if user.is_teacher %}
   
 
@@ -58,38 +142,69 @@
     
       <!-- Divider -->
       
-
+    
       <!-- Heading -->
-      <div class="sidebar-heading">
-        Addons
-      </div>
+                      <div class="sidebar-heading">
+                        ESPACE ENSEIGNANT
+                      </div>
+                <!-- Nav Item - Pages Collapse Menu -->
+                <li class="nav-item">
+                  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-pen"></i>
+                    <span>Mes classes</span>
+                  </a>
+                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                      <h6 class="collapse-header"></h6>
+                      <a class="collapse-item" href="#">BD L3 UVCI</a>
+                    
+                    </div>
+                  </div>
+                </li>
+
+                <!-- Nav Item - Utilities Collapse Menu -->
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Activités</span></a>
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                RECRUTEMENTS
+                </div>
+
+                <!-- Nav Item - Pages Collapse Menu -->
+
+                      <!-- Nav Item - Charts -->
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">
+                          <i class="fas fa-fw fa-chart-area"></i>
+                          <span>Statistiques</span></a>
+                      </li>
 
 
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
-      </li>
+                      <!-- Divider -->
+                      <hr class="sidebar-divider d-none d-md-block">
 
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'teachers:recru-list' %}">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Resultats</span></a>
-      </li>
+                      <!-- Sidebar Toggler (Sidebar) -->
+                      <div class="text-center d-none d-md-inline">
+                        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                      </div>
 
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
+                    </ul>
+                    <!-- End of Sidebar -->
+       
+       
+{% else %}
 
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
+    {% if user.is_tutor  %}
+  
 
-    </ul>
-    <!-- End of Sidebar -->
-    {% else %}
+  
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
@@ -179,6 +294,7 @@
 
     </ul>
     <!-- End of Sidebar -->
+    {% endif %}
 {% endif %}
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -343,14 +459,7 @@
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
+              
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{% url 'logout' %}" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -380,6 +489,11 @@
                 </form>
               </div>
             </li>
+
+          
+          
+
+           
 
             <!-- Nav Item - Alerts -->
             <li class="nav-item dropdown no-arrow mx-1">
@@ -485,31 +599,31 @@
                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
               </div>
             </li>
-
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> {{ user. }}</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> {{ user.first_name }} {{ user.last_name }}</span>
+                
+                {% if user.is_tutor %}
+                <img class="img-profile rounded-circle" src="{{ user.tuteur.photo.url }}">
+                {% else %}
+                <h1>.</h1>
+                {% endif %}
+                  
+              
               </a>
              
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+               
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'tutors:tutor-profile' %}">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
-                <div class="dropdown-divider"></div>
+
                 <a class="dropdown-item" href="{% url 'logout' %}" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                  Deconnexion
@@ -528,7 +642,7 @@
                 <div class="row">
                   {% if messages %}
 				{% for message in messages %}
-						<div class="alert alert-success" role="alert">
+						<div class="alert {{ message.tags }} alert-dismissible" role="alert">
 							<button type="button" class="close" data-dismiss="alert" ><span aria-hidden="true">&times;</span></button>
 							<strong>{{message}}</strong> 
 						</div>

@@ -7,6 +7,7 @@ from django.db.models.query import QuerySet
 from django_group_by import GroupByMixin
 from django.urls import reverse
 # Create your models here.
+from gestion.validators import validate_file_extension_for_image,validate_file_extension_for_document
 
 
 #################################################################################################################################################
@@ -64,9 +65,9 @@ class DossierRecrutement(models.Model):
     contact = models.CharField(max_length=8)
     grade = models.ForeignKey(Grade, on_delete=models.CASCADE)
     domaine = models.ManyToManyField(Domaine, related_name="competence_candidat")
-    photo             = models.FileField(upload_to ='recrutement/photos/',default='none.png') 
-    piece_indentite   = models.FileField(upload_to ='recrutement/pieces/',default='none.png')
-    lettre_motivation = models.FileField(upload_to ='recrutement/lettres/',default='none.png') 
+    photo             = models.FileField(upload_to ='recrutement/photos/',default='none.png',validators=[validate_file_extension_for_image]) 
+    piece_indentite   = models.FileField(upload_to ='recrutement/pieces/',default='none.png',validators=[validate_file_extension_for_document])
+    lettre_motivation = models.FileField(upload_to ='recrutement/lettres/',default='none.png',validators=[validate_file_extension_for_document]) 
     status      = models.BooleanField(default=True)
     created     = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
@@ -99,7 +100,7 @@ class Diplome(models.Model):
     # TODO: Define fields here
     nom_diplome         = models.CharField( max_length=50)
     fichier =     models.ForeignKey(DossierRecrutement, on_delete=models.CASCADE, related_name="diplome")
-    document            = models.FileField(upload_to ='recrutement/diplomes/',default='none.png') 
+    document            = models.FileField(upload_to ='recrutement/diplomes/',default='none.png',validators=[validate_file_extension_for_document]) 
     status      = models.BooleanField(default=True)
     created     = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
@@ -128,7 +129,7 @@ class Certificat(models.Model):
     # TODO: Define fields here
     nom_certificat        = models.CharField( max_length=50)
     documents =      models.ForeignKey(DossierRecrutement, on_delete=models.CASCADE, related_name="certificat")
-    fichier            = models.FileField(upload_to ='recrutement/certificats/',default='none.png') 
+    fichier            = models.FileField(upload_to ='recrutement/certificats/',default='none.png',validators=[validate_file_extension_for_document]) 
     status      = models.BooleanField(default=True)
     created     = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)

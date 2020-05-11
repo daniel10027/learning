@@ -23,7 +23,7 @@ def teacher_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, log
     redirects to the log-in page if necessary.
     '''
     actual_decorator = user_passes_test(
-        lambda u: u.is_active and u.is_teacher,
+        lambda u: u.is_active and (u.is_teacher or u.is_staff),
         login_url=login_url,
         redirect_field_name=redirect_field_name
     )
@@ -45,3 +45,4 @@ def tutor_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login
     if function:
         return actual_decorator(function)
     return actual_decorator
+

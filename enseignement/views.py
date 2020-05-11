@@ -9,11 +9,11 @@ def home(request): # pour afficher les produits a vendre sur l_index
          'recrutements': Recrutement.objects.all()
          }
     if request.user.is_authenticated:
-        if request.user.is_teacher:
+        if request.user.is_teacher or request.user.is_staff :
             return redirect('teachers:accueil-teacher')
         elif request.user.is_student:
             return render(request, 'enseignement/index.html', context)
-        else:
+        elif request.user.is_tutor:
             return redirect('tutors:accueil-tutor')
     return render(request, 'enseignement/index.html', context)
 

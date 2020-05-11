@@ -11,14 +11,12 @@
         <div class="tab-content p-b-3">
             <br>
             <div class="tab-pane active" id="profile">
-                <h4 class="m-t-2"><span class="fa fa-clock-o ion-clock pull-xs-right">Profile Enseignant</span></h4>
+                <h4 class="m-t-2"><span class="fa fa-clock-o ion-clock pull-xs-right">Profile Tuteur</span></h4>
                 <br><br>
                 <div class="row">
                     <div class="col-md-6">
                         <h6>Nom d'Utilisateur : <strong>{{ user.username}}</strong></h6>
-                        <p>
-                            Matricule Enseignant  <strong> {{ user.enseignant.matricule    }}</strong>
-                        </p>
+                       
                         <p>
                             Nom : <strong> {{ user.first_name}}</strong>
                         </p>
@@ -27,23 +25,21 @@
                             Email : <strong> {{ user.email}}</strong>
                         </p>
                         <p>
-                            Contact : <strong> {{ user.enseignant.contact }}</strong>
+                            Contact : <strong> {{ user.tuteur.contact }}</strong>
                         </p>
                         <p>
-                            Localité : <strong> {{ user.enseignant.localite }}</strong>
+                            Localité : <strong> {{ user.tuteur.localite }}</strong>
                         </p>
+                       
                         <p>
-                            Grade : <strong> {{ user.enseignant.grade  }}</strong>
-                        </p>
-                        <p>
-                            Structure d'enseignement  <strong> {{ user.enseignant.structure  }}</strong>
+                            Structure d'enseignement  <strong> {{ user.tuteur.structure  }}</strong>
                         </p>
                        
                             
                     </div>
                     <div class="col-md-6">
                         <h6>Domaines de compétence</h6>
-                       {% for g  in user.enseignant.domaine.all  %}
+                       {% for g  in user.tuteur.domaine.all  %}
                         <li>{{ g }}</li>
                             
                         {% endfor %}
@@ -73,9 +69,7 @@
                             <div class="col-md">
                                 <div class="form-group">  {{ u_form.email |as_crispy_field }}</div>
                             </div>
-                            <div class="col-md">
-                                <div class="form-group">  {{ p_form.matricule |as_crispy_field }}</div>
-                            </div>
+                           
                             <div class="col-md">
                                 <div class="form-group">  {{ p_form.sexe |as_crispy_field }}</div>
                             </div>
@@ -94,9 +88,7 @@
                             <div class="col-md">
                                 <div class="form-group">  {{ p_form.contact |as_crispy_field }}</div>
                             </div>
-                            <div class="col-md">
-                                <div class="form-group">  {{ p_form.grade |as_crispy_field }}</div>
-                            </div>
+                           
                          
                         </div>
                        

@@ -8,7 +8,6 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, ListView, UpdateView, DetailView
 from ..decorators import teacher_required
-from ..decorators import teacher_required
 from ..forms import TeacherSignUpForm, ResultatForm, TeacherUpdateForm, TeacherUserUpdate
 from ..models import Enseignant, User
 from recrutement.models import DossierRecrutement, Resultat, Jury, Diplome, Certificat, Recrutement
@@ -114,15 +113,18 @@ def profile(request): # pour afficher les produits a vendre sur l_index
         p_form = TeacherUpdateForm(request.POST, 
                                    request.FILES, 
                                    instance=request.user.enseignant)
-        if u_form.is_valid() and p_form.is_valid():
+        if  u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
             messages.success(request, f'Votre Profile a été mis à jour avec succes !')
-            return redirect('teachers:teacher-profile') 
+            return redirect('teachers:teacher-profile')
+        else:
+            messages.error(request, f'Une erreur est survenue au cours de la mise a jour!')
      else:
         u_form = TeacherUserUpdate(instance=request.user)
         p_form = TeacherUpdateForm(instance=request.user.enseignant)
-         
+       
+       
      context = {
         'u_form': u_form,
         'p_form' : p_form

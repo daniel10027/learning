@@ -5,6 +5,35 @@ from enseignement.models import Localite, Etablissement, Specialite, Niveau
 from django.utils.html import escape, mark_safe
 from django.contrib.auth.models import AbstractUser
 
+#####################VALIDATOR####################################
+from django.core.exceptions import ValidationError
+
+def validate_file_extension_for_document(value):
+  import os
+  ext = os.path.splitext(value.name)[1]
+  size = value.size
+  valid_extensions = ['.pdf']
+  if not ext in valid_extensions:
+    raise ValidationError(u'Les dossiers doivent etre au format PDF ')
+  if size > 838856 :
+      raise ValidationError("La Taille maximale de chaque fichier est 500Ko .")
+  else:
+      return value
+
+def validate_file_extension_for_image(value):
+  import os
+  ext = os.path.splitext(value.name)[1]
+  size = value.size
+  valid_extensions = ['.png','.jpeg','.jpg']
+  if not ext in valid_extensions:
+    raise ValidationError(u'Les dossiers doivent etre au format Image (PNG, JPEG, JPG)')
+  if size > 838856 :
+      raise ValidationError("La Taille maximale de chaque fichier est 500Ko .")
+  else:
+      return value
+
+
+
 #########################################################
 
 class User(AbstractUser):
@@ -13,7 +42,7 @@ class User(AbstractUser):
     is_tutor = models.BooleanField(default=False)
 
     def __str__(self):
-        return "{} {}".format(self.first_name, self.last_name)
+        return "{} {} ({})".format(self.first_name, self.last_name, self.username)
 
 #########################################################
 class Grade(models.Model):
@@ -93,8 +122,8 @@ class Student(models.Model):
     localite = models.ForeignKey(Localite, on_delete=models.CASCADE,blank=True, null=True)
     sexe =  models.CharField( max_length=1,choices=sexe_choice,)
     contact = models.CharField(max_length=8) 
-    piece_indentite   = models.FileField(upload_to ='student/piece',default='none.png') 
-    photo             = models.FileField(upload_to ='studentphotos/',default='none.png') 
+    piece_indentite   = models.FileField(upload_to ='student/piece',default='none.png',validators=[validate_file_extension_for_document]) 
+    photo             = models.FileField(upload_to ='studentphotos/',default='none.png',validators=[validate_file_extension_for_image]) 
     status      = models.BooleanField(default=True)
     created     = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
@@ -136,8 +165,8 @@ class Enseignant(models.Model):
     contact = models.CharField(max_length=8)
     grade = models.ForeignKey(Grade, on_delete=models.CASCADE, blank=True, null=True)
     domaine = models.ManyToManyField(Domaine, related_name="competence_enseignant")
-    piece_indentite   = models.FileField(upload_to ='enseignant/pieces/',default='none.png') 
-    photo             = models.FileField(upload_to ='enseignant/photos/',default='none.png') 
+    piece_indentite   = models.FileField(upload_to ='enseignant/pieces/',default='none.png',validators=[validate_file_extension_for_document]) 
+    photo             = models.FileField(upload_to ='enseignant/photos/',default='none.png',validators=[validate_file_extension_for_image]) 
     status      = models.BooleanField(default=True)
     created     = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
@@ -177,8 +206,8 @@ class Tuteur(models.Model):
     sexe =  models.CharField( max_length=1,choices=sexe_choice,)
     contact = models.CharField(max_length=8)
     domaine = models.ManyToManyField(Domaine, related_name="competence_tuteur")
-    piece_indentite   = models.FileField(upload_to ='tuteur/pieces/',default='none.png') 
-    photo             = models.FileField(upload_to ='tuteur/photos/',default='none.png') 
+    piece_indentite   = models.FileField(upload_to ='tuteurs/pieces/',default='none.png',validators=[validate_file_extension_for_document]) 
+    photo             = models.FileField(upload_to ='tuteurs/photos/',default='none.png',validators=[validate_file_extension_for_image]) 
     status      = models.BooleanField(default=True)
     created     = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)

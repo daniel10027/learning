@@ -1,6 +1,6 @@
 from django.db import models
 from tinymce import HTMLField
-
+from gestion.validators import validate_file_extension_for_image,validate_file_extension_for_document
 
 
 # Create your models here.
@@ -393,7 +393,7 @@ class Cours(models.Model):
     # TODO: Define fields here
     ecue = models.ForeignKey(Ecue, on_delete=models.CASCADE)
     intitule = models.CharField(max_length=50)
-    image = models.ImageField(upload_to='enseignement/cours',default='none.png')
+    image = models.ImageField(upload_to='enseignement/cours',default='none.png',validators=[validate_file_extension_for_image])
     prerequis =  HTMLField('Pre_requis')
     competence = HTMLField('Competences visées')
     consigne = HTMLField('Consigne')
@@ -423,7 +423,7 @@ class RessourcePdf(models.Model):
     """Model definition for RessourcePdf."""
 
     # TODO: Define fields here
-    cours        = models.ForeignKey(Cours, on_delete=models.CASCADE, related_name="ressourcepdf")
+    cours        = models.ForeignKey(Cours, on_delete=models.CASCADE, related_name="ressourcepdf",validators=[validate_file_extension_for_document])
     nom = models.CharField( max_length=50)
     fichier = models.FileField(upload_to ='cours/pdf/% Y/% m/% d/',default='none.png') 
     status      = models.BooleanField(default=True)
