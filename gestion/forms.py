@@ -39,7 +39,7 @@ class TeacherSignUpForm(UserCreationForm):
 class TeacherUpdateForm(forms.ModelForm):
       class Meta:
         model  = Enseignant
-        fields = ["matricule","structure","localite","contact","grade","domaine","photo","piece_indentite"]
+        fields = ["matricule","sexe","structure","localite","contact","grade","domaine","photo","piece_indentite"]
       def __init__(self, *args, **kwargs):
           super( TeacherUpdateForm, self).__init__(*args, **kwargs)
           self.fields["domaine"].widget = CheckboxSelectMultiple()

@@ -10,7 +10,16 @@
 
             <div class="top-popular-courses-area section-padding-100-70">
                 <div class="container">
-                  
+                  <div class="row">
+                    {% if messages %}
+                    {% for message in messages %}
+                            <div class="alert alert-success" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" ><span aria-hidden="true">&times;</span></button>
+                                <strong>{{message}}</strong> 
+                            </div>
+                    {% endfor %}
+                {% endif 	%}	
+                  </div>
                     <div class="row">
                 
                 {% for recrutement in recrutements %}

@@ -75,6 +75,7 @@ class DossierRecrutementCreateView(CreateView):
         if certificats.is_valid():
                 certificats.instance = self.object
                 certificats.save()
+        messages.success(self.request, f'Votre Dossier a été enrégistré avec succes  .')
         return super(DossierRecrutementCreateView, self).form_valid(form)
 #####################################################################################
 #####################################################################################

@@ -39,7 +39,8 @@
                      
 
 
-                {% for result in resultat %}
+                {% for result in resultat  %}
+                
        
                     <tr>
                    
@@ -47,7 +48,7 @@
                    
                  
                    
-                    <td>{{result.dossier.email }}</td>
+                    <td>{{result.dossier.email }}   </td>
                     <td>{{ result.dossier.contact }} </td>
                   
                     <td> {{ result.All }}</td>
@@ -56,6 +57,7 @@
 
                   
                 {% endfor %}
+                
     
 
                   </tbody>

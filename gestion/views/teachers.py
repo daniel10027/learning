@@ -12,7 +12,7 @@ from ..decorators import teacher_required
 from ..forms import TeacherSignUpForm, ResultatForm, TeacherUpdateForm, TeacherUserUpdate
 from ..models import Enseignant, User
 from recrutement.models import DossierRecrutement, Resultat, Jury, Diplome, Certificat, Recrutement
-from django.db.models import Avg
+from django.db.models import Avg, query
 from django.db import connection
 import itertools
 ###############################################################
@@ -59,6 +59,10 @@ class DossierListView(ListView):
         context['jurys']    = Jury.objects.all()
         
         return context
+    def get_queryset(self):
+        recru = get_object_or_404(Recrutement, pk=self.kwargs.get('pk'))
+        res=  DossierRecrutement.objects.filter(recrutement=recru)
+        return res
 ################################################################
 
 class DossierDetailView(DetailView):
@@ -75,7 +79,7 @@ class DossierDetailView(DetailView):
 class ResulatCreateView(CreateView):
     model = Resultat
     form_class = ResultatForm
-    success_url = reverse_lazy('teachers:jury-dossier')
+    success_url = reverse_lazy('teachers:accueil-teacher')
     def get_context_data(self, **kwargs):
         data = super(ResulatCreateView, self).get_context_data(**kwargs)
     def form_valid(self, form, *args, **kwargs):
@@ -126,36 +130,16 @@ def profile(request): # pour afficher les produits a vendre sur l_index
     
      return render(request, 'gestion/profile.html', context)
 ###################################################################################
-def groupby_queryset_with_fields(queryset, fields):
-    fields_qs = {}
-    from itertools import groupby
-
-    for field in fields:
-        queryset = queryset.order_by(field)
-
-        def getter(obj):
-            related_names = field.split('__')
-            for related_name in related_names:
-                try:
-                    obj = getattr(obj, related_name)
-                except AttributeError:
-                    obj = None
-            return obj
-
-        fields_qs[field] = [{'grouper': key, 'list': list(group)} for key, group in
-                            groupby(queryset, lambda x: getattr(x, field)
-                            if '__' not in field else getter(x))]
-    return fields_qs
 
 @method_decorator([login_required, teacher_required ], name='dispatch')
 class ResultatFinal(ListView):
     model = Resultat
-    ordering = ('-created', )
+    ordering = ('-Moyenne', )
     context_object_name = 'resultat'
     template_name = 'gestion/resultat.html'
     def get_queryset(self):
         recru = get_object_or_404(Recrutement, pk=self.kwargs.get('pk'))
-        res=  Resultat.objects.filter(dossier__recrutement=recru).distinct('dossier')
-        
+        res=  Resultat.objects.filter(dossier__recrutement=recru).distinct("dossier")
         return res
+        
           

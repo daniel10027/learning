@@ -156,7 +156,7 @@ class Jury(models.Model):
     """Model definition for Jury."""
 
     # TODO: Define fields here
-    nom         = models.CharField( max_length=50)
+    recrutement         = models.ForeignKey('Recrutement', models.DO_NOTHING)
     membre =  models.ManyToManyField(Enseignant, related_name="membrejury")
     dossier =  models.ManyToManyField(DossierRecrutement, related_name="dossierjury")
     status      = models.BooleanField(default=True)
@@ -170,12 +170,13 @@ class Jury(models.Model):
 
     def __str__(self):
         """Unicode representation of Jury."""
-        return self.nom
+        return self.recrutement.intitule
 
 
     def get_absolute_url(self):
-        """Return absolute url for Jury."""
-        return ('')
+        """Return absolute url for Recrutement."""
+        return (reverse("accueil-teacher", kwargs={"pk": self.pk})) # 
+
 
     # TODO: Define custom methods here
 
@@ -204,6 +205,7 @@ class Resultat(models.Model):
 
         verbose_name = 'Resultat'
         verbose_name_plural = 'Resultats'
+        ordering = ('dossier',)
 
     def __str__(self):
         """Unicode representation of Resultat."""
@@ -226,7 +228,7 @@ class Resultat(models.Model):
        for i in all_resultat:
            som = som + i.Moyenne
        Moyenne_final = som/all_resultat.count()
-       return  Moyenne_final
+       return  round(Moyenne_final,2)
 
 
     # TODO: Define custom methods here

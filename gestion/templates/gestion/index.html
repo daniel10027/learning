@@ -29,7 +29,7 @@
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
                       
-                        <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="{% url 'teachers:jury-dossier' %}">{{ jury.nom }}</a></div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="{% url 'teachers:jury-dossier' pk=jury.recrutement.id %}">{{ jury.recrutement }}</a></div>
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">{{  jury.dossier.all | length}} Dossiers</div>
                       </div>
                       <div class="col-auto">

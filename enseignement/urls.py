@@ -17,7 +17,7 @@ urlpatterns = [
 
  path('teacher/', include(([
     path('my/', teachers.home, name='accueil-teacher'),
-    path('dossier/', teachers.DossierListView.as_view(), name='jury-dossier'),
+    path('dossier/<int:pk>/', teachers.DossierListView.as_view(), name='jury-dossier'),
     path('dossier_mark/<int:pk>/', teachers.ResulatCreateView.as_view(), name='resultat'),
     path('dossier_detail/<int:pk>/', teachers.DossierDetailView.as_view(), name='dossier-detail'), 
     path('global/', teachers.RecrutementListView.as_view(), name='recru-list'), 
