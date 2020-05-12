@@ -1,0 +1,6 @@
+Nom du Contact :
+{{ nom }}
+Email du Contact :
+{{ email }}
+Contenu  du Message :
+{{ message }}

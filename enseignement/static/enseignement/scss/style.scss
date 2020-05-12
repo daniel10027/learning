@@ -357,9 +357,9 @@ img {
     font-size: 14px;
     line-height: 65px;
     @include transition(all 500ms);
-    background: #61ba6d;
-    background-image: -webkit-linear-gradient(left, #61ba6d 0%, #83c331 51%, #61ba6d 100%);
-    background-image: linear-gradient(to right, #61ba6d 0%, #83c331 51%, #61ba6d 100%);
+    background: #59c8e4;
+    background-image: -webkit-linear-gradient(left, #59c8e4 0%, #59c8e4 51%, #59c8e4 100%);
+    background-image: linear-gradient(to right, #59c8e4 0%, #59c8e4 51%, #59c8e4 100%);
     font-weight: 600;
     &.btn-sm {
         min-width: 110px;
@@ -542,7 +542,7 @@ img {
                 top: 0;
                 right: 0;
                 z-index: 1;
-                background-color: #83c331;
+                background-color: #59c8e4;
                 content: '';
             }
         }

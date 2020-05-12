@@ -1,8 +1,9 @@
 {% extends "enseignement/base.html" %}
 {% load static  %}
 {%block content %}
-<div class="breadcumb-area bg-img" style="background-image: url({% static 'enseignement/img/bg-img/breadcumb.jpg' %});">
-   
+
+<div class="breadcumb-area bg-img" style="background-image: url({% static 'enseignement/img/core-img/linkedin_banner_image.png' %});">
+
 </div>
             <div class="top-features-area wow fadeInUp" data-wow-delay="300ms">
                 <div class="container">
@@ -42,6 +43,17 @@
            
           
             <!-- ##### Top Popular Courses Area Start ##### -->
+          <center>  <div class="row">
+                {% if messages %}
+              {% for message in messages %}
+                      <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                          <button type="button" class="close" data-dismiss="alert" ><span aria-hidden="true">&times;</span></button>
+                          <strong>{{message}}</strong> 
+                      </div>
+              {% endfor %}
+          {% endif 	%}	
+              </div>
+            </center>
             <div class="top-popular-courses-area section-padding-100-70">
                 <div class="container">
                     <div class="row">
@@ -86,12 +98,12 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="partners-logo d-flex align-items-center justify-content-between flex-wrap">
-                                <a href="#"><img src=" {% static 'enseignement/img/clients-img/partner-1a.png' %}" alt=""></a>
-                                <a href="#"><img src=" {% static 'enseignement/img/clients-img/partner-2a.png' %}" alt=""></a>
-                                <a href="#"><img src=" {% static 'enseignement/img/clients-img/partner-3a.png' %}" alt=""></a>
-                                <a href="#"><img src=" {% static 'enseignement/img/clients-img/partner-4a.png' %}" alt=""></a>
-                                <a href="#"><img src=" {% static 'enseignement/img/clients-img/partner-5a.png' %}" alt=""></a>
-                            </div>
+                                
+                                {% for partenaire in partenaires %}
+                                         <a href="#"><img src=" {{ partenaire.logo.url }}" alt=""></a>
+                                {% endfor %}
+                                    
+                               </div>
                         </div>
                     </div>
                 </div>

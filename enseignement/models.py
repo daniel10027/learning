@@ -423,7 +423,7 @@ class RessourcePdf(models.Model):
     """Model definition for RessourcePdf."""
 
     # TODO: Define fields here
-    cours        = models.ForeignKey(Cours, on_delete=models.CASCADE, related_name="ressourcepdf",validators=[validate_file_extension_for_document])
+    cours        = models.ForeignKey(Cours, on_delete=models.CASCADE, related_name="ressourcepdf")
     nom = models.CharField( max_length=50)
     fichier = models.FileField(upload_to ='cours/pdf/% Y/% m/% d/',default='none.png') 
     status      = models.BooleanField(default=True)
