@@ -54,7 +54,7 @@ class TutorSignUpForm(UserCreationForm):
 class TeacherUpdateForm(forms.ModelForm):
       class Meta:
         model  = Enseignant
-        fields = ["matricule","sexe","structure","localite","contact","grade","domaine","photo","piece_indentite"]
+        fields = ["matricule","sexe","structure","localite","contact","date_de_naissance","grade","domaine","photo","piece_indentite"]
       def __init__(self, *args, **kwargs):
           super( TeacherUpdateForm, self).__init__(*args, **kwargs)
           self.fields["domaine"].widget = CheckboxSelectMultiple()
@@ -68,27 +68,27 @@ class TeacherUserUpdate(forms.ModelForm):
         model = User
         fields = ['first_name','last_name','email']
 
-################# TUTEUR  PROFILE UPDATE ########################################################################
-class TutorUpdateForm(forms.ModelForm):
-      class Meta:
-        model  = Tuteur
-        fields = ["date_de_naissance","sexe","structure","localite","contact","domaine","photo","piece_indentite"]
-      def __init__(self, *args, **kwargs):
-          super( TutorUpdateForm, self).__init__(*args, **kwargs)
-          self.fields["domaine"].widget = CheckboxSelectMultiple()
-          self.fields["domaine"].queryset = Domaine.objects.all()
-      
-          
-################# ENSEIGNANT USER UPDATE ############# ############################################################        
-class TutorUserUpdate(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ['first_name','last_name','email']
-
 ##################RESULATAT FORM FOR EACH TEACHER ###############################################################
 class  ResultatForm(forms.ModelForm):
     class Meta:
         model = Resultat
         fields = ['critere1','critere2','critere3','critere4','critere5',]
     
-#################################################################################################################
+###################################################################
+################# TUTEUR PROFILE UPDATE ########################################################################
+class TutorProfile(forms.ModelForm):
+      class Meta:
+        model  = Tuteur
+        fields = ["date_de_naissance","sexe","structure","localite","contact","domaine","photo","piece_indentite"]
+      def __init__(self, *args, **kwargs):
+          super( TutorProfile, self).__init__(*args, **kwargs)
+          self.fields["domaine"].widget = CheckboxSelectMultiple()
+          self.fields["domaine"].queryset = Domaine.objects.all()
+     
+            
+          
+################# TUTEUR USER UPDATE ############# ############################################################        
+class TutorUser(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name','last_name','email']

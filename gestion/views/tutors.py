@@ -7,9 +7,8 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, ListView, UpdateView
-
 from ..decorators import tutor_required
-from ..forms import TutorSignUpForm, TutorUserUpdate,TutorUpdateForm
+from ..forms import TutorSignUpForm, TutorProfile, TutorUser
 from ..models import Tuteur, User
 
 
@@ -37,27 +36,33 @@ def home(request):
 #######################################################################################################################################
 @login_required
 @tutor_required
-def profilet(request):
+def TutorProfilet(request):
      if request.method == 'POST':
-        u_form = TutorUserUpdate(request.POST, instance=request.user)
-        p_form = TutorUpdateForm(request.POST, 
+        user_form = TutorUser(request.POST, instance=request.user)
+        profile_form = TutorProfile(request.POST, 
                                    request.FILES, 
                                    instance=request.user.tuteur)
-        if  u_form.is_valid() and p_form.is_valid():
-            u_form.save()
-            p_form.save()
+        if  user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
             messages.success(request, f'Votre Profile a été mis à jour avec succes !')
             return redirect('tutors:tutor-profile')
         else:
             messages.error(request, f'Une erreur est survenue au cours de la mise a jour!')
      else:
-        u_form = TutorUserUpdate(instance=request.user)
-        p_form = TutorUpdateForm(instance=request.user.tuteur)
+        user_form = TutorUser(instance=request.user)
+        profile_form = TutorProfile(instance=request.user.tuteur)
        
        
      context = {
-        'u_form': u_form,
-        'p_form' : p_form
+        'user_form': user_form,
+        'profile_form' : profile_form
      }
     
-     return render(request, 'gestion/profilet.html', context)
+     return render(request, 'gestion/profilet.html', context)   
+
+                                                
+
+
+
+#######################################################################################################################

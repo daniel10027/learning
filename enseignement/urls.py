@@ -29,9 +29,7 @@ urlpatterns = [
 
  path('tutors/', include(([
     path('my/', tutors.home, name='accueil-tutor'),
-    path('ecues/<int:pk>/', students.StudentsCoursListView.as_view(), name='course-list'),
-    path('courses/<int:pk>/', students.StudentsCoursDetailView.as_view(), name='course-detail') ,
-    path('myprofile/', tutors.profilet, name='tutor-profile'),
+    path('myprofile/', tutors.TutorProfilet, name='tutor-profile'),
 ], 'classroom'), namespace='tutors')),
 
 

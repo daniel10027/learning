@@ -55,52 +55,49 @@
             <form class="text-center border border-light p-5" action="#!" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
              
-                    <div class="u_from">
+                    <div class="user_from">
                         <div class="row">
                             <div class="col-md">
-                                <div class="form-group">  {{ u_form.first_name |as_crispy_field }}</div>
+                                <div class="form-group">  {{ user_form.last_name |as_crispy_field }}</div>
                             </div>
                             <div class="col-md">
-                                <div class="form-group">  {{ u_form.last_name |as_crispy_field }}</div>
+                                <div class="form-group">  {{ user_form.first_name |as_crispy_field }}</div>
                             </div>
                          
                         </div>
                         <div class="row">
                             <div class="col-md">
-                                <div class="form-group">  {{ u_form.email |as_crispy_field }}</div>
+                                <div class="form-group">  {{ user_form.email |as_crispy_field }}</div>
                             </div>
                            
                             <div class="col-md">
-                                <div class="form-group">  {{ p_form.sexe |as_crispy_field }}</div>
+                                <div class="form-group">  {{ profile_form.sexe |as_crispy_field }}</div>
+                            </div>
+
+                            <div class="col-md">
+                                <div class="form-group">  {{ profile_form.date_de_naissance |as_crispy_field }}</div>
                             </div>
                          
                         </div>
                         <div class="row">
                             <div class="col-md">
-                                <div class="form-group">  {{ p_form.structure |as_crispy_field }}</div>
+                                <div class="form-group">  {{ profile_form.structure |as_crispy_field }}</div>
                             </div>
                             <div class="col-md">
-                                <div class="form-group">  {{ p_form.localite |as_crispy_field }}</div>
+                                <div class="form-group">  {{ profile_form.localite |as_crispy_field }}</div>
                             </div>
-                         
-                        </div>
-                        <div class="row">
                             <div class="col-md">
-                                <div class="form-group">  {{ p_form.contact |as_crispy_field }}</div>
+                                <div class="form-group">  {{ profile_form.contact |as_crispy_field }}</div>
                             </div>
-                           
-                         
                         </div>
-                       
-                           
-                                <div class="form-group">  {{ p_form.domaine |as_crispy_field }}</div>
+                     <div class="form-group">  {{ profile_form.domaine |as_crispy_field }}</div>
                         
                                 <div class="row">
                                     <div class="col-md">
-                                        <div class="form-group">  {{ p_form.photo |as_crispy_field }}</div>
+                                        <div class="form-group">  {{ profile_form.photo |as_crispy_field }}</div>
                                     </div>
                                     <div class="col-md">
-                                        <div class="form-group">  {{ p_form.piece_indentite |as_crispy_field }}</div>
+                                        <div class="form-group">  {{ profile_form.piece_indentite |as_crispy_field }}</div>
                                     </div>
                                  
                                 </div>
