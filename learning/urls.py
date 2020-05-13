@@ -5,15 +5,18 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from schema_graph.views import Schema
 from gestion.views import students, teachers, tutors
+from django.contrib import admin
 
 
 urlpatterns = [
 
-    path('admin/', admin.site.urls),
+
+    
 
     path('', include('enseignement.urls')),
 
     path('explorer/', include('explorer.urls')),
+    path('admin/', admin.site.urls, name='admin'),
 
     path('recrutement/', include('recrutement.urls')),
     path('tinymce/', include('tinymce.urls')),

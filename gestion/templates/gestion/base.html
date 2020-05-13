@@ -44,9 +44,9 @@
 
   <!-- Nav Item - Dashboard -->
   <li class="nav-item">
-    <a class="nav-link" href="{% url 'site-home' %}">
+    <a class="nav-link" href="../../admin">
       <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span> Accueil</span></a>
+      <span>Dashboard</span></a>
   </li>
 
   <!-- Divider -->
@@ -93,13 +93,11 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-
-                  <!-- Nav Item - Charts -->
-                  <li class="nav-item"></li>
-                    <a class="nav-link" href="charts.html">
-                      <i class="fas fa-fw fa-chart-area"></i>
-                      <span>Statistiques</span></a>
-                  </li>
+ <li class="nav-item">
+              <a class="nav-link" href="charts.html">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Statistiques</span></a>
+            </li>
 
                   <!-- Nav Item - Tables -->
                   <li class="nav-item">
@@ -609,7 +607,7 @@
                 {% if user.is_tutor %}
                 <img class="img-profile rounded-circle" src="{{ user.tuteur.photo.url }}">
                 {% else %}
-                <h1>.</h1>
+              
                 {% endif %}
                   
               
@@ -619,10 +617,16 @@
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                
                 <div class="dropdown-divider"></div>
+                {% if user.is_tutor %}
                 <a class="dropdown-item" href="{% url 'tutors:tutor-profile' %}">
+                  
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
+                {% else %}
+              
+                {% endif %}
+               
 
                 <a class="dropdown-item" href="{% url 'logout' %}" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

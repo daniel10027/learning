@@ -5,7 +5,7 @@
 <div class="breadcumb-area bg-img" style="background-image: url({% static 'enseignement/img/core-img/linkedin_banner_image.png' %});">
 
 </div>
-            <div class="top-features-area wow fadeInUp" data-wow-delay="300ms">
+            <div class="top-features-area wow fadeInUp" data-wow-delay="500ms">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
@@ -100,7 +100,13 @@
                             <div class="partners-logo d-flex align-items-center justify-content-between flex-wrap">
                                 
                                 {% for partenaire in partenaires %}
+                                
+                                    {% if partenaire.status %}
+                                    
+                               
+                                    
                                          <a href="#"><img src=" {{ partenaire.logo.url }}" alt=""></a>
+                                    {% endif %}
                                 {% endfor %}
                                     
                                </div>

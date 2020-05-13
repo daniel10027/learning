@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
+from configuration.admin import Pass_true, Pass_false
 from .models import (Localite,
                      TypeEtablissement,
                      StatutEtablissement,
@@ -31,6 +32,7 @@ class CoursAdmin(admin.ModelAdmin):
     inlines = [PdfInline, VideoInline]
     search_fields = ['intitule']
     readonly_fields = ["images"]
+    actions = [Pass_true, Pass_false]
     def images(self, obj):
         return mark_safe('<img src="{url}" style="width: 45px; height:45px;" />'.format(
             url = obj.image.url,
@@ -51,6 +53,7 @@ class UfrInline(admin.TabularInline):
 class EtabAdmin(admin.ModelAdmin):
     search_fields = ['nom']
     inlines = [UfrInline]
+    actions = [Pass_true, Pass_false]
     list_display= ('nom','localite','adresse','type_etablissement','statut_etablissement','_ufr','directeur_general','status')
     def _ufr(self, obj):
         return obj.etablissement_ufr.all().count()
@@ -63,6 +66,7 @@ class FiliereAdmin(admin.ModelAdmin):
     inlines = [SpecialiteInline]
     search_fields = ['nom']
     list_display= ('nom','departement','_specialite','status','created','date_update')
+    actions = [Pass_true, Pass_false]
     def _specialite(self, obj):
         return obj.specialite_filiere.all().count()
 #################################################################
@@ -73,12 +77,14 @@ class EcueInline(admin.TabularInline):
 class UeAdmin(admin.ModelAdmin):
     inlines= [EcueInline]
     search_fields = ['nom']
+    actions = [Pass_true, Pass_false]
     list_display= ('nom','specialite','type','niveau','semestre','_ecue','status')
     def _ecue(self,obj):
          return obj.ecue_ue.all().count()
 
 class ecadmin(admin.ModelAdmin):
     readonly_fields = ["images"]
+    actions = [Pass_true, Pass_false]
     def images(self, obj):
         return mark_safe('<img src="{url}" style="width: 45px; height:45px;" />'.format(
             url = obj.image.url,
@@ -92,6 +98,7 @@ class ecadmin(admin.ModelAdmin):
 class LocaliteAdmin(admin.ModelAdmin):
     search_fields = ['nom']
     list_display= ('nom','status','created','date_update')
+    actions = [Pass_true, Pass_false]
     
 class NiveauAdmin(admin.ModelAdmin):
     def get_model_perms(self, request):

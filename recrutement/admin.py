@@ -2,6 +2,7 @@
 #######################################################################################################################################################
 from django.contrib import admin
 from .models import Recrutement, DossierRecrutement, Certificat, Diplome, Jury, Resultat
+from configuration.admin import Pass_false,Pass_true
 # Register your models here.
 
 #######################################################################################################################################################
@@ -10,6 +11,7 @@ from .models import Recrutement, DossierRecrutement, Certificat, Diplome, Jury, 
 class RecrutementAdmin(admin.ModelAdmin):
     search_fields = ['intitule']
     list_display  = ('intitule','ouverture','fermeture','date_debut_passage','date_fin_passage','resultat')
+    actions = [Pass_true, Pass_false]
 #######################################################################################################################################################
 #######################################################################################################################################################
 class CertificatInline(admin.TabularInline):
@@ -39,6 +41,7 @@ class JuryAdmin(admin.ModelAdmin):
    
     list_display = ('recrutement','status')
     search_fields = ['nom']
+    actions = [Pass_true, Pass_false]
 #######################################################################################################################################################
 #######################################################################################################################################################
 @admin.register(Resultat)

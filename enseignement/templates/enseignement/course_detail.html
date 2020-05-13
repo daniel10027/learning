@@ -39,7 +39,7 @@
                                            </button>
                                        </h5>
                                    </div>
-                                   <div id="collapseT1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                   <div>
                                 
                                 {% for pdf  in pdfs %}
                                     
@@ -67,7 +67,7 @@
                                     </button>
                                 </h5>
                             </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div>
                                 {% for video  in videos %}
                                     
                                 {% if video.cours.pk == object.pk %}
@@ -87,6 +87,7 @@
 
 <br>                </div>
            </div>
+           
            <div class="col-xl-5 col-lg-5">
                <div class="courses_sidebar">
                    <div class="video_thumb">

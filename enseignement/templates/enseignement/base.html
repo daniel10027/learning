@@ -18,19 +18,22 @@
         });
     }, 2000);
 </script>
-</head>
 <style>
-hr.style-eight {
-height: 10px;
-border: 1;
-box-shadow: inset 0 9px 9px -3px rgba(11, 99, 184, 0.8);
--webkit-border-radius: 5px;
--moz-border-radius: 5px;
--ms-border-radius: 5px;
--o-border-radius: 5px;
-border-radius: 5px;
-}
-</style>
+    hr.style-eight {
+    height: 10px;
+    border: 1;
+    box-shadow: inset 0 9px 9px -3px rgba(11, 99, 184, 0.8);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    }
+    </style>
+    
+
+</head>
+
 
 <body>
    
@@ -97,10 +100,10 @@ border-radius: 5px;
                             <div class="classynav">
                                 <ul>
                    
-                                    <li><a href="{% url 'site-home' %}">Home</a></li>
+                                    <li><a href="{% url 'site-home' %}">Accueil</a></li>
                                     <li><a href="{% url 'site-home' %}">Mon Profile</a></li>
                                     <li><a href="{% url 'students:accueil-student' %}">Mon Cursus</a></li>
-                                    <li><a href="{% url 'site-contact' %}">Nous Contacter</a></li>
+                                    <li><a href="{% url 'site-contact' %}">Contacter L'administration</a></li>
                                 </ul>
                             </div>
                            </div>
@@ -166,8 +169,7 @@ border-radius: 5px;
                         <ul>
            
                             <li><a href="{% url 'site-home' %}">Accueil</a></li>
-                            <li><a href="">Nos Cours</a></li>
-                            <li><a href="">Actualite</a></li>
+                           
                             <li><a href="{% url 'recrutement-home' %}">Recrutements</a></li>
                             <li><a href="{% url 'site-contact' %}">Nous Contacter</a></li>
                         </ul>
