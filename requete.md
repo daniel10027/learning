@@ -14,7 +14,7 @@ GROUP BY dossier_id;
 ######################################################"
 
  moyenne = Resultat.objects.values('dossier').order_by('dossier').annotate(moy=((Avg('critere1'))+ (Avg('critere2'))+ (Avg('critere3'))+ (Avg('critere4'))+ (Avg('critere5')))/5)
-
+###
 ################################################################"
 SELECT nom, prenom, email, avg(critere1+critere2+critere3+critere4+critere5)/5 Moyenne
 FROM [recrutement_dossierrecrutement] 

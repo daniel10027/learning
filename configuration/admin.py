@@ -10,7 +10,7 @@ Pass_true.short_description = "Activer les elements sélectionnés"
 def Pass_false(ModelAdmin, request,queryset):
     queryset.update(status=False)
 Pass_false.short_description = "Désactiver les elements sélectionnés"
-
+#########################
 @admin.register(Partenaire)
 class Pa(admin.ModelAdmin):
     search_fields = ['nom']

@@ -169,3 +169,4 @@ admin.site.register(Specialite, SpecialiteAdmin)
 admin.site.register(Niveau, NiveauAdmin)
 admin.site.register(Semestre, SemestreAdmin)
 admin.site.register(TypeUe, TypeUeAdmin)
+#############

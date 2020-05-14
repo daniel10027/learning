@@ -17,7 +17,7 @@ class RecrutementAdmin(admin.ModelAdmin):
 class CertificatInline(admin.TabularInline):
     model = Certificat
     extra = 0
-
+##########
 class DiplomeInline(admin.TabularInline):
     model = Diplome
     extra = 0

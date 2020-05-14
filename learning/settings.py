@@ -239,3 +239,4 @@ EMAIL_HOST_PASSWORD = 'rdpbzzjycityfvpw'
 EMAIL_PORT = 587
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+#############
