@@ -375,6 +375,7 @@ class Ecue(models.Model):
 
         verbose_name = 'Ecue'
         verbose_name_plural = ' Ecue'
+        ordering = ['-created']
 
     def __str__(self):
         """Unicode representation of Ecue."""
@@ -406,6 +407,7 @@ class Cours(models.Model):
 
         verbose_name = 'Cours'
         verbose_name_plural = 'Cours'
+        ordering = ['-created']
 
     def __str__(self):
         """Unicode representation of Cours."""
