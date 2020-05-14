@@ -2,7 +2,7 @@ from django.db import models
 from gestion.validators import validate_file_extension_for_image,validate_file_extension_for_document
 
 # Create your models here.
-
+##########################################################################################
 class Partenaire(models.Model):
     """Model definition for Partenaire."""
     nom         = models.CharField( max_length=50)
