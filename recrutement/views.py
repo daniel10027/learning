@@ -21,7 +21,7 @@ class RecrutementListView(ListView):
     context_object_name = 'recrutements'
     template_name = 'recrutement/index.html'
     ordering = ['-created']
-    paginate_by = 4
+    paginate_by = 2
    
 #################################################################################
 #################################################################################
