@@ -21,13 +21,16 @@ class Pa(admin.ModelAdmin):
 class Cp(admin.ModelAdmin):
     search_fields = ['nom']
     list_display= ('nom','status','created','date_update')
+    actions = [Pass_true, Pass_false]
 
 @admin.register(ContactInfo)
 class Co(admin.ModelAdmin):
     search_fields = ['titre']
     list_display= ('titre','status','created','date_update')
+    actions = [Pass_true, Pass_false]
 
 @admin.register(Message)
 class Co(admin.ModelAdmin):
     search_fields = ['titre']
     list_display= ('titre','description','status','created','date_update')
+    actions = [Pass_true, Pass_false]

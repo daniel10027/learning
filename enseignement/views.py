@@ -59,6 +59,6 @@ def contact(request):
             )
 
             email.send()
-            messages.success(request, f'Votre Message a bien été envoyé, je  vous contacterons dans un bref delai .Merci ')
-            return redirect('/')
+            messages.success(request, f'Votre Message a bien été envoyé, Nous vous contacterons dans un bref delai .Merci ')
+            return render(request, 'enseignement/msg.html')
     return render(request, 'enseignement/contact.html', context)
