@@ -3,7 +3,11 @@
 {%block content %}
 
    <section class="hero-area">
-    <div class="hero-slides owl-carousel">
+       
+       {% if user.is_authenticated %}
+
+       {% else %}
+       <div class="hero-slides owl-carousel">
 
         <div class="single-hero-slide bg-img" style="background-image: url({% static 'enseignement/img/core-img/p3.svg' %});">
             <div class="container h-100">
@@ -37,39 +41,43 @@
 </section>
 
 
-            <div class="top-features-area wow fadeInUp" data-wow-delay="300ms">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="features-content">
-                                <div class="row no-gutters">
-                                
-                                    <div class="col-12 col-md-4">
-                                        <div class="single-top-features d-flex align-items-center justify-content-center">
-                                            <i class="icon-agenda-1"></i>
-                                            <h5>Cours en ligne</h5>
-                                        </div>
-                                    </div>
-                                  
-                                    <div class="col-12 col-md-4">
-                                        <div class="single-top-features d-flex align-items-center justify-content-center">
-                                            <i class="icon-assistance"></i>
-                                            <h5>Un Corps enseignant de qualité</h5>
-                                        </div>
-                                    </div>
-                                  
-                                    <div class="col-12 col-md-4">
-                                        <div class="single-top-features d-flex align-items-center justify-content-center">
-                                            <i class="icon-telephone-3"></i>
-                                            <h5>Support 7J/24H</h5>
-                                        </div>
-                                    </div>
-                                </div>
+<div class="top-features-area wow fadeInUp" data-wow-delay="300ms">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="features-content">
+                    <div class="row no-gutters">
+                    
+                        <div class="col-12 col-md-4">
+                            <div class="single-top-features d-flex align-items-center justify-content-center">
+                                <i class="icon-agenda-1"></i>
+                                <h5>Cours en ligne</h5>
+                            </div>
+                        </div>
+                      
+                        <div class="col-12 col-md-4">
+                            <div class="single-top-features d-flex align-items-center justify-content-center">
+                                <i class="icon-assistance"></i>
+                                <h5>Un Corps enseignant de qualité</h5>
+                            </div>
+                        </div>
+                      
+                        <div class="col-12 col-md-4">
+                            <div class="single-top-features d-flex align-items-center justify-content-center">
+                                <i class="icon-telephone-3"></i>
+                                <h5>Support 7J/24H</h5>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+       {% endif %}
+           
+   
+
           
           <center>  <div class="row">
                 {% if messages %}
