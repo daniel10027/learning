@@ -144,4 +144,10 @@ class ResultatFinal(ListView):
         res=  Resultat.objects.filter(dossier__recrutement=recru).distinct("dossier")
         return res
         
-          
+#######################################STATISTIQUESS#######################################
+@method_decorator([login_required, teacher_required ], name='dispatch')
+class Stat(ListView):
+    model = Jury
+    ordering = ('-created', )
+    context_object_name = 'jurys'
+    template_name = 'gestion/charts.html'
