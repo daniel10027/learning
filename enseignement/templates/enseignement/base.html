@@ -118,7 +118,7 @@
                                 <ul>
                    
                                     <li><a href="{% url 'site-home' %}">Accueil</a></li>
-                                    <li><a href="{% url 'students:student-profile' %}">Mon Profile</a></li>
+                                 
                                     <li><a href="{% url 'students:accueil-student' %}">Mon Cursus</a></li>
                                     <li><a href="{% url 'site-contact' %}">Contacter L'administration</a></li>
                                 </ul>
@@ -155,7 +155,7 @@
      {% endif %}
                         <div class="calling-info">
                             <div class="call-center">
-                                <a href="#"> <span>{{ user.first_name}} {{user.last_name}} </span><img class="rounded-circle"  src="{{ user.student.photo.url }}" alt="" height="80" width="80" ></a>
+                                <a href="{% url 'students:student-profile' %}"> <span>{{ user.first_name}} {{user.last_name}} </span><img class="rounded-circle"  src="{{ user.student.photo.url }}" alt="" height="80" width="80" ></a>
                             </div>
                         </div>
                     </nav>

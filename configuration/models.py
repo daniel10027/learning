@@ -1,4 +1,5 @@
 from django.db import models
+from PIL import Image
 from gestion.validators import validate_file_extension_for_image,validate_file_extension_for_document
 
 # Create your models here.
@@ -75,3 +76,31 @@ class ContactInfo(models.Model):
         """Unicode representation of ContactInfo."""
         return self.titre
 
+############################MESSAGE##############################
+class Message(models.Model):
+    """Model definition for Message."""
+    titre        = models.CharField( max_length=50)
+    description  = models.TextField()
+    status      = models.BooleanField(default=True)
+    created     = models.DateTimeField(auto_now_add=True)
+    date_update = models.DateTimeField(auto_now=True)
+    # TODO: Define fields here
+
+    class Meta:
+        """Meta definition for Message."""
+
+        verbose_name = 'Message'
+        verbose_name_plural = 'Messages'
+        ordering = ['-created']
+
+    def __str__(self):
+        """Unicode representation of Message."""
+        return self.titre
+
+   
+
+    def get_absolute_url(self):
+        """Return absolute url for Message."""
+        return ('')
+
+    # TODO: Define custom methods here

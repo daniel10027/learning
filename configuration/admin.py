@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Partenaire, CopyRight, ContactInfo
+from .models import Partenaire, CopyRight, ContactInfo, Message
 
 def Pass_true(ModelAdmin, request,queryset):
     queryset.update(status=True)
@@ -26,3 +26,8 @@ class Cp(admin.ModelAdmin):
 class Co(admin.ModelAdmin):
     search_fields = ['titre']
     list_display= ('titre','status','created','date_update')
+
+@admin.register(Message)
+class Co(admin.ModelAdmin):
+    search_fields = ['titre']
+    list_display= ('titre','description','status','created','date_update')

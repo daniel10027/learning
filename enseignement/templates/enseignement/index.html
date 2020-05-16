@@ -5,7 +5,7 @@
    <section class="hero-area">
        
        {% if user.is_authenticated %}
-
+    
        {% else %}
        <div class="hero-slides owl-carousel">
 
@@ -90,12 +90,29 @@
           {% endif 	%}	
               </div>
             </center>
-            <div class="top-popular-courses-area section-padding-100-70">
+           
                 <div class="container">
+                  
                     <div class="row">
+                        
                         <div class="col-12">
+                            
                             <div class="section-heading text-center mx-auto wow fadeInUp" data-wow-delay="300ms">
-                                <span></span>
+                                <span> <div class="top-popular-courses-area section-padding-100-70">
+                                    <div class="row">
+                                        <p>
+                                            <marquee behavior="scroll" direction="left"
+                                            onmouseover="this.stop();"
+                                            onmouseout="this.start();">
+                                            
+                                            {% for m in msg   %}
+                                                <code>{{ m.titre }} :</code> <i>{{ m.description }} || </i>
+                                            {% endfor %}
+                                                 </marquee>
+                                    </p>
+                    
+                                    </div></span>
+
                                 <h3>Actualités</h3>
                             </div>
                         </div>
@@ -173,7 +190,7 @@
                         <div class="col-12">
                             <div class="cta-content d-flex align-items-center justify-content-between flex-wrap">
                                 <h3>Vous voulez faire partir de nos futurs étudiants  !</h3>
-                                <a href="#" class="btn academy-btn">Incrivez vous maintenant</a>
+                                <a href="{% url 'site-contact' %}" class="btn academy-btn">Incrivez vous maintenant</a>
                             </div>
                         </div>
                     </div>

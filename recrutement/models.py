@@ -35,6 +35,7 @@ class Recrutement(models.Model):
 
         verbose_name = 'Recrutement'
         verbose_name_plural = '  Recrutements'
+        ordering = ['-created']
        
     
 

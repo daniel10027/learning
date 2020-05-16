@@ -5,21 +5,22 @@ from django.contrib import messages
 from django.template.loader import get_template
 from django.core.mail import EmailMessage
 from recrutement.models import Recrutement
-from configuration.models import Partenaire, CopyRight, ContactInfo
+from configuration.models import Partenaire, CopyRight, ContactInfo, Message
 from .forms import Contact_Form
 # Create your views here.
 def home(request): # pour afficher les produits a vendre sur l_index
     context = {
          'recrutements': Recrutement.objects.all(),
          'partenaires': Partenaire.objects.all(),
-         'copy': CopyRight.objects.all()
+         'copy': CopyRight.objects.all(),
+         'msg': Message.objects.all()
 
          }
     if request.user.is_authenticated:
         if request.user.is_teacher or request.user.is_staff :
             return redirect('teachers:accueil-teacher')
         elif request.user.is_student:
-            return render(request, 'enseignement/index.html', context)
+            return redirect('students:accueil-student')
         elif request.user.is_tutor:
             return redirect('tutors:accueil-tutor')
     return render(request, 'enseignement/index.html', context)
