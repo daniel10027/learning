@@ -35,7 +35,7 @@ class Recrutement(models.Model):
 
         verbose_name = 'Recrutement'
         verbose_name_plural = '  Recrutements'
-        ordering = ['-created']
+       
     
 
     def __str__(self):
@@ -209,7 +209,7 @@ class Resultat(models.Model):
 
         verbose_name = 'Resultat'
         verbose_name_plural = 'Resultats'
-        ordering = ('dossier',)
+       
 
     def __str__(self):
         """Unicode representation of Resultat."""

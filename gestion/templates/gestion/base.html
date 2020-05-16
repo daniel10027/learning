@@ -15,11 +15,13 @@
 
 
   <link rel="icon" href=" {% static 'enseignement/img/core-img/favicon.ico' %} ">
+  
   <link href="{% static 'gestion/dash/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
  
   <link href="{% static 'gestion/dash/css/sb-admin-2.min.css' %}" rel="stylesheet">
   <link href="{% static 'gestion/dash/vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -45,7 +47,7 @@
 
  
   <li class="nav-item">
-    <a class="nav-link" href="../../admin">
+    <a class="nav-link" href="#">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Dashboard</span></a>
   </li>
@@ -73,13 +75,7 @@
               </div>
             </li>
 
-          
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'teachers:site-stat' %}">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Statistiques</span></a>
-            </li>
-
+         
           
             <hr class="sidebar-divider">
 
@@ -89,12 +85,7 @@
             </div>
 
            
- <li class="nav-item">
-              <a class="nav-link" href="charts.html">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Statistiques</span></a>
-            </li>
-
+ 
                  
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'teachers:recru-list' %}">
@@ -690,7 +681,7 @@
 				$(this).remove(); 
 			});
 		}, 2000);
-	</script>
+  </script>
 
  
   <script src="{% static 'gestion/dash/vendor/jquery/jquery.min.js' %}"></script>
@@ -700,7 +691,8 @@
   <script src="{% static 'gestion/dash/vendor/datatables/jquery.dataTables.min.js' %}"></script>
   <script src="{% static 'gestion/dash/vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
   <script src="{% static 'gestion/dash/js/demo/datatables-demo.js' %}"></script>
-
+  <script src="{% static 'enseignement/js/print.js' %}"></script>
+ 
 </body>
 
 </html>

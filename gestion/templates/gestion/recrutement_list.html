@@ -23,15 +23,33 @@
                       <div class="text-center">
                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="{% static 'gestion/dash/img/undraw_posting_photo.svg' %}" alt="">
                       </div>
-                      <p>Add some quality, svg illustrations to your project courtes</p>
-                      <a  href="{% url 'teachers:resultat-final' pk=rec.pk %}">Resultats &rarr;</a>
+                      <p>Resultat {{rec.intitule}} ouvert le : {{ rec.ouverture }}</p>
+                      <a  href="{% url 'teachers:resultat-final' pk=rec.pk %}">Consulter &rarr;</a>
                     </div>
                   </div>
                  </div>
      {% endfor %}
+     
               </div>
         </div>
-      
+        {% if is_paginated %}
+        {% if page_obj.has_previous %}
+            <a class="btn btn-outline-info mb-4" href="?page=1">Debut</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number}}">Précédent</a>
+        {% endif%}
+        {% for num in page_obj.paginator.page_range%}
+            {% if page_obj.number == num %}
+             <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+            <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Suivant</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Fin</a>
+        {% endif%}
+
+      {% endif %}
         </div>
   </div>
 
