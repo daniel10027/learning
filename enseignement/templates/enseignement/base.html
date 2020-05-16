@@ -8,6 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>EduVRoom</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     <link rel="icon" href=" {% static 'enseignement/img/core-img/favicon.ico' %} ">
     <link rel="stylesheet" href="{% static 'enseignement/style.css' %}">
   <script src="{% static '/enseignement/js/jquery/jquery-2.2.4.min.js' %}" type="text/javascript"> </script>
@@ -18,6 +21,20 @@
         });
     }, 2000);
 </script>
+<style>
+
+.chart-pie {
+  position: relative;
+  height: 15rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .chart-pie {
+    height: calc(20rem - 43px) !important;
+  }
+}
+</style>
 <style>
     hr.style-eight {
     height: 10px;
@@ -101,7 +118,7 @@
                                 <ul>
                    
                                     <li><a href="{% url 'site-home' %}">Accueil</a></li>
-                                    <li><a href="{% url 'site-home' %}">Mon Profile</a></li>
+                                    <li><a href="{% url 'students:student-profile' %}">Mon Profile</a></li>
                                     <li><a href="{% url 'students:accueil-student' %}">Mon Cursus</a></li>
                                     <li><a href="{% url 'site-contact' %}">Contacter L'administration</a></li>
                                 </ul>
@@ -228,7 +245,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script>  <a h
     });
 </script>
 
-
+<script>
+    $(document).ready(function() {
+  language_code = $('html').attr('lang');
+  $.fn.datepicker.defaults.language = language_code;
+  // ...
+});
+</script>
    
 </body>
 

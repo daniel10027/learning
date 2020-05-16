@@ -9,7 +9,7 @@ from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, ListView, UpdateView, View, DetailView
 
 from ..decorators import student_required
-from ..forms import StudentSignUpForm
+from ..forms import StudentSignUpForm,StudentUpdateForm, StudentUserUpdate
 from ..models import Student, User
 from enseignement.models import Cours, UniteEnseignement, Ecue, RessourcePdf, RessourceVideo
 
@@ -61,3 +61,31 @@ class StudentsCoursDetailView(DetailView):
         context['videos'] = RessourceVideo.objects.all()
         return context
 
+
+
+@login_required
+@student_required
+def profile(request): # pour afficher les produits a vendre sur l_index
+     if request.method == 'POST':
+        u_form = StudentUserUpdate(request.POST, instance=request.user)
+        p_form = StudentUpdateForm(request.POST, 
+                                   request.FILES, 
+                                   instance=request.user.student)
+        if  u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, f'Votre Profile a été mis à jour avec succes !')
+            return redirect('students:student-profile')
+        else:
+            messages.error(request, f'Une erreur est survenue au cours de la mise a jour!')
+     else:
+        u_form = StudentUserUpdate(instance=request.user)
+        p_form = StudentUpdateForm(instance=request.user.student)
+       
+       
+     context = {
+        'u_form': u_form,
+        'p_form' : p_form
+     }
+    
+     return render(request, 'enseignement/profile.html', context)

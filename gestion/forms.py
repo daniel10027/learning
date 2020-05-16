@@ -92,3 +92,17 @@ class TutorUser(forms.ModelForm):
     class Meta:
         model = User
         fields = ['first_name','last_name','email']
+################# Student PROFILE UPDATE ########################################################################
+class StudentUpdateForm(forms.ModelForm):
+      class Meta:
+        model  = Student
+        fields = ["date_de_naissance","sexe","localite","contact","photo","piece_indentite"]
+     
+     
+            
+          
+################# student USER UPDATE ############# ############################################################        
+class StudentUserUpdate(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name','last_name','email']

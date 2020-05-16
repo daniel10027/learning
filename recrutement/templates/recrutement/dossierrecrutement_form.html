@@ -11,11 +11,9 @@
         <div class="text-center" style="background-color: lightgray;">
             <h1 style="color: rgb(8, 8, 8);">Je Candidate</h1>
           </div>
-    <div class="row">
-      
-    </div>
 </div>
-</div>
+
+
     <section class="contact-area">
         <div class="container">
             <div class="row">
@@ -27,7 +25,51 @@
                                         <form action="" method="post" enctype="multipart/form-data" id="myform"> 
                                            
                                             {% csrf_token %}
-                                            {{ form| crispy}}
+                                            <div class="row">
+                                                <div class="col-md">
+                                                    <div class="form-group">  {{ form.nom |as_crispy_field }}</div>
+                                                </div>
+                                                <div class="col-md">
+                                                    <div class="form-group">  {{ form.prenom |as_crispy_field }}</div>
+                                                </div>
+                                                <div class="col-md">
+                                                    <div class="form-group">  {{ form.date_de_naissance |as_crispy_field }}</div>
+                                                </div>
+                                             
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md">
+                                                    <div class="form-group">  {{ form.sexe |as_crispy_field }}</div>
+                                                </div>
+                                                <div class="col-md">
+                                                    <div class="form-group">  {{ form.localite |as_crispy_field }}</div>
+                                                </div>
+                                                <div class="col-md">
+                                                    <div class="form-group">  {{ form.email |as_crispy_field }}</div>
+                                                </div>
+                                             
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md">
+                                                    <div class="form-group">  {{ form.grade |as_crispy_field }}</div>
+                                                </div>
+                                                <div class="col-md">
+                                                    <div class="form-group">  {{ form.domaine |as_crispy_field }}</div>
+                                                </div>
+                                             
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md">
+                                                    <div class="form-group">  {{ form.contact |as_crispy_field }}</div>
+                                                </div>
+                                                <div class="col-md">
+                                                    <div class="form-group">  {{ form.photo |as_crispy_field }}</div>
+                                                </div>
+                                                <div class="col-md">
+                                                    <div class="form-group">  {{ form.piece_indentite |as_crispy_field }}</div>
+                                                </div>
+                                             
+                                            </div>
                                             <div class="container">
                                                         <h4>Diplomes</h4>
                                                         <table class="table" id="t1">

@@ -1,0 +1,154 @@
+{% extends "enseignement/base.html" %}
+{% load static  %}
+{% load crispy_forms_tags %}
+{%block content %}
+
+
+
+ <!-- ##### Top Popular Courses Area Start ##### -->
+ <div class="top-popular-courses-area mt-50 section-padding-100-70">
+    <div class="container">
+        <div class="text-center" style="background-color: lightgray;">
+            <h1 style="color: rgb(8, 8, 8);">Je Candidate</h1>
+          </div>
+</div>
+
+
+    <section class="contact-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="contact-content">
+                        <div class="row">
+                             <div class="col-lg-12">
+                                    <div class="contact-form-area wow fadeInUp" data-wow-delay="500ms">
+                                        <div class="col-md ">
+                                            <div class="container-fluid">
+                                              
+                                                      <div class="row">
+                                                 {% if messages %}
+                                                      {% for message in messages %}
+                                                              <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                                                                  <button type="button" class="close" data-dismiss="alert" ><span aria-hidden="true">&times;</span></button>
+                                                                  <strong>{{message}}</strong> 
+                                                              </div>
+                                                      {% endfor %}
+                                                  {% endif 	%}	
+                                                      </div>
+                                                    
+                                               
+                                      
+                                              </div>
+                                            <div class="tab-content p-b-3">
+                                                <br>
+                                                <div class="tab-pane active" id="profile">
+                                                    <h4 class="m-t-2"><span class="fa fa-user   xs-right">Profile Etudiant</span></h4>
+                                                    <br><br>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <h6>Nom d'Utilisateur : <strong>{{ user.username}}</strong></h6>
+                                                            <h6>Nom : <strong>{{ user.first_name}}</strong></h6>
+                                                            <h6>Prénom : <strong>{{ user.last_name}}</strong></h6>
+                                                            <h6>Email : <strong>{{ user.email}}</strong></h6>
+                                                            <h6>Contact : <strong>{{ user.student.contact}}</strong></h6>
+                                                            <h6>localite : <strong>{{ user.student.localite}}</strong></h6>
+                                                          
+                                                           
+                                                            
+                                                           
+                                                                
+                                                        </div>
+                                                       
+                                                        <div class="card-body">
+           
+                                                            <div class="chart-pie pt-4 pb-2" style="background-image: url({{ user.student.photo.url  }}); background-position: center;
+                                                            background-size: cover;">
+                                                            
+                                                            </div>
+                                                          
+                                                          </div>
+                                                </div>
+                                              <hr>
+                                              <hr>
+                                               <div class="mydiv" id="myd">
+                                                <h4 class="m-t-2"><span class="fa fa-user   xs-right">Mise à jour du profile</span></h4>
+                                               
+                                                  
+                                                    
+                                               </div>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                        <form class="text-center border border-light p-5" action="#!" method="POST" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                     
+                                            <div class="u_from">
+                                                <div class="row">
+                                                    <div class="col-md">
+                                                        <div class="form-group">  {{ u_form.first_name |as_crispy_field }}</div>
+                                                    </div>
+                                                    <div class="col-md">
+                                                        <div class="form-group">  {{ u_form.last_name |as_crispy_field }}</div>
+                                                    </div>
+                                                 
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md">
+                                                        <div class="form-group">  {{ u_form.email |as_crispy_field }}</div>
+                                                    </div>
+                                                  
+                                                 
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md">
+                                                        <div class="form-group">  {{ p_form.date_de_naissance |as_crispy_field }}</div>
+                                                    </div>
+                                                    
+                                                    <div class="col-md">
+                                                        <div class="form-group">  {{ p_form.localite |as_crispy_field }}</div>
+                                                    </div>
+                                                      
+                                                    <div class="col-md">
+                                                        <div class="form-group">  {{ p_form.sexe |as_crispy_field }}</div>
+                                                    </div>
+                                                 
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md">
+                                                        <div class="form-group">  {{ p_form.contact |as_crispy_field }}</div>
+                                                    </div>
+                                                    
+                                                 
+                                                </div>
+                                               
+                                                   
+                                                
+                                                        <div class="row">
+                                                            <div class="col-md">
+                                                                <div class="form-group">  {{ p_form.photo |as_crispy_field }}</div>
+                                                            </div>
+                                                            <div class="col-md">
+                                                                <div class="form-group">  {{ p_form.piece_indentite |as_crispy_field }}</div>
+                                                            </div>
+                                                         
+                                                        </div>
+                                            </div>
+                                      
+                                   
+                                                <button class="btn btn-info my-4 btn-block" type="submit">Valider</button>
+                                           
+                                            </form> 
+                                           
+                                           
+                                    </div>
+                                </div>
+                              </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+ 
+{% endblock content %}

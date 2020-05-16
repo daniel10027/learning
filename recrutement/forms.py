@@ -8,16 +8,14 @@ from django.forms.widgets import CheckboxSelectMultiple
 
 
 class DossierRecrutementForm(ModelForm):
-
-    class Meta:
+       class Meta:
         model = DossierRecrutement
-        #fields = ["nom","prenom","date_de_naissance","sexe","localite","email","grade","domaine","contact","photo","piece_indentite"]
-        exclude = ['created','status','date_update','recrutement' ]
-    def __init__(self, *args, **kwargs):
-          super( DossierRecrutementForm, self).__init__(*args, **kwargs)
-          self.fields["domaine"].widget = CheckboxSelectMultiple()
-          self.fields["domaine"].queryset = Domaine.objects.all()
-    
+        fields = ["nom","prenom","date_de_naissance","sexe","localite","email","grade","domaine","contact","photo","piece_indentite"]
+       def __init__(self, *args, **kwargs):
+        
+            super(DossierRecrutementForm, self).__init__(*args, **kwargs)
+            self.fields["domaine"].widget = CheckboxSelectMultiple()
+            self.fields["domaine"].queryset = Domaine.objects.all()
 
 class DiplomeForm(ModelForm):
 
