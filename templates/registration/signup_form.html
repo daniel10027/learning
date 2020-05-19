@@ -4,33 +4,38 @@
 
 {% block content %}
 
-    <div class="container-contact100" style="background-image: url({% static 'gestion/images/bg-01.jpg' %});">
-        <div class="wrap-contact100">
-            <form class="contact100-form validate-form" method="post">
-                {% csrf_token %}
-                <span class="contact100-form-title">
-                   INSCRIPTION  {{ user_type }}
-                </span>
-                {{ form|crispy}}
-                
+  <div class="container-contact100" style="background-image: url({% static 'enseignement/img/core-img/p1.svg' %});">
+    <div class="wrap-contact100">
+        <form class="form-control" method="post">
+            {% csrf_token %}
+            <span class="contact100-form-title">
+             <center> INSCRIPTION {{ user_type }}</center>
+            </span>
+            <div class="row">
+                <div class="form-control">
+                            {{ form | crispy }}
+                           
+                </div>
+                <br>
                 <div class="container-contact100-form-btn">
                     <div class="wrap-contact100-form-btn">
                         <div class="contact100-form-bgbtn"></div>
-                        <button class="contact100-form-btn">
+                        <button class="contact100-form-btn" style="background-color: rgb(34, 170, 211);">
                             Submit
                         </button>
                     </div>
                 </div>
-            </form>
-        </div>
-
-        <span class="contact100-more">
-                Call us on +001 345 6178
-        </span>
+            </div>
+           
+            
+          
+        </form>
+       
     </div>
 
-<!--make it better -->
-
-    <div id="dropDownSelect1"></div>
+    <span class="contact100-more">
+         <a href="{% url 'site-home' %}"><h4 style="color: black;">EduvRoom</h4></a>  
+    </span>
+</div>
 
 {% endblock %}

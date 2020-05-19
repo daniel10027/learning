@@ -9,11 +9,13 @@ from django.forms.widgets import CheckboxSelectMultiple
 from django.template.defaultfilters import filesizeformat
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
+   
+from django.contrib.auth.forms import AuthenticationForm, UsernameField
 ################STUDENT REGISTER FORM###############################################################################
 class StudentSignUpForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ['username',"last_name","first_name","email"]
+        fields = ["email","last_name","first_name"]
 
     @transaction.atomic
     def save(self):
@@ -27,7 +29,7 @@ class StudentSignUpForm(UserCreationForm):
 class TeacherSignUpForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ['username',"last_name","first_name","email"]
+        fields = ["email","last_name","first_name"]
     def save(self, commit=True):
         user = super().save(commit=False)
         user.is_teacher = True
@@ -39,7 +41,7 @@ class TeacherSignUpForm(UserCreationForm):
 class TutorSignUpForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ['username',"last_name","first_name","email"]
+        fields = ["email","last_name","first_name"]
 
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -106,3 +108,10 @@ class StudentUserUpdate(forms.ModelForm):
     class Meta:
         model = User
         fields = ['first_name','last_name','email']
+
+####################################################################################################################
+class CustomAuthenticationForm(AuthenticationForm):
+    username = UsernameField(
+        label='Adresse Electronique',
+        widget=forms.TextInput(attrs={'autofocus': True})
+    )
