@@ -141,7 +141,7 @@ class ResultatFinal(ListView):
     template_name = 'gestion/resultat.html'
     def get_queryset(self):
         recru = get_object_or_404(Recrutement, pk=self.kwargs.get('pk'))
-        res=  Resultat.objects.filter(dossier__recrutement=recru).distinct("dossier")
+        res=  sorted(Resultat.objects.filter(dossier__recrutement=recru).distinct("dossier"), key=lambda t: t.All)
         return res
         
 #######################################STATISTIQUESS#######################################

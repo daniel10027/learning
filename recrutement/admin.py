@@ -1,7 +1,9 @@
 #######################################################################################################################################################
 #######################################################################################################################################################
 from django.contrib import admin
-from .models import Recrutement, DossierRecrutement, Certificat, Diplome, Jury, Resultat
+from django.db import models
+from django.forms import CheckboxSelectMultiple
+from .models import Recrutement, DossierRecrutement, Certificat, Diplome, Jury, Resultat, MyModelAdmin
 from configuration.admin import Pass_false,Pass_true
 # Register your models here.
 
@@ -35,23 +37,28 @@ class DossierAdmin(admin.ModelAdmin):
     
 #######################################################################################################################################################
 #######################################################################################################################################################
+'''
 @admin.register(Jury)
 class JuryAdmin(admin.ModelAdmin):
-    '''Admin View for Jury'''
+    #Admin View for Jury
    
     list_display = ('recrutement','status')
     search_fields = ['nom']
     actions = [Pass_true, Pass_false]
+'''
 #######################################################################################################################################################
 #######################################################################################################################################################
 @admin.register(Resultat)
 class JuryAdmin(admin.ModelAdmin):
     '''Admin View for Jury'''
-   
+    formfield_overrides = {
+        models.ManyToManyField: {'widget': CheckboxSelectMultiple},
+    }
     list_display = ('dossier','juge','critere1','critere2','critere3','critere4','critere5')
     search_fields = ['dossier']
 #######################################################################################################################################################
 #######################################################################################################################################################
 admin.site.register(Diplome)
 admin.site.register(Certificat)
+admin.site.register(Jury, MyModelAdmin)
 #############################""

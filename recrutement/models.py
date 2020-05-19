@@ -8,11 +8,18 @@ from django_group_by import GroupByMixin
 from django.urls import reverse
 # Create your models here.
 from gestion.validators import validate_file_extension_for_image,validate_file_extension_for_document
+from django.contrib import admin
+from django.forms import CheckboxSelectMultiple
 
 
 #################################################################################################################################################
 #################################################################################################################################################
+class MyModelAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.ManyToManyField: {'widget': CheckboxSelectMultiple},
+    }
 
+#####################################################################
 class Recrutement(models.Model):
     """Model definition for Recrutement."""
 
@@ -161,9 +168,8 @@ class Jury(models.Model):
     """Model definition for Jury."""
 
     # TODO: Define fields here
-    recrutement         = models.ForeignKey('Recrutement', models.DO_NOTHING)
+    recrutement         = models.ForeignKey('Recrutement', on_delete=models.CASCADE)
     membre =  models.ManyToManyField(Enseignant, related_name="membrejury")
-    dossier =  models.ManyToManyField(DossierRecrutement, related_name="dossierjury")
     status      = models.BooleanField(default=True)
     created     = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
@@ -210,6 +216,7 @@ class Resultat(models.Model):
 
         verbose_name = 'Resultat'
         verbose_name_plural = 'Resultats'
+       
        
 
     def __str__(self):
