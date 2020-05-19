@@ -45,6 +45,12 @@ class JuryListView(ListView):
     ordering = ('-created', )
     context_object_name = 'jurys'
     template_name = 'gestion/index.html'
+    def get_context_data(self, **kwargs):
+        context = super(JuryListView, self).get_context_data(**kwargs)
+        context['dossier']    = DossierRecrutement.objects.all()
+        context['recru']    = Recrutement.objects.all()
+        return context
+    
 
 ################################################################
 @method_decorator([login_required, teacher_required ], name='dispatch')
@@ -146,8 +152,27 @@ class ResultatFinal(ListView):
         
 #######################################STATISTIQUESS#######################################
 @method_decorator([login_required, teacher_required ], name='dispatch')
-class Stat(ListView):
-    model = Jury
+
+class Reclist(ListView):
+    model = Recrutement
+    context_object_name = 'recrutements'
+    template_name = 'gestion/stat_list.html'
+    ordering = ['-created']
+    paginate_by = 2
+    def get_context_data(self, **kwargs):
+        context = super(Reclist, self).get_context_data(**kwargs)
+        context['dossier']    = DossierRecrutement.objects.all()
+        return context
+
+#################################################################################
+#################################################################################
+@method_decorator([login_required, teacher_required ], name='dispatch')
+class DossierListViewA(ListView):
+    model = DossierRecrutement
     ordering = ('-created', )
-    context_object_name = 'jurys'
-    template_name = 'gestion/charts.html'
+    context_object_name = 'dossiers'
+    template_name = 'gestion/rec_dossier_list.html'
+    def get_queryset(self):
+        recru = get_object_or_404(Recrutement, pk=self.kwargs.get('pk'))
+        res=  DossierRecrutement.objects.filter(recrutement=recru)
+        return res

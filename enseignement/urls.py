@@ -23,8 +23,9 @@ urlpatterns = [
     path('dossier_detail/<int:pk>/', teachers.DossierDetailView.as_view(), name='dossier-detail'), 
     path('global/', teachers.RecrutementListView.as_view(), name='recru-list'), 
     path('resultats/<int:pk>/', teachers.ResultatFinal.as_view(), name='resultat-final'),
+    path('docview/<int:pk>/', teachers.DossierListViewA.as_view(), name='first-list'),
     path('myprofile/', teachers.profile, name='teacher-profile'),
-    path('statistiques/', teachers.Stat.as_view(), name='site-stat'),
+    path('statistiques/', teachers.Reclist.as_view(), name='rec-stat'),
      
 ], 'classroom'), namespace='teachers')),
 
