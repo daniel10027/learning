@@ -14,6 +14,15 @@ from recrutement.models import DossierRecrutement, Resultat, Jury, Diplome, Cert
 from django.db.models import Avg, query
 from django.db import connection
 import itertools
+from configuration.models import Message
+
+from django.template.loader import get_template, render_to_string
+from django.core.mail import EmailMessage
+from django.contrib.sites.shortcuts import get_current_site
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+
+
 ###############################################################
 class TeacherSignUpView(CreateView):
     model = User
@@ -25,16 +34,36 @@ class TeacherSignUpView(CreateView):
         return super().get_context_data(**kwargs)
 
     def form_valid(self, form):
+        
         user = form.save()
+        type =  'Enseignant'
+        current_site = get_current_site(self.request)
+        mail_subject = 'Activation Compte '+ type + ' EduvRoom.'
+        message = render_to_string("msg.html"
+        , {
+            'user':user,
+            'domain': current_site.domain,
+            'type': type
+                        
+        })
+        to_email = form.cleaned_data.get('email')
+        email = EmailMessage(
+                                mail_subject, message, to=[to_email]
+                    )
+        email.send()
+       
         login(self.request, user)
         return redirect('login')
+
+   
 ################################################################
 
 @login_required
 @teacher_required
 def home(request): # pour afficher les produits a vendre sur l_index
     context = {
-          'jurys': Jury.objects.all()
+          'jurys': Jury.objects.all(),
+           'msg': Message.objects.all()
     }
     return render(request, 'gestion/index.html', context)
 
@@ -49,6 +78,7 @@ class JuryListView(ListView):
         context = super(JuryListView, self).get_context_data(**kwargs)
         context['dossier']    = DossierRecrutement.objects.all()
         context['recru']    = Recrutement.objects.all()
+        context['msg']    = Message.objects.all()
         return context
     
 

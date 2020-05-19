@@ -7,6 +7,11 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, ListView, UpdateView, View, DetailView
+from django.template.loader import get_template, render_to_string
+from django.core.mail import EmailMessage
+from django.contrib.sites.shortcuts import get_current_site
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 
 from ..decorators import student_required
 from ..forms import StudentSignUpForm,StudentUpdateForm, StudentUserUpdate
@@ -25,6 +30,21 @@ class StudentSignUpView(CreateView):
 
     def form_valid(self, form):
         user = form.save()
+        type =  'Etudiant'
+        current_site = get_current_site(self.request)
+        mail_subject = 'Activation Compte '+ type + ' EduvRoom.'
+        message = render_to_string("msg.html"
+        , {
+            'user':user,
+            'domain': current_site.domain,
+            'type': type
+                        
+        })
+        to_email = form.cleaned_data.get('email')
+        email = EmailMessage(
+                                mail_subject, message, to=[to_email]
+                    )
+        email.send()
         login(self.request, user)
         
         return redirect('login')

@@ -4,6 +4,7 @@ from django.utils import timezone
 from enseignement.models import Localite, Etablissement, Specialite, Niveau
 from django.utils.html import escape, mark_safe
 from django.contrib.auth.models import AbstractUser
+from django.utils.translation import ugettext_lazy as _
 
 #####################VALIDATOR####################################
 from django.core.exceptions import ValidationError
@@ -37,12 +38,13 @@ def validate_file_extension_for_image(value):
 #########################################################
 
 class User(AbstractUser):
+   
     is_student = models.BooleanField(default=False)
     is_teacher = models.BooleanField(default=False)
     is_tutor = models.BooleanField(default=False)
 
     def __str__(self):
-        return "{} {} ({})".format(self.first_name, self.last_name, self.username)
+        return "{} {} ".format(self.first_name, self.last_name)
 
 #########################################################
 class Grade(models.Model):

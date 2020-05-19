@@ -21,7 +21,17 @@
  
   <link href="{% static 'gestion/dash/css/sb-admin-2.min.css' %}" rel="stylesheet">
   <link href="{% static 'gestion/dash/vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+<style>
+  .blink_me {
+  animation: blinker 10s linear infinite;
+}
 
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+</style>
 </head>
 
 <body id="page-top">
