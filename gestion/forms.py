@@ -15,7 +15,7 @@ from django.contrib.auth.forms import AuthenticationForm, UsernameField
 class StudentSignUpForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ["email","last_name","first_name"]
+        fields = ["username","email","last_name","first_name"]
 
     @transaction.atomic
     def save(self):
@@ -29,7 +29,7 @@ class StudentSignUpForm(UserCreationForm):
 class TeacherSignUpForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ["email","last_name","first_name"]
+        fields = ["username","email","last_name","first_name"]
     def save(self, commit=True):
         user = super().save(commit=False)
         user.is_teacher = True
@@ -41,7 +41,7 @@ class TeacherSignUpForm(UserCreationForm):
 class TutorSignUpForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ["email","last_name","first_name"]
+        fields = ["username","email","last_name","first_name"]
 
     def save(self, commit=True):
         user = super().save(commit=False)

@@ -3,38 +3,48 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<div class='box'>
+    <div class='box-form'>
+      <div class='box-login-tab'></div>
+      <div class='box-login-title'>
+        <div class='i i-login'></div>
+        <h2></h2>
+      </div>
+      <div class='box-login'>
+      
+            <div class="alert alert-info">
+                 <div class="d-flex justify-content-center">
+                   
+                  <div class="row">
+                    <br>
+                    <br>
+              {% if messages %}
+                  {% for message in messages %}
+                          <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                            
+                              <strong>{{message}}</strong> 
+                              <br>
+                              <br>
+                              <br>
 
-  <div class="container-contact100" style="background-image: url({% static 'enseignement/img/core-img/p1.svg' %});">
-    <div class="wrap-contact100">
-       
-            <span class="contact100-form-title">
-             <center> Méssage envoyé</center>
-            </span>
-            <div class="container">
-                <div class="alert alert-info">
-                     <div class="d-flex justify-content-center">
-                         </div>
-                         <div class="row">
-                            {% if messages %}
-                          {% for message in messages %}
-                                  <div class="alert {{ message.tags }} alert-dismissible" role="alert">
-                                      <button type="button" class="close" data-dismiss="alert" ><span aria-hidden="true">&times;</span></button>
-                                      <strong>{{message}}</strong> 
-                                  </div>
-                          {% endfor %}
-                      {% endif 	%}	
                           </div>
-                 </div>
+                  {% endfor %}
+              {% endif 	%}	
+                  </div>
+                    </div>
+                  
              </div>
-          
-           
-            
-     
+        
+      </div>
     </div>
+    <div class='row'>
+     
+      <div class='line-wh'></div>
+   
+    
+     </div>
 
-    <span class="contact100-more">
-         <a href="{% url 'site-home' %}"><h4 style="color: black;">EduvRoom</h4></a>  
-    </span>
+   
 </div>
 <script>
     window.setTimeout(function(){

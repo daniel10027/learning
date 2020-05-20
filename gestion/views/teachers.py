@@ -21,6 +21,7 @@ from django.core.mail import EmailMessage
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
+from django.http import HttpResponseRedirect
 
 
 ###############################################################
@@ -53,8 +54,8 @@ class TeacherSignUpView(CreateView):
                     )
         email.send()
        
-        login(self.request, user)
-        return redirect('login')
+        messages.success(self.request, f'Le compte Enseignant a été crée avec succes!')
+        return HttpResponseRedirect(self.request.path_info)
 
    
 ################################################################

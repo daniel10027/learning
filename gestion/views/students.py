@@ -17,6 +17,7 @@ from ..decorators import student_required
 from ..forms import StudentSignUpForm,StudentUpdateForm, StudentUserUpdate
 from ..models import Student, User
 from enseignement.models import Cours, UniteEnseignement, Ecue, RessourcePdf, RessourceVideo
+from django.http import HttpResponseRedirect
 
 
 class StudentSignUpView(CreateView):
@@ -45,9 +46,9 @@ class StudentSignUpView(CreateView):
                                 mail_subject, message, to=[to_email]
                     )
         email.send()
-        login(self.request, user)
         
-        return redirect('login')
+        messages.success(self.request, f'Le compte Etudiant a été crée avec succes!')
+        return HttpResponseRedirect(self.request.path_info)
 
 
 @method_decorator([login_required, student_required], name='dispatch')
