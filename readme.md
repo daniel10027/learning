@@ -5,8 +5,7 @@
 ![Django](https://img.shields.io/badge/Djanvo-v3.0.5-orange.svg)
 ![Dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg)
 [![License](https://img.shields.io/badge/license-MIB-blue.svg)](https://analyst123.herokuapp.com)
-![Contributors](https://img.shields.io/badge/contributors-Daniel10027+-blue.svg)
-![Buildstatus](https://img.shields.io/badge/build%20status-loading-orange.svg)
+![Contributors](https://img.shields.io/badge/contributors-@daniel10027-blue.svg)
 ![issues](https://img.shields.io/badge/issues-0%20open-brightgreen.svg)
 
 ## PRÉSENTATION
