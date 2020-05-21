@@ -1,0 +1,233 @@
+digraph L {
+
+node [shape=none]
+orientation =  scale;
+page        = "8.27,11.69"; // A4
+
+
+id_loacite[shape=underline]
+                    id_loacite -> 
+                    nom_localite
+
+
+id_type_etablissement[shape=underline]
+                    id_type_etablissement ->
+                    nom_type_etablissemet
+
+
+id_statut_etablissement[shape=underline]
+                    id_statut_etablissement ->
+                    nom_statut_etablissemet
+
+
+id_etablissement[shape=underline]
+                    id_etablissement->
+                    id_loacite,
+                    id_type_etablissement,
+                    id_statut_etablissement,
+                    adresse,
+                    email_etablissemnt,
+                    contact_etablissemnt,
+                    directeur
+
+id_dominanceufr[shape=underline]
+                    id_dominanceufr->
+                     nom_dominance
+
+id_Ufr[shape=underline]
+                    id_Ufr->
+                    nom_ufr,
+                    id_etablissement,
+                    id_dominanceufr,
+                    situation
+
+id_filiere[shape=underline]
+                    id_filiere->
+                    nom_filiere,
+                    id_Ufr
+
+id_specialite[shape=underline]
+                    id_specialite->
+                    nom_specialite,
+                    id_filiere
+
+
+id_niveau[shape=underline]
+                    id_niveau->
+                    nom_niveau
+
+id_semestre[shape=underline]
+                    id_semestre->
+                    nom_semestre
+
+id_typeue[shape=underline]
+                    id_typeue->
+                    nom_typeue
+
+id_uniteenseignement[shape=underline]
+                        id_uniteenseignement->
+                        id_typeue, 
+                        id_niveau,
+                        id_semestre,
+                        id_specialite,
+                        nom_ue,
+                        objectif_spue,
+                        objectif_gnue
+
+
+
+id_ecue[shape=underline]
+                        id_ecue->intitule_ecue,
+                        image_ecue,
+                        objectif_gn,
+                        objectif_sp,
+                        id_uniteenseignement,
+                        temps_cm,
+                        temps_td,
+                        temps_tp
+
+
+id_cours[shape=underline]
+                        id_cours->
+                        id_ecue, 
+                        image_cours,
+                        pre_requis,
+                        consigne
+
+id_ressourcepdf[shape=underline]
+                        id_ressourcepdf->
+                        id_cours,
+                        nom_ressource,
+                        fichier
+
+id_ressourcevideo[shape=underline]
+                        id_ressourcevideo->
+                        id_cours,
+                        nom_ressourcev,
+                        fichierv
+                        
+
+id_user[shape=underline]
+                    id_user->
+                    username,
+                    first_name,
+                    last_name,
+                    user_email,
+                    password,
+                    is_teacher,
+                    is_tutor,
+                    is_student
+    
+id_grade[shape=underline]
+                    id_grade->
+                    nom_grade
+        
+id_domaine[shape=underline]
+                    id_domaine->
+                    nom_domaine
+            
+        
+id_type_enseignant[shape=underline]
+                    id_type_enseignant->
+                    nom_type_ens
+
+id_enseignant[shape=underline]
+                id_enseignant->
+                id_user,
+                sexe_enseignant,
+                date_naissance_ens,
+                id_type_enseignant,
+                id_grade,
+                id_domaine,
+                matricule,
+                structures,
+                id_loacite,
+                piece_identite_ens,
+                photo_ens
+
+id_tuteur[shape=underline]
+            id_tuteur->
+            id_user,
+            sexe_tut,
+            structure,
+            date_naisance,
+            id_loacite,
+            contact_tut,
+            id_domaine,
+            piece_identite_tut,
+            photo_tut
+
+
+id_student[shape=underline]
+            id_student-> 
+            id_user,
+            id_etablissement, 
+            id_specialite,
+            id_loacite,
+            id_niveau,
+            sexe_st,
+            date_nassance,
+            contat,
+            piece_identite_st,
+            photo_st
+
+id_recrutement[shape=underline]
+            id_recrutement ->
+            intitule_rec,
+            objet,
+            ouverture,
+            fermeture,
+            cible,
+            methode_eval,
+            debut_pj,
+            fin_pj,
+            date_resultat
+
+id_dossier_recrutement[shape=underline]
+            id_dossier_recrutement ->
+            id_recrutement,
+            nom,
+            prenom,
+            sexe,
+            id_loacite,
+            email,
+            contact,
+            id_grade,
+            id_domaine,
+            photo,
+            piece_identite ,
+            lettre_motivation
+
+id_diplome[shape=underline]
+            id_diplome->
+            nom_diplome,
+            fichier_diplome,
+            id_dossier_recrutement
+        
+id_certificat[shape=underline]
+            id_certificat->
+            nom_certificat,
+            fichier_certificat,
+            id_dossier_recrutement
+
+id_jury[shape=underline]
+        id_jury ->
+        nom_jury,
+        id_recrutement
+
+id_resultat[shape=underline]
+            id_resultat->
+            id_dossier_recrutement,
+            id_enseignant,
+            critere1,
+            critere2,
+            critere3,
+            critere4,
+            critere5
+" "[shape=circle]
+id_recrutement -> " "[color=blue]
+id_dossier_recrutement ->" "[color=blue]
+" " -> moyenne_final[color=red]
+
+}
+
