@@ -116,3 +116,27 @@ Constituer les jurys de recrutement :
 - Pour un jury donné, l’application compile les résultats de tous les membres pour chaque
 candidat et génère la liste par ordre de mérite des candidats passés devant le jury ;
 ```
+_*Plan de rédaction du dossier d’analyse*_
+```js
+
+● Introduction
+● Étude préalable
+● Analyse et conception
+● Réalisation
+● Critiques et observations
+● Conclusion
+```
+_*Outils*_
+
+```js
+Toutes les applications logicielles qui permettent la réalisation une base de données.
+```
+_*Livrables*_
+
+```console
+Dans cet exercice, il vous ait demandé de rendre :
+```
+```js
+● La base de données développée
+● Le rapport d’activités qui a régi la production de l’application
+```
