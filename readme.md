@@ -1,4 +1,4 @@
-<p><img width=30% src="https://github.com/daniel10027/learning/blob/master/static/enseignement/img/core-img/logo.png"></p>
+<p align="center"><img width=30% src="https://github.com/daniel10027/learning/blob/master/static/enseignement/img/core-img/logo.png"></p>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ![Python](https://img.shields.io/badge/python-v3.7.6-blue.svg)
