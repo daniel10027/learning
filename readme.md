@@ -1,4 +1,4 @@
-<p align="center"><img width=30% src="https://github.com/daniel10027/learning/blob/master/static/enseignement/img/core-img/logo.png"></p>
+<p><img width=30% src="https://github.com/daniel10027/learning/blob/master/static/enseignement/img/core-img/logo.png"></p>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ![Python](https://img.shields.io/badge/python-v3.7.6-blue.svg)
@@ -17,7 +17,7 @@ EduVroom est mon projet de fin de cycle réalisé avec le framwork django.
 
 ```console
 De manière générale, le projet collectif tutoré (PCT) permet aux étudiants de licence 3 de
-réinvestir leurs connaissances acquises depuis le semestre 1 jusqu’au semestre 5 dans la
+réinvestir leurs connaissances acquises depuis le semestre 1 jusqu’au semestre 5 dans l
 réalisation d’un projet. Il développe en eux les compétence suivantes :
 ● Initiation à la gestion de projet en Informatique et Sciences du Numérique ;
 ● Travail collaboratif ;
@@ -142,7 +142,7 @@ Dans cet exercice, il vous ait demandé de rendre :
 ```
 ## RÉALISATION 
 
-*Le projet a été subdivisé en 5 Applications pour facilité la gestion de cette derniere :*
+*Le projet a été subdivisé en 5 Applications pour facilité sa gestion :*
 
 ```js
 
