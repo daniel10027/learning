@@ -4,22 +4,22 @@
 {%block content %}
 
 
-
- <!-- ##### Top Popular Courses Area Start ##### -->
  <div class="top-popular-courses-area mt-50 section-padding-100-70">
     <div class="container">
         <div class="text-center" style="background-color: lightgray;">
             <h1 style="color: rgb(8, 8, 8);">Je Candidate</h1>
           </div>
 </div>
-
+ </div>
 
     <section class="contact-area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="contact-content">
+                        
                         <div class="row">
+                            
                              <div class="col-lg-12">
                                     <div class="contact-form-area wow fadeInUp" data-wow-delay="500ms">
                                         <form action="" method="post" enctype="multipart/form-data" id="myform"> 
@@ -49,6 +49,7 @@
                                                 </div>
                                              
                                             </div>
+                                           
                                             <div class="row">
                                                 <div class="col-md">
                                                     <div class="form-group">  {{ form.grade |as_crispy_field }}</div>
@@ -72,82 +73,82 @@
                                                 </div>
                                              
                                             </div>
-                                            <div class="container">
-                                                        <h4>Diplomes</h4>
-                                                        <table class="table" id="t1">
-                                                        
-                                                
-                                                            {% for form in diplomes.forms %}
-                                                                {% if forloop.first %}
-                                                                    <thead>
-                                                                        <div class="row"> <tr>
-                                                                            {% for field in form.visible_fields %}
-                                                                               <div class="col-md"> <th>{{ field.label|capfirst }}</th></div>
-                                                                            {% endfor %}
-                                                                        </tr></div>
-                                                                   
-                                                                    </thead>
-                                                                {% endif %}
-                                                                {{ form.id }}
-                                                                <tbody>
-                                                                <tr class="{% cycle row1 row2 %} formset_row1">
-                                                                    {% for field in form.visible_fields %}
-                                                                        <td>
-                                                                            {# Include the hidden fields in the form #}
-                                                                            {% if forloop.first %}
-                                                                                {% for hidden in form.hidden_fields %}
-                                                                                    {{ hidden }}
-                                                                                {% endfor %}
-                                                                            {% endif %}
-                                                                            {{ field.errors.as_ul }}
-                                                                          <div class="row">
-                                                                              <div class="col-md"> {{ field }}</div>
-                                                                          </div> 
-                                                                        </td>
-                                                                    {% endfor %}
-                                                                </tr>
-                                                        
-                                                            {% endfor %}
-                                                        </tbody>
-                                                        </table>
-                                                                    
-                                                        {{ diplomes.management_form }}
-                                                        <h4>Certificats</h4>
-                                                        <table class="table" id="t2">
-                                                        
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <h4>Diplomes</h4>
+                                                  <table class="table table-bordered" id="t1" width="100%" cellspacing="0"  border="1">
+                                                    {% for form in diplomes.forms %}
+                                                    {% if forloop.first %}
+                                                    <thead>
+                                                      <tr>
+                                                        {% for field in form.visible_fields %}
+                                                      
+                                                        <th>{{ field.label|capfirst }}</th>
+                                                        {% endfor %}
+                                                      </tr>
+                                                    </thead>
+                                                    {% endif %}
+                                                    {{ form.id }}
+                                                   
+                                                    <tbody>
+                                                      <tr class="{% cycle row1 row2 %} formset_row1">
+                                                        {% for field in form.visible_fields %}
+                                                        <td> {# Include the hidden fields in the form #}
+                                                            {% if forloop.first %}
+                                                                {% for hidden in form.hidden_fields %}
+                                                                    {{ hidden }}
+                                                                {% endfor %}
+                                                            {% endif %}
+                                                            {{ field.errors.as_ul }}
+                                                            {{ field }}
+                                                        </td>
+                                                        {% endfor %}
+                                                       
+                                                      </tr>
+                                                      {% endfor %}
+                                                    </tbody>
+                                                  </table>
+                                                </div>
+                                                {{ diplomes.management_form }}
+                                                <div class="table-responsive">
+                                                    <h4>Certificats</h4>
+                                                  <table class="table table-bordered" id="t1" width="100%" cellspacing="0"  border="1">
+                                                    {% for form in certificats.forms %}
+                                                    {% if forloop.first %}
+                                                    <thead>
+                                                      <tr>
+                                                        {% for field in form.visible_fields %}
+                                                      
+                                                        <th>{{ field.label|capfirst }}</th>
+                                                        {% endfor %}
+                                                      </tr>
+                                                    </thead>
+                                                    {% endif %}
+                                                    {{ form.id }}
+                                                   
+                                                    <tbody>
+                                                      <tr class="{% cycle row1 row2 %} formset_row2">
+                                                        {% for field in form.visible_fields %}
+                                                        <td> {# Include the hidden fields in the form #}
+                                                            {% if forloop.first %}
+                                                                {% for hidden in form.hidden_fields %}
+                                                                    {{ hidden }}
+                                                                {% endfor %}
+                                                            {% endif %}
+                                                            {{ field.errors.as_ul }}
+                                                            {{ field }}
+                                                        </td>
+                                                        {% endfor %}
+                                                       
+                                                      </tr>
+                                                      {% endfor %}
+                                                    </tbody>
+                                                  </table>
+                                                </div>
+                                                {{ certificats.management_form }}
+                                              </div>
                                             
-                                                            {% for form in certificats.forms %}
-                                                                {% if forloop.first %}
-                                                                    <thead>
-                                                                  <div class="row">
-                                                                    <tr>
-                                                                        {% for field in form.visible_fields %}
-                                                                            <th>{{ field.label|capfirst }}</th>
-                                                                        {% endfor %}
-                                                                    </tr>
-                                                                  </div> 
-                                                                    </thead>
-                                                                {% endif %}
-                                                            {{ form.id }}
-                                                                <tr class="{% cycle row1 row2 %} formset_row2">
-                                                                    {% for field in form.visible_fields %}
-                                                                        <td>
-                                                                            {# Include the hidden fields in the form #}
-                                                                            {% if forloop.first %}
-                                                                                {% for hidden in form.hidden_fields %}
-                                                                                    {{ hidden }}
-                                                                                {% endfor %}
-                                                                            {% endif %}
-                                                                            {{ field.errors.as_ul }}
-                                                                            {{ field }}
-                                                                        </td>
-                                                                    {% endfor %}
-                                                                </tr>
-                                                            {% endfor %}
-                                                        </table>
-                                                    
-                                            {{ certificats.management_form }}
-                                        
+                                           
                                          
                                                 <br>
                                                <center>

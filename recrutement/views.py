@@ -13,6 +13,11 @@ from .forms import DiplomeFormSet, CertificatFormSet, DossierRecrutementForm
 from datetime import datetime
 from django.views.generic.edit import FormMixin
 
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.http import HttpResponseRedirect
+from django.core.mail import EmailMessage
+from django.contrib.sites.shortcuts import get_current_site
 
 #################################################################################
 #################################################################################
@@ -45,10 +50,8 @@ class DossierRecrutementCreate(CreateView):
 
 class DossierRecrutementCreateView(CreateView):
     model = DossierRecrutement
-    fields = ["nom","prenom", "date_de_naissance",
-                "sexe","localite","email","grade",
-                "domaine","contact","photo","piece_indentite","lettre_motivation"]
-    #template_name = 'recrutement/dossierrecrutement_form.html'
+    fields = ["nom","prenom", "date_de_naissance","sexe","localite","email","grade","domaine","contact","photo","piece_indentite","lettre_motivation"]
+    
     success_url = reverse_lazy('recrutement-home')
     def get_context_data(self, **kwargs):
         data = super(DossierRecrutementCreateView, self).get_context_data(**kwargs)
@@ -75,7 +78,25 @@ class DossierRecrutementCreateView(CreateView):
         if certificats.is_valid():
                 certificats.instance = self.object
                 certificats.save()
-        messages.success(self.request, f'Votre Dossier a été enrégistré avec succes  .')
+        current_site = get_current_site(self.request)
+        mail_subject = 'Inscription au recrutement EduvRoom.'
+        nom = form.cleaned_data.get('nom')
+        prenom = form.cleaned_data.get('prenom')
+        to_email = form.cleaned_data.get('email')
+        message = render_to_string("recru.html"
+        , {
+            'nom':nom,
+            'prenom':prenom,
+            'email':to_email
+            
+                        
+        })
+        
+        email = EmailMessage(
+                                mail_subject, message, to=[to_email]
+                    )
+        email.send()
+        messages.success(self.request, f'Votre Dossier a été enrégistré avec succes , un message de confirmation vous a été envoyé par Email .')
         return super(DossierRecrutementCreateView, self).form_valid(form)
 #####################################################################################
 #####################################################################################

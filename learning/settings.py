@@ -68,7 +68,7 @@ INSTALLED_APPS += (
     'explorer',
     'mathfilters',
     'debug_toolbar',
-    
+    'bootstrap_datepicker',
    
 )
 EXPLORER_CONNECTIONS = {'Default':'default'}
