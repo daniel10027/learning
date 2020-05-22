@@ -141,3 +141,79 @@ Dans cet exercice, il vous ait demandé de rendre :
 ● Le rapport d’activités qui a régi la production de l’application
 ```
 ## RÉALISATION 
+
+*Le projet a été subdivisé en 5 Applications pour facilité la gestion de cette derniere :*
+
+```js
+
+● CONFIGURATION(Qui permet de gérer le front end du site, les headers, images, logo, couleur et autre de maniere dynamic)
+● ENSEIGNEMENT(Qui permet de gérer tout ce qui concerne les differents enseignement dans chaque etablissement)
+● GESTION(Qui permet de gérer Etudiants, Enseigants et Tuteur)
+● RECRUTEMENT (Qui permet de recruter les Enseignants et les Tuteurs)
+● EXPLORER(Qui permet a l'administrateur d'effectuer des requetes Sql depuis l'application)
+
+```
+## FONCTIONNALITÉS
+
+_*Administrateur*_
+
+*L'administrateur a la possibilité de :*
+
+```js
+● CREER DES ETABLISSEMENTS
+● CREER DES UFR (Départements)
+● CREER DES FILIÈRES POUR CHAQUES UFR 
+● CREER DES SPÉCIALITES POUR CHAQUE FILIÈRE
+● CRÉER DES UNITÉS D'ENSEIGNEMENT POUR CHAQUE SPECIALITE(Niveau, Semestre,....)
+● CRÉER DES COURS POUR CHAQUE UNITÉ D'ENSEIGNEMENT(+ Ressources Pdf, Ressources Video, ....)
+
+● GERER TOUT LE CONTENU VISUEL DU SITE DEPUIS LE HEADER AU FOOTER DE MANIERE DYNAMIC
+(plus besion de maitre le site off line pour changer  une image ou un text...)
+
+● LANCER DES RECRUTEMENTS
+● CONSULTER LES STATISTIQUES DE CHAQUES RECRUTEMENT(Nombre de dossier , statistique par sexe, age, localite...)
+● CREER DES JURY CHARGÉ DES DIFFERENTS RECRUTEMENTS
+● CONSULTER LES RESULTATS FINALS DE CHAQUE RECRUTEMENT(...,....,..., Imprimer chaque resultat)
+
+● GERER TOUS LES UTILISATEUR DE L'APPLICATION
+
+```
+_*Enseignant*_
+
+*L'enseignant a la possibilité de :*
+
+```js
+● CONSULTER ET MODIFIER SON PROFILE
+● CONSULTER TOUS LES COURS QU'IL DISPENSE
+● CONTACTER L'ADMINISTRATION DEPUIS LE SITE
+● REINITIALISER SON MOT DE PASSE 
+- Si l'enseignant a été choisi comme jury dans un recrutement il peut :
+● CONSULTER CHAQUE DOSSIER ATTRIBUÉ A SON JURY
+● EVALUER CHAQUE DOSSIER DE CANDIDATURE LE JOUR DE L'ENTRETIENT
+
+```
+_*Tuteur*_
+
+*Le tuteur a la possibilité de :*
+
+```js
+● CONSULTER ET MODIFIER SON PROFILE
+● CONSULTER TOUS LES GROUPE A SA CHARGE
+● CONTACTER L'ADMINISTRATION DEPUIS LE SITE
+● REINITIALISER SON MOT DE PASSE 
+```
+
+
+_*Etudiant*_
+
+*L'etudiant a la possibilité de :*
+
+```js
+● CONSULTER ET MODIFIER SON PROFILE
+● CONSULTER TOUTES LES ECUE DE SA SPECIALITÉ
+● CONSULTER TOUS LES COURS DE SES ECUE
+● CONSULTER LES DETAILS DE CHAQUES COURS
+● TELECHARGER LES RESSOURCES DE CHAQUES COURS (Pdf, Video, ....)
+● CONTACTER L'ADMINISTRATION DEPUIS LE SITE
+● REINITIALISER SON MOT DE PASSE 
+```
