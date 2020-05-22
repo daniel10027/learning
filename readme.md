@@ -11,8 +11,9 @@
 ## PRÉSENTATION
 
 ```console
-EduVroom est mon projet de fin de cycle réalisé avec le framwork django.
+EduVroom est mon projet de fin de cycle réalisé avec le framework Django.
 ```
+
 ### OBJECTIF DU PROJET
 
 ```console
