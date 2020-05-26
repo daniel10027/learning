@@ -8,16 +8,16 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, ListView, UpdateView, View, DetailView
 from django.template.loader import get_template, render_to_string
-from django.core.mail import EmailMessage
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
-
+from django.http import HttpResponseRedirect
+from django.core.mail import EmailMessage
 from ..decorators import student_required
 from ..forms import StudentSignUpForm,StudentUpdateForm, StudentUserUpdate
 from ..models import Student, User
 from enseignement.models import Cours, UniteEnseignement, Ecue, RessourcePdf, RessourceVideo
-from django.http import HttpResponseRedirect
+
 
 
 class StudentSignUpView(CreateView):

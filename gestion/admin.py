@@ -25,7 +25,7 @@ class TypeA(admin.ModelAdmin):
         return {}
     
 class Ens(admin.ModelAdmin):
-    list_display = ('user','matricule','type','structure','grade')
+    list_display = ('user','matricule','type','structure','grade')  
 admin.site.register(Student)
 admin.site.register(Enseignant, Ens)
 admin.site.register(Tuteur)
