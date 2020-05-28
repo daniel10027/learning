@@ -161,7 +161,8 @@ couleur et autre de maniere dynamic)
 ```js
 ● CONFIGURATION(Qui permet de gérer le front end du site, les headers, images, logo,
 couleur et autre de maniere dynamic)
-● EXPLORER(Qui permet a l'administrateur d'effectuer des requetes Sql depuis l'application, de les exporter aux formats sql , pdf, json, csv)
+● EXPLORER(Qui permet a l'administrateur d'effectuer des requetes Sql depuis l'application,
+de les exporter aux formats sql , pdf, json, csv)
 ```
 ## FONCTIONNALITÉS
 
