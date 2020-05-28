@@ -143,18 +143,25 @@ Dans cet exercice, il vous ait demandé de rendre :
 ```
 ## RÉALISATION 
 
-*Le projet a été subdivisé en 5 Applications pour facilité sa gestion :*
+*Le projet a été subdivisé en 3 Applications pour facilité sa gestion :*
 
 ```js
-
-● CONFIGURATION(Qui permet de gérer le front end du site, les headers, images, logo,
-couleur et autre de maniere dynamic)
 ● ENSEIGNEMENT(Qui permet de gérer tout ce qui concerne les differents enseignement 
 dans chaque etablissement)
 ● GESTION(Qui permet de gérer Etudiants, Enseigants et Tuteur)
 ● RECRUTEMENT (Qui permet de recruter les Enseignants et les Tuteurs)
+● CONFIGURATION(Qui permet de gérer le front end du site, les headers, images, logo,
+couleur et autre de maniere dynamic)
 ● EXPLORER(Qui permet a l'administrateur d'effectuer des requetes Sql depuis l'application)
+```
 
+
+*Puis deux autre application on été  ajoutée :*
+
+```js
+● CONFIGURATION(Qui permet de gérer le front end du site, les headers, images, logo,
+couleur et autre de maniere dynamic)
+● EXPLORER(Qui permet a l'administrateur d'effectuer des requetes Sql depuis l'application, de les exporter aux formats sql , pdf, json, csv)
 ```
 ## FONCTIONNALITÉS
 
