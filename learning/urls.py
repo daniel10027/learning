@@ -16,6 +16,7 @@ urlpatterns = [
     path('', include('enseignement.urls')),
 
     path('explorer/', include('explorer.urls'), name='explorer'),
+ 
     path('admin/', admin.site.urls, name='admin'),
 
     path('recrutement/', include('recrutement.urls')),

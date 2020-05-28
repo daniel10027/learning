@@ -66,11 +66,12 @@ INSTALLED_APPS += (
     'schema_graph',
     'dynamic_formsets',
     'explorer',
-    'mathfilters',
     'debug_toolbar',
-    'bootstrap_datepicker',
+  
    
 )
+
+
 EXPLORER_CONNECTIONS = {'Default':'default'}
 EXPLORER_DEFAULT_CONNECTION = 'default'
 X_FRAME_OPTIONS='SAMEORIGIN' 
