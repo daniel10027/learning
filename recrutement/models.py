@@ -4,7 +4,6 @@ from gestion.models import Grade, Domaine, Enseignant
 from tinymce import HTMLField
 from PIL import Image
 from django.db.models.query import QuerySet
-from django_group_by import GroupByMixin
 from django.urls import reverse
 # Create your models here.
 from gestion.validators import validate_file_extension_for_image,validate_file_extension_for_document
@@ -193,13 +192,11 @@ class Jury(models.Model):
 
 
 #######################################################################################################################################################
-class ResultatSet(QuerySet, GroupByMixin):
-    pass
+
 #######################################################################################################################################################
 
 class Resultat(models.Model):
     """Model definition for Resultat."""
-    objects = ResultatSet.as_manager()
     # TODO: Define fields here
     dossier = models.ForeignKey(DossierRecrutement, on_delete=models.CASCADE,)
     juge = models.ForeignKey(Enseignant, on_delete=models.CASCADE)

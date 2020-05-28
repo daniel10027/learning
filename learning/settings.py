@@ -55,15 +55,15 @@ GRAPH_MODELS = {
 
 INSTALLED_APPS += (
     
-    'jquery',
+  #  'jquery',
     'gestion',
     'enseignement',
     'recrutement',
     'configuration',
     'tinymce',
     'crispy_forms',
-    'bootstrap4',
-    'schema_graph',
+   # 'bootstrap4',
+   # 'schema_graph',
     'dynamic_formsets',
     'explorer',
     'debug_toolbar',
