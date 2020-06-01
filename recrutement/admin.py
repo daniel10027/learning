@@ -5,6 +5,8 @@ from django.db import models
 from django.forms import CheckboxSelectMultiple
 from .models import Recrutement, DossierRecrutement, Certificat, Diplome, Jury, Resultat, MyModelAdmin
 from configuration.admin import Pass_false,Pass_true
+from import_export.admin import ImportExportModelAdmin
+from import_export import resources
 # Register your models here.
 
 #######################################################################################################################################################
@@ -23,10 +25,14 @@ class CertificatInline(admin.TabularInline):
 class DiplomeInline(admin.TabularInline):
     model = Diplome
     extra = 0
-
+class DocRessources(resources.ModelResource):
+    class Meta:
+        model = DossierRecrutement
+        fields = ('id','recrutement','nom','prenom','localite','email','_diplome','_certificat','contact')
 @admin.register(DossierRecrutement)
-class DossierAdmin(admin.ModelAdmin):
+class DossierAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     inlines = [CertificatInline, DiplomeInline]
+    resource_class = DocRessources
     search_fields = ['nom']
     list_display= ('recrutement','nom','prenom','localite','email','_diplome','_certificat','contact','status')
     def _diplome(self,obj):

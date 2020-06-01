@@ -32,49 +32,32 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    
+    #################### ADMIN INTERFACE PACKAGES ################
     'admin_interface',
     'colorfield',
+    ##############################################################
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
- 
-   
-]
+ ]
 
-if DEBUG:
-    INSTALLED_APPS += ['django_extensions']
-
-GRAPH_MODELS = {
-  'all_applications': True,
-  'group_models': True,
-}
 
 INSTALLED_APPS += (
     
-  #  'jquery',
     'gestion',
     'enseignement',
     'recrutement',
     'configuration',
     'tinymce',
     'crispy_forms',
-   # 'bootstrap4',
-   # 'schema_graph',
     'dynamic_formsets',
     'explorer',
     'debug_toolbar',
-  
-   
+     'import_export',
 )
-
-
-EXPLORER_CONNECTIONS = {'Default':'default'}
-EXPLORER_DEFAULT_CONNECTION = 'default'
-X_FRAME_OPTIONS='SAMEORIGIN' 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -110,36 +93,11 @@ TEMPLATES = [
 WSGI_APPLICATION = 'learning.wsgi.application'
 
 
+
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-"""
-#PhpMysql
-        DATABASES = {
-                        'default': {
-                'ENGINE': 'django.db.backends.mysql',
-                'NAME': 'learning',
-                'USER': 'root',
-                'PASSWORD': '',
-                'HOST': '127.0.0.1',
-                'PORT': '3306',
-        'OPTIONS': {
-                        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-                        }
-                   }
-             }
 
-
-#Sqlite
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
-"""
 #Postgres
 DATABASES = {
 
@@ -160,7 +118,6 @@ DATABASES = {
     }
 
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -204,28 +161,18 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-#################AUTHENTIFICATION#################
-
+##################################################
+# SETTINGS +
+##################################################
+################# AUTHENTIFICATION ################
 AUTH_USER_MODEL = 'gestion.User'
-
-##################################################
+################# LOGIN AND LOGOUT ################
 LOGIN_URL = 'login'
-
 LOGOUT_URL = 'logout'
-
 LOGIN_REDIRECT_URL = 'site-home'
-
 LOGOUT_REDIRECT_URL = 'site-home'
-#################################################
-
-# Messages built-in framework
-
+################# MESSAGE #########################
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
-#################################################
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
-##################################################
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
     messages.INFO: 'alert-info',
@@ -233,28 +180,23 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
-
-##################################################push
-
-
+################ CRISPY TEMPLATE PACK ############
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+BOOTSTRAP4 = {
+    'include_jquery': True,
+}
+################ EMAIL CONFIGURATION #############
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'danielguedegbe10027@gmail.com'
 EMAIL_HOST_PASSWORD = 'rdpbzzjycityfvpw'
 EMAIL_PORT = 587
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
-BOOTSTRAP4 = {
-    'include_jquery': True,
-}
-#############
-INTERNAL_IPS = [
-   
-    '127.0.0.1',
-   
+############### DEBUG TOOLBAR ####################
+INTERNAL_IPS = [   
+    '127.0.0.1', 
 ]
-
 DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.versions.VersionsPanel',
     'debug_toolbar.panels.timer.TimerPanel',
@@ -270,3 +212,47 @@ DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.redirects.RedirectsPanel',
     'debug_toolbar.panels.profiling.ProfilingPanel',
 ]
+############## GRAPH MODELS ######################
+if DEBUG:
+    INSTALLED_APPS += ['django_extensions']
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
+############# EXPLORER SETTINGS ##################
+EXPLORER_CONNECTIONS = {'Default':'default'}                
+EXPLORER_DEFAULT_CONNECTION = 'default'
+##################################################
+X_FRAME_OPTIONS='SAMEORIGIN' 
+##################################################
+
+########  DATABASE OTHER CONFIGURATION ###########
+#PhpMysql
+"""
+DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.mysql',
+                'NAME': 'name',
+                'USER': 'user',
+                'PASSWORD': 'password',
+                'HOST': 'host',
+                'PORT': 'port',
+                'OPTIONS': {
+                                'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+                                }
+                        }
+            }
+"""
+#Sqlite
+"""
+DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+            }
+        }
+
+"""
+#ORACLE
+
+

@@ -85,17 +85,22 @@ class StatutEtablissement(models.Model):
 
     # TODO: Define custom methods here
 ##########################################################
+
+##########################################################
+
 class Etablissement(models.Model):
     """Model definition for Etablissement."""
 
     # TODO: Define fields here
-    nom  = models.CharField( max_length=50, help_text="Nom de l'etablissement")
+    nom  = models.CharField( max_length=100, help_text="Nom de l'etablissement")
+    sigle = models.CharField( max_length=10, help_text="Exemple: UFHB")
     localite = models.ForeignKey(Localite,on_delete=models.CASCADE)
     adresse  = models.CharField(max_length=50)
     type_etablissement = models.ForeignKey(TypeEtablissement, on_delete=models.CASCADE)
     statut_etablissement = models.ForeignKey(StatutEtablissement, on_delete=models.CASCADE)
     directeur_general =  models.CharField(max_length=50, help_text="nom et prenom du Directeur General")
     email = models.EmailField(blank=True)
+    site = models.CharField(max_length=100)
     contact = models.CharField(max_length=8)
     status      = models.BooleanField(default=True)
     created     = models.DateTimeField(auto_now_add=True)
@@ -150,10 +155,12 @@ class Ufr(models.Model):
 
     # TODO: Define fields here
 
-    nom         = models.CharField( max_length=50)
+    nom         = models.CharField( max_length=100)
     dominace = models.ForeignKey(DominaceUfr, on_delete=models.CASCADE)
+    sigle = models.CharField( max_length=50)
     etablissement = models.ForeignKey(Etablissement, on_delete=models.CASCADE , related_name="etablissement_ufr")
-    situation = HTMLField('situation Geographique')
+    doyen =  models.CharField(max_length=50, help_text="nom et prenom du doyen de l'ufr")
+   # situation = HTMLField('situation Geographique')
     status      = models.BooleanField(default=True)
     created     = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
@@ -162,7 +169,7 @@ class Ufr(models.Model):
         """Meta definition for Ufr."""
 
         verbose_name = 'Ufr'
-        verbose_name_plural = '         Ufrs'
+        verbose_name_plural = '         Ufr'
 
     def __str__(self):
         """Unicode representation of Ufr."""
@@ -181,7 +188,7 @@ class Filiere(models.Model):
     
         # TODO: Define fields here
         nom         = models.CharField( max_length=50)
-        departement = models.ForeignKey(Ufr, on_delete=models.CASCADE)
+        departement = models.ForeignKey(Ufr, on_delete=models.CASCADE,related_name="ufr_filiere")
         status      = models.BooleanField(default=True)
         created     = models.DateTimeField(auto_now_add=True)
         date_update = models.DateTimeField(auto_now=True)

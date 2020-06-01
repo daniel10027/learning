@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 from configuration.admin import Pass_true, Pass_false
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin
 from .models import (Localite,
                      TypeEtablissement,
                      StatutEtablissement,
@@ -46,24 +48,54 @@ class CoursAdmin(admin.ModelAdmin):
     def _video(self, obj):
         return obj.ressourcevideo.all().count()
 #################################################################
+
+class EtabRessources(resources.ModelResource):
+    class Meta:
+        model = Etablissement
+        fields = ('id','nom','sigle','localite','adresse','type_etablissement','statut_etablissement','_ufr','directeur_general','status')
+   
 class UfrInline(admin.TabularInline):
     model = Ufr
     extra = 0
 @admin.register(Etablissement)
-class EtabAdmin(admin.ModelAdmin):
+class EtabAdmin(ImportExportModelAdmin,admin.ModelAdmin):
+    resource_class = EtabRessources
     search_fields = ['nom']
     inlines = [UfrInline]
     actions = [Pass_true, Pass_false]
-    list_display= ('nom','localite','adresse','type_etablissement','statut_etablissement','_ufr','directeur_general','status')
+    list_display= ('nom','sigle','localite','adresse','type_etablissement','statut_etablissement','_ufr','directeur_general','status')
     def _ufr(self, obj):
         return obj.etablissement_ufr.all().count()
+##################################################################
+class UfrRessources(resources.ModelResource):
+    class Meta:
+        model = Ufr
+        fields = ('id','nom','dominace','sigle','etablissement','_filiere')
+   
+class FiliereInline(admin.TabularInline):
+    model = Filiere
+    extra = 0
+@admin.register(Ufr)
+class UfreAdmin(ImportExportModelAdmin,admin.ModelAdmin):
+    search_fields = ['nom']
+    resource_class = UfrRessources
+    inlines = [FiliereInline]
+    actions = [Pass_true, Pass_false]
+    list_display= ('nom','dominace','sigle','etablissement','_filiere')
+    def _filiere(self, obj):
+       return obj.ufr_filiere.all().count()
 #################################################################
+class filiereRessources(resources.ModelResource):
+    class Meta:
+        model = Ufr
+        fields = ('id','nom','departement','_specialite','status','created','date_update')
 class SpecialiteInline(admin.TabularInline):
     model = Specialite
     extra = 0
 @admin.register(Filiere)
-class FiliereAdmin(admin.ModelAdmin):
+class FiliereAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     inlines = [SpecialiteInline]
+    resource_class = filiereRessources
     search_fields = ['nom']
     list_display= ('nom','departement','_specialite','status','created','date_update')
     actions = [Pass_true, Pass_false]
@@ -143,12 +175,7 @@ class DominanceAdmin(admin.ModelAdmin):
         """
         return {}
 
-class UfrAdmin(admin.ModelAdmin):
-    def get_model_perms(self, request):
-        """
-        Return empty perms dict thus hiding the model from admin index.
-        """
-        return {}
+
 
 
 class SpecialiteAdmin(admin.ModelAdmin):
@@ -163,7 +190,6 @@ admin.site.register(TypeEtablissement, TypeEtabAdmin)
 admin.site.register(StatutEtablissement, StatutEtabAdmin)
 
 admin.site.register(DominaceUfr, DominanceAdmin)
-admin.site.register(Ufr, UfrAdmin)
 
 admin.site.register(Specialite, SpecialiteAdmin)
 admin.site.register(Niveau, NiveauAdmin)

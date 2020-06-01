@@ -14,7 +14,7 @@ urlpatterns = [
 
     path('', include('enseignement.urls')),
 
-    path('explorer/', include('explorer.urls'), name='explorer'),
+    path('explorer/', include('explorer.urls'), name='browser'),
  
     path('admin/', admin.site.urls, name='admin'),
 
