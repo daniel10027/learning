@@ -66,6 +66,7 @@ class EtabAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     list_display= ('nom','sigle','localite','adresse','type_etablissement','statut_etablissement','_ufr','directeur_general','status')
     def _ufr(self, obj):
         return obj.etablissement_ufr.all().count()
+    
 ##################################################################
 class UfrRessources(resources.ModelResource):
     class Meta:

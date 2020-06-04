@@ -25,6 +25,104 @@
     }, 2000);
 </script>
 <style>
+    * {box-sizing: border-box;}
+
+/* Style the navbar */
+.topnav {
+  overflow: hidden;
+  background-color: #e9e9e9;
+}
+
+/* Navbar links */
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Navbar links on mouse-over */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Active/current link */
+.topnav a.active {
+  background-color:  #5bc9d3;
+  color: white;
+}
+
+/* Style the input container */
+.topnav .login-container {
+  float: right;
+}
+
+/* Style the input field inside the navbar */
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+  width: 150px; /* adjust as needed (as long as it doesn't break the topnav) */
+}
+
+.topnav input[type=password] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+  width: 150px; /* adjust as needed (as long as it doesn't break the topnav) */
+}
+/* Style the button inside the input container */
+.topnav .login-container button {
+  float: right;
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #5bc9d3;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+/* Add responsiveness - On small screens, display the navbar vertically instead of horizontally */
+@media screen and (max-width: 600px) {
+  .topnav .login-container {
+    float: none;
+  }
+  .topnav a, .topnav input[type=text], .topnav .login-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1p
+    x solid  #5bc9d3;
+  }
+  .topnav a, .topnav input[type=password], .topnav .login-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=password] {
+    border: 1p
+    x solid  #5bc9d3;
+  }
+}
+</style>
+<style>
 
 .chart-pie {
   position: relative;
@@ -54,35 +152,75 @@
 
 </head>
 
-
-<body oncontextmenu="return false;">
+<!--
+    ##############################
+    ##############################  ACTIVE AND DESACTIVE INSPECT HIER
+    ##############################
+    
+-->
+<body oncontextmenu="return true;">
    
     <div id="preloader">
-        <i class="circle-preloader"></i>
+        
+        <i class="circle-preloader"><img src=" {% static 'enseignement/img/core-img/logo.png' %}" alt="" height="200" width="200"></i>
     </div>
 
    
     <header class="header-area">
+        
+        {% if user.is_authenticated %}
 
+        {% else %}
+        <div class="login-content">
+                               
+                                    
+            <div class="topnav">
+                <a type="hidden" class="active" href="">EduVRoom</i></a>
+                
+                <div class="login-container">
+                <form method="post"  action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md">
+                    <input type="text" id="id_username"  name="username" placeholder="Adresse electronique " title='Adresse ' >
+                    <input type="password"   id="id_password"  name="password" title='Mot de passe' placeholder="Password" > 
+                    <button  type="submit">Connexion</button>
+                </div>
+               
+            </div>
+</form>
+                </div>
+              </div>
+                                        
+          
+          </form>
+       
+    </div>
+        {% endif %}
+            
+       
        
         <div class="top-header">
+          
             <div class="container h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100">
                         <div class="header-content h-100 d-flex align-items-center justify-content-between">
+                         {% if user.is_authenticated %}
                             <div class="academy-logo">
-                         <a href="{% url 'site-home' %}"><img src=" {% static 'enseignement/img/core-img/logo.png' %}" alt="" height="200" width="200"></a>
-                            </div>
-                     {% if user.is_authenticated %}
-                            <div class="login-content">
-                                <a href="{% url 'logout' %}">Deconnexion</a>
-                            </div>
-                     {% else %}
-                            <div class="login-content">
-                                <a href="{% url 'login' %}">Connexion</a>
-                            </div>
-                          
-                     {% endif %}
+                                <a href="{% url 'site-home' %}"><img src=" {% static 'enseignement/img/core-img/logo.png' %}" alt="" height="200" width="200"></a>
+                                   </div>
+                                   {% endif %}
+                            {% if user.is_authenticated %}
+                                   <div class="login-content">
+                                       <a href="{% url 'logout' %}">Deconnexion</a>
+                                   </div>
+                            {% else %}
+                                   <div class="login-content">
+                                       <a href="{% url 'login' %}">Connexion</a>
+                                   </div>
+                                 
+                            {% endif %}
                         </div>
                     </div>
                 </div>

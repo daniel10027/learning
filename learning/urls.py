@@ -24,7 +24,7 @@ urlpatterns = [
     path('accounts/signup/student/', students.StudentSignUpView.as_view(), name='student_signup'),
     path('accounts/signup/teacher/', teachers.TeacherSignUpView .as_view(), name='teacher_signup'),
     path('accounts/signup/tutor/',     tutors.TutorSignUpView.as_view(), name='tutor_signup'),
-    path('accounts/login/', auth_views.LoginView.as_view(template_name = 'registration/login.html'), name="login"),
+    path('accounts/login/', auth_views.LoginView.as_view(template_name = 'enseignement/index.html'), name="login"),
     path('logout/', auth_views.LogoutView.as_view(template_name = 'enseignement/index.html'), name="logout"),
     path('password-reset/',
                          auth_views.PasswordResetView.as_view(template_name = 'gestion/password_reset.html'),

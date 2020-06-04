@@ -10,7 +10,7 @@ from django.views.generic import CreateView, ListView, UpdateView, DetailView
 from ..decorators import teacher_required
 from ..forms import TeacherSignUpForm, ResultatForm, TeacherUpdateForm, TeacherUserUpdate
 from ..models import Enseignant, User
-from recrutement.models import DossierRecrutement, Resultat, Jury, Diplome, Certificat, Recrutement
+from recrutement.models import DossierRecrutement, Resultat, Jury, Diplome, Certificat, Recrutement, Critere
 from django.db.models import Avg, query
 from django.db import connection
 import itertools
@@ -110,6 +110,7 @@ class DossierDetailView(DetailView):
         context['diplomes']    = Diplome.objects.all()
         context['certificats'] = Certificat.objects.all()
         context['forms'] = ResultatForm()
+        context['criteres'] = Critere.objects.all()
         return context
     
 ####################################################################

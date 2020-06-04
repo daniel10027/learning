@@ -57,9 +57,22 @@
                           <h6 class="m-0 font-weight-bold text-primary">Email :   {{ object.email }}</h6>
                           <hr>
                           <h6 class="m-0 font-weight-bold text-primary">Contact  :   (+225) {{ object.contact }}</h6>
+                          {% for rec in criteres  %}
+                          
+                          {% if rec.recrutement.id == object.recrutement.id %}
+                            
+                        
+                            
+                          <h1>{{ rec.nom }}</h1>
+                          {% endif %}
+                            
+                          {% endfor %}
+
                         </div>
                   
                     
+                   
+                      
                     
                   </div>
                 </div>
@@ -152,6 +165,34 @@
                      </div>
                    </div>
                 
+                   <div class="row">
+                    <!-- Pie Chart -->
+                    <div class="col-lg-12">
+                       <div class="card shadow mb-4">
+                         <!-- Card Header - Dropdown -->
+                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                           <h6 class="m-0 font-weight-bold text-primary">CRITÈRES DE NOTATION </h6>
+                        
+                         </div>
+                      
+                         <div class="card-body">
+                          {% for rec in criteres %}
+                        
+                          {% if rec.recrutement.id == object.recrutement.id %}
+                            <div class="row">
+                              <li>{{ rec.nom |lower|capfirst }}</li>
+                             </div>
+                         
+                          {% endif %}
+                         
+                        {% endfor %}
+                        
+                           </div>
+                         
+                         </div>
+                       </div>
+                     </div>
+                  
            
                     
                        <div class="card shadow mb-4">
@@ -167,7 +208,13 @@
                                 {% csrf_token %}
                                
                                 <div class="u_from">
-                                  <div class="row">
+                                 
+                                  
+                                   
+                          
+                       
+                            
+                              <div class="row">
                                       <div class="col-md">
                                           <div class="form-group">  {{ forms.critere1 |as_crispy_field }}</div>
                                       </div>
@@ -192,6 +239,7 @@
                                  
                                     </div>
                                 </div>
+                               
                                 </div>
                                 <input type="hidden" name="recru" value="{{ object.recrutement.id }}" >
                                 <button type="submit" class="btn btn-primary">Valider</button>

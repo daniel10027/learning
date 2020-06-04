@@ -8,7 +8,7 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, ListView, UpdateView, View, DetailView
 # Create your views here.
-from .models import Recrutement, DossierRecrutement, Diplome, Certificat, Resultat, Jury
+from .models import Recrutement, DossierRecrutement, Diplome, Certificat, Resultat, Jury, Critere
 from .forms import DiplomeFormSet, CertificatFormSet, DossierRecrutementForm
 from datetime import datetime
 from django.views.generic.edit import FormMixin
@@ -36,6 +36,7 @@ class RecrutementDetailView(DetailView):
     template_name = 'recrutement/recrutement_detail.html'
     def get_context_data(self, **kwargs):
         context = super(RecrutementDetailView, self).get_context_data(**kwargs)
+        context['criteres'] = Critere.objects.all()
         return context
 
     

@@ -17,6 +17,8 @@ class MyModelAdmin(admin.ModelAdmin):
     formfield_overrides = {
         models.ManyToManyField: {'widget': CheckboxSelectMultiple},
     }
+#####################################################################
+
 
 #####################################################################
 class Recrutement(models.Model):
@@ -56,6 +58,21 @@ class Recrutement(models.Model):
 
     # TODO: Define custom methods here
 ######################################################################################################################################################
+class Critere(models.Model):
+    recrutement = models.ForeignKey(Recrutement, on_delete=models.CASCADE, related_name="criteres")
+    nom = models.CharField(max_length=30)
+    status      = models.BooleanField(default=True)
+    created     = models.DateTimeField(auto_now_add=True)
+    date_update = models.DateTimeField(auto_now=True)
+    class Meta:
+        """Meta definition for Critere."""
+
+        verbose_name = 'Critere'
+        verbose_name_plural = 'Criteres'
+
+    def __str__(self):
+        """Unicode representation of Critere."""
+        return self.nom
 ######################################################################################################################################################
 
 class DossierRecrutement(models.Model):
@@ -200,11 +217,11 @@ class Resultat(models.Model):
     # TODO: Define fields here
     dossier = models.ForeignKey(DossierRecrutement, on_delete=models.CASCADE,)
     juge = models.ForeignKey(Enseignant, on_delete=models.CASCADE)
-    critere1 = models.IntegerField()
-    critere2 = models.IntegerField()
-    critere3 = models.IntegerField()
-    critere4 = models.IntegerField()
-    critere5 = models.IntegerField()
+    critere1 = models.PositiveIntegerField()
+    critere2 = models.PositiveIntegerField()
+    critere3 = models.PositiveIntegerField()
+    critere4 = models.PositiveIntegerField()
+    critere5 = models.PositiveIntegerField()
     status      = models.BooleanField(default=True)
     created     = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
