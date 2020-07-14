@@ -26,7 +26,15 @@ SECRET_KEY = 'w%cuhsdmzmn1zux3xek@%aqx4_s9^zi4)x-@95j%8!mz3f4!+c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+DEBUG_TOOLBAR_CONFIG = {
+    # Toolbar options
+    'RESULTS_CACHE_SIZE': 3,
+    'SHOW_COLLAPSED': False,
+    # Panel options
+    'SQL_WARNING_THRESHOLD': 100,   # milliseconds
+}
 
 
 # Application definition
@@ -61,6 +69,7 @@ INSTALLED_APPS += (
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -68,6 +77,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+   
 ]
 
 ROOT_URLCONF = 'learning.urls'
@@ -105,9 +115,9 @@ DATABASES = {
 
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-        'NAME': 'pct',
+        'NAME': 'learning',
 
-        'USER': 'postgres',
+        'USER': 'daniel',
 
         'PASSWORD': '10027563kK#',
 
@@ -190,8 +200,8 @@ BOOTSTRAP4 = {
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'danielguedegbe10027@gmail.com'
-EMAIL_HOST_PASSWORD = 'rdpbzzjycityfvpw'
+EMAIL_HOST_USER = 'eduvroom@gmail.com'
+EMAIL_HOST_PASSWORD = 'ccmutpghovhmqiaa'
 EMAIL_PORT = 587
 ############### DEBUG TOOLBAR ####################
 INTERNAL_IPS = [   
@@ -254,5 +264,3 @@ DATABASES = {
 
 """
 #ORACLE
-
-

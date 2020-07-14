@@ -40,6 +40,7 @@ urlpatterns = [
                          name="password_reset_complete"),
 ]
 
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     import debug_toolbar
@@ -49,4 +50,4 @@ if settings.DEBUG:
       
 
     ] + urlpatterns
-    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+    

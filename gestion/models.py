@@ -42,7 +42,7 @@ class User(AbstractUser):
     is_tutor = models.BooleanField(default=False)
     
     def __str__(self):
-        return "{} {} ".format(self.first_name, self.last_name)
+        return "{} {} ".format(self.username, self.email)
 
 #########################################################
 class Grade(models.Model):
