@@ -9,8 +9,7 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-import django_heroku
-import dj_database_url
+
 import os
 from django.contrib.messages import constants as messages
 
@@ -27,7 +26,7 @@ SECRET_KEY = 'w%cuhsdmzmn1zux3xek@%aqx4_s9^zi4)x-@95j%8!mz3f4!+c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1',            'eduvroom.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 DEBUG_TOOLBAR_CONFIG = {
     # Toolbar options
@@ -51,7 +50,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-  #  'whitenoise.runserver_nostatic,'
  ]
 
 
@@ -71,16 +69,14 @@ INSTALLED_APPS += (
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    
+     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
    
 ]
 
@@ -133,9 +129,6 @@ DATABASES = {
 
 }
 
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -175,17 +168,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-
-MEDIA_DIRS = [os.path.join(BASE_DIR,'learning/media')
-]
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    #'django.contrib.staticfiles.finders.AppDirectoriesFinder',    #causes verbose duplicate notifications in django 1.9
-)
 ##################################################
 # SETTINGS +
 ##################################################
@@ -221,6 +206,21 @@ EMAIL_PORT = 587
 ############### DEBUG TOOLBAR ####################
 INTERNAL_IPS = [   
     '127.0.0.1', 
+]
+DEBUG_TOOLBAR_PANELS = [
+    'debug_toolbar.panels.versions.VersionsPanel',
+    'debug_toolbar.panels.timer.TimerPanel',
+    'debug_toolbar.panels.settings.SettingsPanel',
+    'debug_toolbar.panels.headers.HeadersPanel',
+    'debug_toolbar.panels.request.RequestPanel',
+    'debug_toolbar.panels.sql.SQLPanel',
+    'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+    'debug_toolbar.panels.templates.TemplatesPanel',
+    'debug_toolbar.panels.cache.CachePanel',
+    'debug_toolbar.panels.signals.SignalsPanel',
+    'debug_toolbar.panels.logging.LoggingPanel',
+    'debug_toolbar.panels.redirects.RedirectsPanel',
+    'debug_toolbar.panels.profiling.ProfilingPanel',
 ]
 ############## GRAPH MODELS ######################
 if DEBUG:
@@ -264,6 +264,3 @@ DATABASES = {
 
 """
 #ORACLE
-
-
-django_heroku.settings(locals())
