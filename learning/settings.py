@@ -257,6 +257,8 @@ DATABASES = {
 """
 #Sqlite
 """
+
+###############lfkjfif
 DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.sqlite3',
