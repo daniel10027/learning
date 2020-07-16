@@ -81,6 +81,7 @@ MIDDLEWARE = [
   
    
 ]
+# 'for git'
 
 ROOT_URLCONF = 'learning.urls'
 
