@@ -255,3 +255,5 @@ DATABASES = {
 """
 #ORACLE
 django_heroku.settings(locals())
+
+### end
