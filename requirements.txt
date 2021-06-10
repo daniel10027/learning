@@ -6,7 +6,7 @@ Django==3.1.12
 django-admin-interface==0.12.2
 django-colorfield==0.3.2
 django-crispy-forms==1.9.2
-django-debug-toolbar==2.2
+django-debug-toolbar==2.2.1
 django-dynamic-formsets==0.0.8
 django-extensions==3.0.3
 django-flat-responsive==2.0
