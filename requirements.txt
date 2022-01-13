@@ -22,7 +22,7 @@ jsmin==2.2.2
 MarkupPy==1.14
 odfpy==1.4.1
 openpyxl==3.0.4
-Pillow==7.1.2
+Pillow==9.0.0
 psycopg2==2.8.5
 pytz==2020.1
 PyYAML==5.3.1
