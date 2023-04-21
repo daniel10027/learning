@@ -27,7 +27,7 @@ psycopg2==2.8.5
 pytz==2020.1
 PyYAML==5.3.1
 six==1.15.0
-sqlparse==0.3.1
+sqlparse==0.4.4
 tablib==2.0.0
 whitenoise==5.1.0
 xlrd==1.2.0
